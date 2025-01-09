@@ -1,0 +1,24 @@
+.nav-tabs li a {
+    color: #777; /* Default tab link color */
+}
+
+.nav-tabs li a:hover {
+    color: #fff; /* Hover color for tab links */
+}
+
+.nav-tabs .active a {
+    color: #fff !important; /* Active tab link color */
+    background-color: #29292c !important; /* Background for active tab */
+}
+
+.tab-content {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.tab-pane {
+    padding: 15px;
+}

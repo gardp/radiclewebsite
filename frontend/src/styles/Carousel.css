@@ -1,0 +1,9 @@
+.carousel {
+    width: 100%; /* Make carousel span full width */
+}
+
+.carouselImage {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    filter: grayscale(90%);
+}

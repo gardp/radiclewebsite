@@ -1,0 +1,19 @@
+.navbar {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2d2d30;
+  opacity: 0.9;
+}
+
+.navbar-nav {
+  margin-left: auto; /* Aligns nav items to the right */
+  padding-right: 30px;
+}
+
+.navbar-brand, .nav-link {
+  color: #d5d5d5 !important;
+  padding: 10px;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
