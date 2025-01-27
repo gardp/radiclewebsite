@@ -1,5 +1,10 @@
 // import React, { useEffect, useRef } from 'react';
-
+// const canvasRef = useRef(null);
+// const playerInitializedRef = useRef(false);
+// const playButtonRef = useRef(null);
+// const pauseButtonRef = useRef(null);
+// const soundButtonRef = useRef(null);
+// const timeRef = useRef(null);
 // const AudioPlayerWrapper = () => {
 //   const canvasRef = useRef(null);
 //   const playerInitializedRef = useRef(false);

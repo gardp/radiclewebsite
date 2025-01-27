@@ -4,7 +4,7 @@ import CustomCarousel from './Carousel';
 import TabGroup from './TabGroup';
 import NewTab from './NewTab';
 import MusicContainer from './MusicContainer';
-import AudioPlayerWrapper from './AudioPlayerWrapper';
+import AudioPlayer from './AudioPlayer';
 
 const HomePage = () => {
   return (
@@ -14,16 +14,16 @@ const HomePage = () => {
       <br />
       <TabGroup>
         <NewTab>
-          <MusicContainer>
-            <AudioPlayerWrapper
+        </NewTab>
+      </TabGroup>
+      <MusicContainer>
+            <AudioPlayer
               name="Big (feat. Gunna)"
               description="First Track"
-              audioSrc="/assets/music/01 Big (feat. Gunna).m4a"
+              audioSrc="/assets/music/01 Big (feat. Gunna).mp3"
               imageSrc="/assets/images/radicleavatar.jpg"
             />
           </MusicContainer>
-        </NewTab>
-      </TabGroup>
     </div>
   );
 };

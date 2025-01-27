@@ -1,17 +1,17 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import AudioPlayerWrapper from './AudioPlayerWrapper';
-import '../styles/AudioPlayerWrapper.css';
+import AudioPlayer from './AudioPlayer';
+import '../styles/AudioPlayer.css';
+import '../styles/MusicContainer.css';
 
 const MusicContainer = ({ children }) => {
   return (
     <Container fluid className="music-container">
-      <div className="music-container">TESTESGJHGFJDGFJDGHFJHGDF</div>
       <Row className="g-4">
         {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === AudioPlayerWrapper) {
+          if (React.isValidElement(child) && child.type === AudioPlayer) {
             return (
-              <Col lg={4} md={6} sm={12} className="music-item">
+              <Col className="music-item">
                 {child}
               </Col>
             );

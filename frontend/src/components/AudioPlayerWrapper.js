@@ -7,10 +7,7 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
   const playButtonRef = useRef(null);
   const pauseButtonRef = useRef(null);
   const soundButtonRef = useRef(null);
-  const prevButtonRef = useRef(null);
-  const nextButtonRef = useRef(null);
   const timeRef = useRef(null);
-
   var Framer = {
 
     countTicks: 360,
@@ -24,11 +21,11 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
     index: 0,
 
     loadingAngle: 0,
-    //initalizer function of the Framer
+
     init: function (scene) {
-        this.canvas = canvasRef.current; // Use ref instead of querySelector- the canvas element
-        this.scene = scene; // The scene object
-        this.context = scene.context; // The scene context
+        this.canvas = document.querySelector('canvas');
+        this.scene = scene;
+        this.context = scene.context;
         this.configure();
     },
 
@@ -49,7 +46,7 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
         this.ticks = this.getTicks(this.countTicks, this.tickSize, [0, 90]);
         for (var i = 0, len = this.ticks.length; i < len; ++i) {
             var tick = this.ticks[i];
-            this.drawTick(tick.x1, tick.y1, tick.x2, tick.y2); //draws all the ticks using the coordinates
+            this.drawTick(tick.x1, tick.y1, tick.x2, tick.y2);
         }
         this.context.restore();
     },
@@ -74,7 +71,7 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
     },
 
     setLoadingPercent: function (percent) {
-        this.loadingAngle = percent * 2 * Math.PI; // how much the pointer has rotated for the track playing
+        this.loadingAngle = percent * 2 * Math.PI;
     },
 
     drawEdging: function () {
@@ -130,7 +127,7 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
         var x = (angle - l);
         var h;
 
-        if (x === m) {
+        if (x == m) {
             return this.maxTickSize;
         }
         var d = Math.abs(m - x);
@@ -157,492 +154,505 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
         return coords;
     }
 };
+'use strict';
 
-    var Tracker = { //showing playback position visually
+var Tracker = {
 
-        innerDelta: 20,
+    innerDelta: 20,
 
-        lineWidth: 7,
+    lineWidth: 7,
 
-        prevAngle: 0.5,
+    prevAngle: 0.5,
 
-        angle: 0,
+    angle: 0,
 
-        animationCount: 10,
+    animationCount: 10,
 
-        pressButton: false,
+    pressButton: false,
 
-        init: function (scene) {
-            this.scene = scene;
-            this.context = scene.context;
-            this.initHandlers();
-        },
+    init: function (scene) {
+        this.scene = scene;
+        this.context = scene.context;
+        this.initHandlers();
+    },
 
-        initHandlers: function () {
-            var that = this;
+    initHandlers: function () {
+        var that = this;
 
-            this.scene.canvas.addEventListener('mousedown', function (e) {
-                if (that.isInsideOfSmallCircle(e) || that.isOusideOfBigCircle(e)) {
-                    return;
-                }
-                that.prevAngle = that.angle;
-                that.pressButton = true;
-                that.stopAnimation();
-                that.calculateAngle(e, true);
-            });
-
-            window.addEventListener('mouseup', function () {
-                if (!that.pressButton) {
-                    return;
-                }
-                var id = setInterval(function () {
-                    if (!that.animatedInProgress) {
-                        that.pressButton = false;
-                        Player.context.currentTime = that.angle / (2 * Math.PI) * Player.source.buffer.duration;
-                        clearInterval(id);
-                    }
-                }, 100);
-            });
-
-            window.addEventListener('mousemove', function (e) {
-                if (that.animatedInProgress) {
-                    return;
-                }
-                if (that.pressButton && that.scene.inProcess()) {
-                    that.calculateAngle(e);
-                }
-            });
-        },
-
-        isInsideOfSmallCircle: function (e) {
-            var x = Math.abs(e.pageX - this.scene.cx - this.scene.coord.left);
-            var y = Math.abs(e.pageY - this.scene.cy - this.scene.coord.top);
-            return Math.sqrt(x * x + y * y) < this.scene.radius - 3 * this.innerDelta;
-        },
-
-        isOusideOfBigCircle: function (e) {
-            return Math.abs(e.pageX - this.scene.cx - this.scene.coord.left) > this.scene.radius ||
-                    Math.abs(e.pageY - this.scene.cy - this.scene.coord.top) > this.scene.radius;
-        },
-
-        draw: function () {
-            if (!Player.source.buffer) {
+        this.scene.canvas.addEventListener('mousedown', function (e) {
+            if (that.isInsideOfSmallCircle(e) || that.isOusideOfBigCircle(e)) {
                 return;
             }
-            if (!this.pressButton) {
-                this.angle = Player.context.currentTime / Player.source.buffer.duration * 2 * Math.PI || 0;
-            }
-            this.drawArc();
-        },
+            that.prevAngle = that.angle;
+            that.pressButton = true;
+            that.stopAnimation();
+            that.calculateAngle(e, true);
+        });
 
-        drawArc: function () {
-            this.context.save();
-            this.context.strokeStyle = 'rgba(254, 67, 101, 0.8)';
-            this.context.beginPath();
-            this.context.lineWidth = this.lineWidth;
-
-            this.r = this.scene.radius - (this.innerDelta + this.lineWidth / 2);
-            this.context.arc(
-                    this.scene.radius + this.scene.padding,
-                    this.scene.radius + this.scene.padding,
-                    this.r, 0, this.angle, false
-            );
-            this.context.stroke();
-            this.context.restore();
-        },
-
-        calculateAngle: function (e, animatedInProgress) {
-            this.animatedInProgress = animatedInProgress;
-            this.mx = e.pageX;
-            this.my = e.pageY;
-            this.angle = Math.atan((this.my - this.scene.cy - this.scene.coord.top) / (this.mx - this.scene.cx - this.scene.coord.left));
-            if (this.mx < this.scene.cx + this.scene.coord.left) {
-                this.angle = Math.PI + this.angle;
+        window.addEventListener('mouseup', function () {
+            if (!that.pressButton) {
+                return;
             }
-            if (this.angle < 0) {
-                this.angle += 2 * Math.PI;
+            var id = setInterval(function () {
+                if (!that.animatedInProgress) {
+                    that.pressButton = false;
+                    Player.context.currentTime = that.angle / (2 * Math.PI) * Player.source.buffer.duration;
+                    clearInterval(id);
+                }
+            }, 100);
+        });
+
+        window.addEventListener('mousemove', function (e) {
+            if (that.animatedInProgress) {
+                return;
             }
-            if (animatedInProgress) {
-                this.startAnimation();
+            if (that.pressButton && that.scene.inProcess()) {
+                that.calculateAngle(e);
+            }
+        });
+    },
+
+    isInsideOfSmallCircle: function (e) {
+        var x = Math.abs(e.pageX - this.scene.cx - this.scene.coord.left);
+        var y = Math.abs(e.pageY - this.scene.cy - this.scene.coord.top);
+        return Math.sqrt(x * x + y * y) < this.scene.radius - 3 * this.innerDelta;
+    },
+
+    isOusideOfBigCircle: function (e) {
+        return Math.abs(e.pageX - this.scene.cx - this.scene.coord.left) > this.scene.radius ||
+                Math.abs(e.pageY - this.scene.cy - this.scene.coord.top) > this.scene.radius;
+    },
+
+    draw: function () {
+        if (!Player.source.buffer) {
+            return;
+        }
+        if (!this.pressButton) {
+            this.angle = Player.context.currentTime / Player.source.buffer.duration * 2 * Math.PI || 0;
+        }
+        this.drawArc();
+    },
+
+    drawArc: function () {
+        this.context.save();
+        this.context.strokeStyle = 'rgba(254, 67, 101, 0.8)';
+        this.context.beginPath();
+        this.context.lineWidth = this.lineWidth;
+
+        this.r = this.scene.radius - (this.innerDelta + this.lineWidth / 2);
+        this.context.arc(
+                this.scene.radius + this.scene.padding,
+                this.scene.radius + this.scene.padding,
+                this.r, 0, this.angle, false
+        );
+        this.context.stroke();
+        this.context.restore();
+    },
+
+    calculateAngle: function (e, animatedInProgress) {
+        this.animatedInProgress = animatedInProgress;
+        this.mx = e.pageX;
+        this.my = e.pageY;
+        this.angle = Math.atan((this.my - this.scene.cy - this.scene.coord.top) / (this.mx - this.scene.cx - this.scene.coord.left));
+        if (this.mx < this.scene.cx + this.scene.coord.left) {
+            this.angle = Math.PI + this.angle;
+        }
+        if (this.angle < 0) {
+            this.angle += 2 * Math.PI;
+        }
+        if (animatedInProgress) {
+            this.startAnimation();
+        } else {
+            this.prevAngle = this.angle;
+        }
+    },
+
+    startAnimation: function () {
+        var that = this;
+        var angle = this.angle;
+        var l = Math.abs(this.angle) - Math.abs(this.prevAngle);
+        var step = l / this.animationCount, i = 0;
+        var f = function () {
+            that.angle += step;
+            if (++i == that.animationCount) {
+                that.angle = angle;
+                that.prevAngle = angle;
+                that.animatedInProgress = false;
             } else {
-                this.prevAngle = this.angle;
+                that.animateId = setTimeout(f, 20);
             }
-        },
+        };
 
-        startAnimation: function () {
-            var that = this;
-            var angle = this.angle;
-            var l = Math.abs(this.angle) - Math.abs(this.prevAngle);
-            var step = l / this.animationCount, i = 0;
-            var f = function () {
-                that.angle += step;
-                if (++i === that.animationCount) {
-                    that.angle = angle;
-                    that.prevAngle = angle;
-                    that.animatedInProgress = false;
-                } else {
-                    that.animateId = setTimeout(f, 20);
-                }
-            };
+        this.angle = this.prevAngle;
+        this.animateId = setTimeout(f, 20);
+    },
 
-            this.angle = this.prevAngle;
-            this.animateId = setTimeout(f, 20);
-        },
+    stopAnimation: function () {
+        clearTimeout(this.animateId);
+        this.animatedInProgress = false;
+    }
+};
+'use strict';
 
-        stopAnimation: function () {
-            clearTimeout(this.animateId);
-            this.animatedInProgress = false;
-        }
-    };
+var Scene = {
 
-    var Scene = { //The Scene object is the main orchestrator of the audio player's visual canvas. It manages the overall canvas setup and coordinates between different components.
+    padding: 120,
 
-        padding: 120,
+    minSize: 740,
 
-        minSize: 740,
+    optimiseHeight: 982,
 
-        optimiseHeight: 982,
+    _inProcess: false,
 
-        _inProcess: false,
+    init: function () {
+        this.canvasConfigure();
+        this.initHandlers();
 
-        init: function () {
-            this.canvasConfigure();
-            this.initHandlers();
+        Framer.init(this);
+        Tracker.init(this);
+        Controls.init(this);
 
-            Framer.init(this);
-            Tracker.init(this);
-            Controls.init(this);
+        this.startRender();
+    },
 
-            this.startRender();
-        },
+    canvasConfigure: function () {
+        this.canvas = document.querySelector('canvas');
+        this.context = this.canvas.getContext('2d');
+        this.context.strokeStyle = '#FE4365';
+        this.calculateSize();
+    },
 
-        canvasConfigure: function () {
-            this.canvas = canvasRef.current;
-            this.context = this.canvas.getContext('2d');
-            this.context.strokeStyle = '#FE4365';
-            this.calculateSize();
-        },
+    calculateSize: function () {
+        this.scaleCoef = Math.max(0.5, 740 / this.optimiseHeight);
 
-        calculateSize: function () {
-            this.scaleCoef = Math.max(0.5, 740 / this.optimiseHeight);
+        var size = Math.max(this.minSize, 1/*document.body.clientHeight */);
+        this.canvas.setAttribute('width', size);
+        this.canvas.setAttribute('height', size);
+        //this.canvas.style.marginTop = -size / 2 + 'px';
+        //this.canvas.style.marginLeft = -size / 2 + 'px';
 
-            var size = Math.max(this.minSize, 1/*document.body.clientHeight */);
-            this.canvas.setAttribute('width', size);
-            this.canvas.setAttribute('height', size);
-            //this.canvas.style.marginTop = -size / 2 + 'px';
-            //this.canvas.style.marginLeft = -size / 2 + 'px';
+        this.width = size;
+        this.height = size;
 
-            this.width = size;
-            this.height = size;
+        this.radius = (size - this.padding * 2) / 2;
+        this.cx = this.radius + this.padding;
+        this.cy = this.radius + this.padding;
+        this.coord = this.canvas.getBoundingClientRect();
+    },
 
-            this.radius = (size - this.padding * 2) / 2;
-            this.cx = this.radius + this.padding;
-            this.cy = this.radius + this.padding;
-            this.coord = this.canvas.getBoundingClientRect();
-        },
+    initHandlers: function () {
+        var that = this;
+        window.onresize = function () {
+            that.canvasConfigure();
+            Framer.configure();
+            that.render();
+        };
+    },
 
-        initHandlers: function () {
-            var that = this;
-            window.onresize = function () {
-                that.canvasConfigure();
-                Framer.configure();
+    render: function () {
+        var that = this;
+        requestAnimationFrame(function () {
+            that.clear();
+            that.draw();
+            if (that._inProcess) {
                 that.render();
-            };
-        },
+            }
+        });
+    },
 
-        render: function () {
-            var that = this;
-            requestAnimationFrame(function () {
-                that.clear();
-                that.draw();
-                if (that._inProcess) {
-                    that.render();
-                }
-            });
-        },
+    clear: function () {
+        this.context.clearRect(0, 0, this.width, this.height);
+    },
 
-        clear: function () {
-            this.context.clearRect(0, 0, this.width, this.height);
-        },
+    draw: function () {
+        Framer.draw();
+        Tracker.draw();
+        Controls.draw();
+    },
 
-        draw: function () {
-            Framer.draw();
-            Tracker.draw();
-            Controls.draw();
-        },
+    startRender: function () {
+        this._inProcess = true;
+        this.render();
+    },
 
-        startRender: function () {
-            this._inProcess = true;
-            this.render();
-        },
+    stopRender: function () {
+        this._inProcess = false;
+    },
 
-        stopRender: function () {
-            this._inProcess = false;
-        },
+    inProcess: function () {
+        return this._inProcess;
+    }
+};
+'use strict';
 
-        inProcess: function () {
-            return this._inProcess;
+var Controls = {
+
+    playing: false,
+
+    init: function (scene) {
+        this.scene = scene;
+        this.context = scene.context;
+        this.initHandlers();
+        this.timeControl = document.querySelector('.time');
+    },
+
+    initHandlers: function () {
+        this.initPlayButton();
+        this.initPauseButton();
+        this.initSoundButton();
+        this.initPrevSongButton();
+        this.initNextSongButton();
+        this.initTimeHandler();
+    },
+
+    initPlayButton: function () {
+        var that = this;
+        this.playButton = document.querySelector('.play');
+        this.playButton.addEventListener('mouseup', function () {
+            that.playButton.style.display = 'none';
+            that.pauseButton.style.display = 'inline-block';
+            Player.play();
+            that.playing = true;
+        });
+    },
+
+    initPauseButton: function () {
+        var that = this;
+        this.pauseButton = document.querySelector('.pause');
+        this.pauseButton.addEventListener('mouseup', function () {
+            that.playButton.style.display = 'inline-block';
+            that.pauseButton.style.display = 'none';
+            Player.pause();
+            that.playing = false;
+        });
+    },
+
+    initSoundButton: function () {
+        var that = this;
+        this.soundButton = document.querySelector('.soundControl');
+        this.soundButton.addEventListener('mouseup', function () {
+            if (that.soundButton.classList.contains('disable')) {
+                that.soundButton.classList.remove('disable');
+                Player.unmute();
+            } else {
+                that.soundButton.classList.add('disable');
+                Player.mute();
+            }
+        });
+    },
+
+    initPrevSongButton: function () {
+        var that = this;
+        this.prevSongButton = document.querySelector('.prevSong');
+        this.prevSongButton.addEventListener('mouseup', function () {
+            Player.prevTrack();
+            that.playing && Player.play();
+        });
+    },
+
+    initNextSongButton: function () {
+        var that = this;
+        this.nextSongButton = document.querySelector('.nextSong');
+        this.nextSongButton.addEventListener('mouseup', function () {
+            Player.nextTrack();
+            that.playing && Player.play();
+        });
+    },
+
+    initTimeHandler: function () {
+        var that = this;
+        setTimeout(function () {
+            var rawTime = parseInt(Player.context.currentTime || 0);
+            var secondsInMin = 60;
+            var min = parseInt(rawTime / secondsInMin);
+            var seconds = rawTime - min * secondsInMin;
+            if (min < 10) {
+                min = '0' + min;
+            }
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            var time = min + ':' + seconds;
+            that.timeControl.textContent = time;
+            that.initTimeHandler();
+        }, 300);
+    },
+
+    draw: function () {
+        this.drawPic();
+    },
+
+    drawPic: function () {
+        this.context.save();
+        this.context.beginPath();
+        this.context.fillStyle = 'rgba(254, 67, 101, 0.85)';
+        this.context.lineWidth = 1;
+        var x = Tracker.r / Math.sqrt(Math.pow(Math.tan(Tracker.angle), 2) + 1);
+        var y = Math.sqrt(Tracker.r * Tracker.r - x * x);
+        if (this.getQuadrant() == 2) {
+            x = -x;
         }
-    };
+        if (this.getQuadrant() == 3) {
+            x = -x;
+            y = -y;
+        }
+        if (this.getQuadrant() == 4) {
+            y = -y;
+        }
+        this.context.arc(this.scene.radius + this.scene.padding + x, this.scene.radius + this.scene.padding + y, 10, 0, Math.PI * 2, false);
+        this.context.fill();
+        this.context.restore();
+    },
 
-    var Controls = {
+    getQuadrant: function () {
+        if (0 <= Tracker.angle && Tracker.angle < Math.PI / 2) {
+            return 1;
+        }
+        if (Math.PI / 2 <= Tracker.angle && Tracker.angle < Math.PI) {
+            return 2;
+        }
+        if (Math.PI < Tracker.angle && Tracker.angle < Math.PI * 3 / 2) {
+            return 3;
+        }
+        if (Math.PI * 3 / 2 <= Tracker.angle && Tracker.angle <= Math.PI * 2) {
+            return 4;
+        }
+    }
+};
+'use strict';
 
-        playing: false,
+var Player = {
 
-        init: function (scene) {
-            this.scene = scene;
-            this.context = scene.context;
+    buffer: null,
+
+    duration: 0,
+
+    tracks: [
+        {
+            artist: "Kavinsky",
+            song: "Odd Look ft. The Weeknd",
+            url: "//katiebaca.com/tutorial/odd-look.mp3"
+        }
+    ],
+
+    init: function () {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        this.context = new AudioContext();
+        this.context.suspend && this.context.suspend();
+        this.firstLaunch = true;
+        try {
+            this.javascriptNode = this.context.createScriptProcessor(2048, 1, 1);
+            this.javascriptNode.connect(this.context.destination);
+            this.analyser = this.context.createAnalyser();
+            this.analyser.connect(this.javascriptNode);
+            this.analyser.smoothingTimeConstant = 0.6;
+            this.analyser.fftSize = 2048;
+            this.source = this.context.createBufferSource();
+            this.destination = this.context.destination;
+            this.loadTrack(0);
+
+            this.gainNode = this.context.createGain();
+            this.source.connect(this.gainNode);
+            this.gainNode.connect(this.analyser);
+            this.gainNode.connect(this.destination);
+
             this.initHandlers();
-            this.timeControl = timeRef.current;
-        },
-
-        initHandlers: function () {
-            this.initPlayButton();
-            this.initPauseButton();
-            this.initSoundButton();
-            this.initPrevSongButton();
-            this.initNextSongButton();
-            this.initTimeHandler();
-        },
-
-        initPlayButton: function () {
-            var that = this;
-            playButtonRef.current.addEventListener('mouseup', function () {
-                playButtonRef.current.style.display = 'none';
-                pauseButtonRef.current.style.display = 'inline-block';
-                Player.play();
-                 
-            });
-        },
-
-        initPauseButton: function () {
-            var that = this;
-            pauseButtonRef.current.addEventListener('mouseup', function () {
-                playButtonRef.current.style.display = 'inline-block';
-                pauseButtonRef.current.style.display = 'none';
-                Player.pause();
-                that.playing = false;
-            });
-        },
-
-        initSoundButton: function () {
-            var that = this;
-            soundButtonRef.current.addEventListener('mouseup', function () {
-                if (soundButtonRef.current.classList.contains('disable')) {
-                    soundButtonRef.current.classList.remove('disable');
-                    Player.unmute();
-                } else {
-                    soundButtonRef.current.classList.add('disable');
-                    Player.mute();
-                }
-            });
-        },
-
-        initPrevSongButton: function () {
-            var that = this;
-            prevButtonRef.current.addEventListener('mouseup', function () {
-                Player.prevTrack();
-                that.playing && Player.play();
-            });
-        },
-
-        initNextSongButton: function () {
-            var that = this;
-            nextButtonRef.current.addEventListener('mouseup', function () {
-                Player.nextTrack();
-                that.playing && Player.play();
-            });
-        },
-
-        initTimeHandler: function () {
-            var that = this;
-            setTimeout(function () {
-                var rawTime = parseInt(Player.context.currentTime || 0);
-                var secondsInMin = 60;
-                var min = parseInt(rawTime / secondsInMin);
-                var seconds = rawTime - min * secondsInMin;
-                if (min < 10) {
-                    min = '0' + min;
-                }
-                if (seconds < 10) {
-                    seconds = '0' + seconds;
-                }
-                var time = min + ':' + seconds;
-                that.timeControl.textContent = time;
-                that.initTimeHandler();
-            }, 300);
-        },
-
-        draw: function () {
-            this.drawPic();
-        },
-
-        drawPic: function () {
-            this.context.save();
-            this.context.beginPath();
-            this.context.fillStyle = 'rgba(254, 67, 101, 0.85)';
-            this.context.lineWidth = 1;
-            var x = Tracker.r / Math.sqrt(Math.pow(Math.tan(Tracker.angle), 2) + 1);
-            var y = Math.sqrt(Tracker.r * Tracker.r - x * x);
-            if (this.getQuadrant() === 2) {
-                x = -x;
-            }
-            if (this.getQuadrant() === 3) {
-                x = -x;
-                y = -y;
-            }
-            if (this.getQuadrant() === 4) {
-                y = -y;
-            }
-            this.context.arc(this.scene.radius + this.scene.padding + x, this.scene.radius + this.scene.padding + y, 10, 0, Math.PI * 2, false);
-            this.context.fill();
-            this.context.restore();
-        },
-
-        getQuadrant: function () {
-            if (0 <= Tracker.angle && Tracker.angle < Math.PI / 2) {
-                return 1;
-            }
-            if (Math.PI / 2 <= Tracker.angle && Tracker.angle < Math.PI) {
-                return 2;
-            }
-            if (Math.PI < Tracker.angle && Tracker.angle < Math.PI * 3 / 2) {
-                return 3;
-            }
-            if (Math.PI * 3 / 2 <= Tracker.angle && Tracker.angle <= Math.PI * 2) {
-                return 4;
-            }
-        }
-    };
-
-    var Player = {
-
-        buffer: null,
-
-        duration: 0,
-
-        tracks: [
-            {
-                artist: "Kavinsky",
-                song: "Odd Look ft. The Weeknd",
-                url: "//katiebaca.com/tutorial/odd-look.mp3"
-            }
-        ],
-
-        init: function () {
-            window.AudioContext = window.AudioContext || window.webkitAudioContext;
-            this.context = new AudioContext();
-            this.context.suspend && this.context.suspend();
-            this.firstLaunch = true;
-            try {
-                this.javascriptNode = this.context.createScriptProcessor(2048, 1, 1);
-                this.javascriptNode.connect(this.context.destination);
-                this.analyser = this.context.createAnalyser();
-                this.analyser.connect(this.javascriptNode);
-                this.analyser.smoothingTimeConstant = 0.6;
-                this.analyser.fftSize = 2048;
-                this.source = this.context.createBufferSource();
-                this.destination = this.context.destination;
-                this.loadTrack(0);
-
-                this.gainNode = this.context.createGain();
-                this.source.connect(this.gainNode);
-                this.gainNode.connect(this.analyser);
-                this.gainNode.connect(this.destination);
-
-                this.initHandlers();
-            } catch (e) {
-                Framer.setLoadingPercent(1);
-            }
+        } catch (e) {
             Framer.setLoadingPercent(1);
-            Scene.init();
-        },
-
-        loadTrack: function (index) {
-            var that = this;
-            var request = new XMLHttpRequest();
-            var track = this.tracks[index];
-            document.querySelector('.song .artist').textContent = track.artist;
-            document.querySelector('.song .name').textContent = track.song;
-            this.currentSongIndex = index;
-
-            request.open('GET', track.url, true);
-            request.responseType = 'arraybuffer';
-
-            request.onload = function() {
-                that.context.decodeAudioData(request.response, function(buffer) {
-                    that.source.buffer = buffer;
-                });
-            };
-
-            request.send();
-        },
-
-        nextTrack: function () {
-            ++this.currentSongIndex;
-            if (this.currentSongIndex === this.tracks.length) {
-                this.currentSongIndex = 0;
-            }
-
-            this.loadTrack(this.currentSongIndex);
-        },
-
-        prevTrack: function () {
-            --this.currentSongIndex;
-            if (this.currentSongIndex === -1) {
-                this.currentSongIndex = this.tracks.length - 1;
-            }
-
-            this.loadTrack(this.currentSongIndex);
-        },
-
-        play: function () {
-            this.context.resume && this.context.resume();
-            if (this.firstLaunch) {
-                this.source.start();
-                this.firstLaunch = false;
-            }
-        },
-
-        stop: function () {
-            this.context.currentTime = 0;
-            this.context.suspend();
-        },
-
-        pause: function () {
-            this.context.suspend();
-        },
-
-        mute: function () {
-            this.gainNode.gain.value = 0;
-        },
-
-        unmute: function () {
-            this.gainNode.gain.value = 1;
-        },
-
-        initHandlers: function () {
-            var that = this;
-
-            this.javascriptNode.onaudioprocess = function() {
-                Framer.frequencyData = new Uint8Array(that.analyser.frequencyBinCount);
-                that.analyser.getByteFrequencyData(Framer.frequencyData);
-            };
         }
-    };
+        Framer.setLoadingPercent(1);
+        Scene.init();
+    },
 
-    useEffect(() => {
-        if (canvasRef.current && !playerInitializedRef.current) {
+    loadTrack: function (index) {
+        var that = this;
+        var request = new XMLHttpRequest();
+        var track = this.tracks[index];
+        document.querySelector('.song .artist').textContent = track.artist;
+        document.querySelector('.song .name').textContent = track.song;
+        this.currentSongIndex = index;
+
+        request.open('GET', track.url, true);
+        request.responseType = 'arraybuffer';
+
+        request.onload = function() {
+            that.context.decodeAudioData(request.response, function(buffer) {
+                that.source.buffer = buffer;
+            });
+        };
+
+        request.send();
+    },
+
+    nextTrack: function () {
+        return;
+        ++this.currentSongIndex;
+        if (this.currentSongIndex == this.tracks.length) {
+            this.currentSongIndex = 0;
+        }
+
+        this.loadTrack(this.currentSongIndex);
+    },
+
+    prevTrack: function () {
+        return;
+        --this.currentSongIndex;
+        if (this.currentSongIndex == -1) {
+            this.currentSongIndex = this.tracks.length - 1;
+        }
+
+        this.loadTrack(this.currentSongIndex);
+    },
+
+    play: function () {
+        this.context.resume && this.context.resume();
+        if (this.firstLaunch) {
+            this.source.start();
+            this.firstLaunch = false;
+        }
+    },
+
+    stop: function () {
+        this.context.currentTime = 0;
+        this.context.suspend();
+    },
+
+    pause: function () {
+        this.context.suspend();
+    },
+
+    mute: function () {
+        this.gainNode.gain.value = 0;
+    },
+
+    unmute: function () {
+        this.gainNode.gain.value = 1;
+    },
+
+    initHandlers: function () {
+        var that = this;
+
+        this.javascriptNode.onaudioprocess = function() {
+            Framer.frequencyData = new Uint8Array(that.analyser.frequencyBinCount);
+            that.analyser.getByteFrequencyData(Framer.frequencyData);
+        };
+    }
+};
+Player.init();
+
+
+useEffect(() => {
+    if (canvasRef.current && !playerInitializedRef.current) {
         try {
             Player.init();
             playerInitializedRef.current = true;
         } catch (error) {
             console.error('Failed to initialize audio player:', error);
         }
-        }
+    }
 
-        // Cleanup function
-        return () => {
+    // Cleanup function
+    return () => {
         if (Player.context) {
             Player.context.close();
         }
@@ -655,26 +665,25 @@ const AudioPlayerWrapper = ({ name, description, imageSrc, audioSrc }) => {
         if (Player.source) {
             Player.source.disconnect();
         }
-        };
-    }, []);
+    };
+}, [canvasRef]);
 
-    return (
-        <div className="player">
+return (
+    <div className="player">
         <canvas ref={canvasRef}></canvas>
         <div className="song">
-            <div className="artist">{"Kavinsky"}</div>
-            <div className="name">{"Odd Look ft. The Weeknd"}</div>
+            <div className="artist"></div>
+            <div className="name"></div>
         </div>
         <div className="playarea">
-            <div className="prevSong" ref={prevButtonRef}></div>
             <div className="play" ref={playButtonRef}></div>
             <div className="pause" ref={pauseButtonRef}></div>
-            <div className="nextSong" ref={nextButtonRef}></div>
         </div>
         <div className="soundControl" ref={soundButtonRef}></div>
-        <div className="time" ref={timeRef}>00:00</div>
-        </div>
-    );
-    };
+        <div className="time" ref={timeRef}></div>
+    </div>
+);
+
+};
 
 export default AudioPlayerWrapper;
