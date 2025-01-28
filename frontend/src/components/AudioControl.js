@@ -1,8 +1,10 @@
 import React from "react";
-import { ReactComponent as Play } from "../../public/assets/images/play.svg";
-import { ReactComponent as Pause } from "../../public/assets/images/pause.svg";
-import { ReactComponent as Next } from "../../public/assets/images/next.svg";
-import { ReactComponent as Prev } from "../../public/assets/images/prev.svg";
+
+// Import SVGs as URLs from public folder
+const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';
+const pauseIcon = process.env.PUBLIC_URL + '/assets/images/pause.svg';
+const nextIcon = process.env.PUBLIC_URL + '/assets/images/next.svg';
+const prevIcon = process.env.PUBLIC_URL + '/assets/images/prev.svg';
 
 const AudioControls = ({
   isPlaying,
@@ -17,7 +19,7 @@ const AudioControls = ({
       aria-label="Previous"
       onClick={onPrevClick}
     >
-      <Prev />
+      <img src={prevIcon} alt="Previous" />
     </button>
     {isPlaying ? (
       <button
@@ -26,7 +28,7 @@ const AudioControls = ({
         onClick={() => onPlayPauseClick(false)}
         aria-label="Pause"
       >
-        <Pause />
+        <img src={pauseIcon} alt="Pause" />
       </button>
     ) : (
       <button
@@ -35,7 +37,7 @@ const AudioControls = ({
         onClick={() => onPlayPauseClick(true)}
         aria-label="Play"
       >
-        <Play />
+        <img src={playIcon} alt="Play" />
       </button>
     )}
     <button
@@ -44,7 +46,7 @@ const AudioControls = ({
       aria-label="Next"
       onClick={onNextClick}
     >
-      <Next />
+      <img src={nextIcon} alt="Next" />
     </button>
   </div>
 );

@@ -5,6 +5,7 @@ import TabGroup from './TabGroup';
 import NewTab from './NewTab';
 import MusicContainer from './MusicContainer';
 import AudioPlayer from './AudioPlayer';
+import tracks from './Tracks';
 
 const HomePage = () => {
   return (
@@ -17,13 +18,8 @@ const HomePage = () => {
         </NewTab>
       </TabGroup>
       <MusicContainer>
-            <AudioPlayer
-              name="Big (feat. Gunna)"
-              description="First Track"
-              audioSrc="/assets/music/01 Big (feat. Gunna).mp3"
-              imageSrc="/assets/images/radicleavatar.jpg"
-            />
-          </MusicContainer>
+        <AudioPlayer tracks={tracks} />
+      </MusicContainer>
     </div>
   );
 };
