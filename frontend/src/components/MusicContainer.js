@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import AudioPlayer from './AudioPlayer';
 import '../styles/AudioPlayer.css';
 import '../styles/MusicContainer.css';
 
-const MusicContainer = ({ children }) => {
+const MusicContainer = ({ tracks }) => {
+  const [activePlayer, setActivePlayer] = useState(null);
+
+  const handlePlay = (index) => {
+    setActivePlayer(index);
+  };
+
   return (
     <Container fluid className="music-container">
       <Row className="g-4">
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === AudioPlayer) {
-            return (
-              <Col className="music-item">
-                {child}
-              </Col>
-            );
-          }
-          return null;
-        })}
+          <Col className="music-item">
+            <AudioPlayer 
+              tracks={tracks} 
+              isActive={activePlayer === index} // Boolean true or false to determine if the player is active
+              onPlay={() => handlePlay(index)}
+              onPause={() => setActivePlayer(null)}
+            />
+          </Col>
       </Row>
     </Container>
   );
