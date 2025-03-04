@@ -14,9 +14,16 @@
 }
  
 .music-item {
+    max-width: 200px;
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
+}
+
+.g-4 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 @media (max-width: 768px) {

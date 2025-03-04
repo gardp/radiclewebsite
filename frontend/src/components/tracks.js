@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import '../styles/Tracks.css';
 
 // For files in the public folder, we use process.env.PUBLIC_URL
@@ -20,7 +20,84 @@ const tracksData = [
     audioSrc: Dreams,
     image: `${imgSrc}radicleavatar.jpg`,
     color: "#00aeb0"
+  },
+  {
+    title: "Bad Dreams",
+    artist: "GardlyRadicle",
+    audioSrc: Dreams,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
+  },
+  {
+    title: "Bidffgg",
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    color: "#00aeb0"
   }
 ];
 
-export default { tracksData };
+export default tracksData;

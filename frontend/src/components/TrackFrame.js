@@ -1,25 +1,17 @@
 import React from 'react';
 import '../styles/AudioPlayer.css';
+import '../styles/TrackFrame.css';
 
 const TrackFrame = ({ tracks, currentTrackIndex, onTrackSelect }) => (
+  
   <div className="track-frame">
-    {/* Current Track Artwork */}
-    <div className="current-track">
-      <img
-        className="artwork"
-        src={tracks[currentTrackIndex]?.image}
-        alt={`track artwork for ${tracks[currentTrackIndex]?.title}`}
-      />
-      <h2 className="title">{tracks[currentTrackIndex]?.title}</h2>
-      <h3 className="artist">{tracks[currentTrackIndex]?.artist}</h3>
-    </div>
-
     {/* Horizontal Track List */}
-    <div className="track-list">
+    <div className="track-list" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
       {tracks.map((track, index) => (
         <div 
           key={index}
           className={`track-item ${index === currentTrackIndex ? 'active' : ''}`}
+          style={{ display: index === currentTrackIndex ? 'none' : 'inline-block' }}
           onClick={() => onTrackSelect(index)}
         >
           <img

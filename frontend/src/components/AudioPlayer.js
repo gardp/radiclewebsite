@@ -3,15 +3,18 @@ import AudioControls from "./AudioControl";
 import TrackFrame from "./TrackFrame";
 import "../styles/AudioPlayer.css";
 
-const AudioPlayer = ({ tracks, isActive, onPlay, onPause }) => {
-  // State
+
+const AudioPlayer = ({ tracks }) => {
+  console.log("AudioPlayer received tracks:", tracks); // Debug log// State
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  console.log("Initial render - isPlaying:", isPlaying, "isActive:", isActive);
+  // console.log("Initial render - isPlaying:", isPlaying, "isActive:", isActive);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
   const currentTrack = tracks[currentTrackIndex];
+  // console.log("The current track is:", tracks);
   const { title, artist, audioSrc, image, color } = currentTrack;
+
 
   // Refs
   const audioRef = useRef(new Audio(audioSrc));
@@ -56,12 +59,12 @@ const AudioPlayer = ({ tracks, isActive, onPlay, onPause }) => {
 
   const handlePlay = () => {
     setIsPlaying(true); //triggers side effect in AudioPlayer and affect AudioControls responsibly
-    onPlay(); //sets activePlayer to true in MusicContainer because of HandlePlay in MusicContainer
+    // onPlay(); //sets activePlayer to true in MusicContainer because of HandlePlay in MusicContainer
   };
 
   const handlePause = () => {
     setIsPlaying(false);
-    onPause();
+    // onPause();
   };
 
   const toPrevTrack = () => {
@@ -83,11 +86,14 @@ const AudioPlayer = ({ tracks, isActive, onPlay, onPause }) => {
   // Effect for handling play/pause
   useEffect(() => {
     // Ensure player is paused when not active
-    if (!isActive) {
-      setIsPlaying(false);
-      audioRef.current.pause();
-    }
-  }, [isActive]);
+    //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
+    //OR map through tracks and check if index === currentTrackIndex. And instead of isActive, use currentTrackIndex in the dependency array
+    // tracks.map((track, index) => 
+      if (!audioRef.current.paused){
+          setIsPlaying(false);
+          audioRef.current.pause();
+      }
+    },[currentTrackIndex]);
 
   // Ahh got it- when HandlePlay sets isPlaying to true,
   //HandlePlay is receives onPlay which is a parameter that receives
@@ -135,31 +141,47 @@ const AudioPlayer = ({ tracks, isActive, onPlay, onPause }) => {
 
   return (
     <div className="audio-player">
-      <div className="track-info">
-        <TrackFrame 
-          tracks={tracks}
-          currentTrackIndex={currentTrackIndex}
-          onTrackSelect={setCurrentTrackIndex}
-        />
-        <AudioControls
-          isPlaying={isPlaying}
-          onPlayPauseClick={isPlaying ? handlePause : handlePlay}
-          onPrevClick={toPrevTrack}
-          onNextClick={toNextTrack}
-        />
-        <input
-          type="range"
-          value={trackProgress}
-          step="1"
-          min="0"
-          max={audioRef.current.duration ? audioRef.current.duration : `${audioRef.current.duration}`}
-          className="progress"
-          onChange={(e) => onScrub(e.target.value)}
-          onMouseUp={onScrubEnd}
-          onKeyUp={onScrubEnd}
-          style={{ background: trackStyling }}
-        />
-      </div>
+      <div className="player-grid">
+        <div className="track-frame-container">
+          <TrackFrame 
+            tracks={tracks}
+          //put isActive here instead of the MusicContainer
+          //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
+            currentTrackIndex={currentTrackIndex}
+            onTrackSelect={setCurrentTrackIndex}
+          />
+        </div>
+        <div className="controls-container">
+          <div className="track-info">
+            <img
+              className="artwork"
+              src={tracks[currentTrackIndex]?.image}
+              alt={`track artwork for ${tracks[currentTrackIndex]?.title}`}
+            />
+            <h2 className="title">{tracks[currentTrackIndex]?.title}</h2>
+            <h3 className="artist">{tracks[currentTrackIndex]?.artist}</h3>
+          </div>
+          <input
+            type="range"
+            value={trackProgress}
+            step="1"
+            min="0"
+            max={audioRef.current.duration ? audioRef.current.duration : `${audioRef.current.duration}`}
+            className="progress"
+            onChange={(e) => onScrub(e.target.value)}
+            onMouseUp={onScrubEnd}
+            onKeyUp={onScrubEnd}
+            style={{ background: trackStyling }}
+          />
+
+      <AudioControls
+        isPlaying={isPlaying}
+        onPlayPauseClick={isPlaying ? handlePause : handlePlay}
+        onPrevClick={toPrevTrack}
+        onNextClick={toNextTrack}
+      />
+              </div>
+              </div>
     </div>
   );
 };
