@@ -1,0 +1,102 @@
+.track-thumb-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.track-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  z-index: 2;
+}
+
+.track-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Icon Positions */
+a:has(.stream-icon) {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+}
+
+a:has(.buy-icon) {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+a:has(.download-icon) {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+}
+
+/* Tooltip Styling */
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Position tooltips */
+a:has(.stream-icon) .tooltip {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+a:has(.buy-icon) .tooltip {
+  top: -30px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+a:has(.download-icon) .tooltip {
+  bottom: -30px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* Show tooltip on hover */
+a:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Add arrow to tooltip */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+/* Adjust arrow position for bottom tooltip */
+a:has(.download-icon) .tooltip::after {
+  top: auto;
+  bottom: 100%;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+}

@@ -144,7 +144,18 @@ const AudioPlayer = ({ tracks }) => {
       <div className="player-grid">
         <div className="track-frame-container">
           <TrackFrame 
-            tracks={tracks}
+            tabs={
+              [
+                {
+                  label: "Tab 1",
+                  content: tracks,
+                },
+                {
+                  label: "Tab 2",
+                  content: tracks,
+                },
+              ]
+    }
           //put isActive here instead of the MusicContainer
           //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
             currentTrackIndex={currentTrackIndex}
