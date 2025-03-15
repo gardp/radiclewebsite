@@ -21,7 +21,8 @@ const Track = ({ track, isActive, onClick }) => {
           className="track-thumb"
           src={track.image}
           alt={`track artwork for ${track.title}`}
-          onClick={handleTrackImageClick}
+          // onClick={handleTrackImageClick}
+          onClick={onClick}
         />
         {track.links?.streamLink && (
           <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer">

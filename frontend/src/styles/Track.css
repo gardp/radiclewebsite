@@ -24,20 +24,20 @@
 /* Icon Positions */
 a:has(.stream-icon) {
   position: absolute;
-  top: -5px;
+  top: 10px;
   left: -5px;
 }
 
 a:has(.buy-icon) {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: 10px;
+  right: 10px;
 }
 
 a:has(.download-icon) {
   position: absolute;
-  bottom: -5px;
-  right: -5px;
+  bottom: 30px;
+  right: 10px;
 }
 
 /* Tooltip Styling */
