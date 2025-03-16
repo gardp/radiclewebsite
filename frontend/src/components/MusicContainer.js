@@ -5,7 +5,7 @@ import '../styles/AudioPlayer.css';
 import '../styles/MusicContainer.css';
 import React from 'react';
 
-const MusicContainer = ({ tracks }) => {
+const MusicContainer = ({ tracks, trackSize }) => {
   console.log("MusicContainer received tracks:", tracks); // Debug log
   // const [activePlayer, setActivePlayer] = useState(null);
 
@@ -19,6 +19,7 @@ const MusicContainer = ({ tracks }) => {
           <Col className="music-item">
             <AudioPlayer 
               tracks={tracks} 
+              trackSize={trackSize}
               // isActive={activePlayer === index} // Boolean true or false to determine if the player is active
               // onPlay={() => handlePlay(index)}
               // onPause={() => setActivePlayer(null)}

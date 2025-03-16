@@ -21,7 +21,7 @@ const HomePage = () => {
   <NewTab content="New Beats" href="#tab1" tabID="tab1">  
   </NewTab>
 </TabGroup> */}
-<MusicContainer tracks={tracksData} />
+<MusicContainer tracks={tracksData} trackSize={2} />
 <Media/>
 <NewsletterSub/>
     </div>

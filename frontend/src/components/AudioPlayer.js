@@ -4,7 +4,7 @@ import TrackFrame from "./TrackFrame";
 import "../styles/AudioPlayer.css";
 
 
-const AudioPlayer = ({ tracks }) => {
+const AudioPlayer = ({ tracks, trackSize }) => {
   console.log("AudioPlayer received tracks:", tracks); // Debug log// State
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -160,6 +160,7 @@ const AudioPlayer = ({ tracks }) => {
           //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
             currentTrackIndex={currentTrackIndex}
             onTrackSelect={setCurrentTrackIndex}
+            trackSize={trackSize}
           />
         </div>
         <div className="controls-container">

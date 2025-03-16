@@ -4,7 +4,7 @@ import '../styles/TrackFrame.css';
 import { Nav, Tab } from 'react-bootstrap';
 import Track from './Track';
 
-const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect }) => (
+const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize }) => (
   <Tab.Container>
     <Nav variant="tabs">
       {tabs.map((tab, index) => (
@@ -24,6 +24,7 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect }) => (
                   track={track}
                   isActive={trackIndex === currentTrackIndex}
                   onClick={() => onTrackSelect(trackIndex)}
+                  size={trackSize}
                 />
               ))}
             </Tab.Pane>

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/AudioPlayer.css';
 import '../styles/Track.css';
 
-const Track = ({ track, isActive, onClick }) => {
+const Track = ({ track, isActive, onClick, size }) => {
   // Function to handle track image click
   const handleTrackImageClick = (e) => {
     // Only trigger onClick if clicking directly on the track image
@@ -10,6 +10,11 @@ const Track = ({ track, isActive, onClick }) => {
       onClick();
     }
   };
+
+  // Set the CSS variable for track size when the component mounts or size changes
+  useEffect(() => {
+    document.documentElement.style.setProperty('--track-base-size', size);
+  }, [size]);
 
   return (
     <div 

@@ -56,6 +56,73 @@ const tracksData = [
     bpm: 120,
   },
   {
+    id: 3,
+    title: "Bidffgg",   
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    color: "#00aeb0",
+    musicType: "Remix",
+    genre: "Rap",
+    bpm: 120,
+  },
+] ;
+
+const tracksData2 = [
+  {
+    id: 1,
+    title: "Big",
+    artist: "Gunna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    color: "#00aeb0",
+    musicType: "Featured",
+    genre: "Rap",
+    bpm: 120,  
+  },
+  {
+    id: 2,
+    title: "Bad Dreams",
+    artist: "GardlyRadicle",
+    audioSrc: Dreams,
+    image: `${imgSrc}radicleavatar.jpg`,
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    color: "#00aeb0",
+    musicType: "Featured",
+    genre: "Rap",
+    bpm: 120,
+  },
+  {
+    id: 3,
+    title: "Bidffgg",   
+    artist: "Gudfgfdgnna",
+    audioSrc: Big,
+    image: `${imgSrc}radicleavatar.jpg`,
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    color: "#00aeb0",
+    musicType: "Remix",
+    genre: "Rap",
+    bpm: 120,
+  },
+  {
     id: 4,
     title: "Bidffgg",
     artist: "Gudfgfdgnna",
