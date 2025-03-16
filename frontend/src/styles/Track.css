@@ -10,7 +10,7 @@
   width: var(--track-icon-size);
   height: var(--track-icon-size);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  /* background: rgba(255, 255, 255, 0.9); */
   padding: calc(3px * var(--track-base-size));
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
@@ -31,7 +31,7 @@ a:has(.stream-icon) {
 a:has(.buy-icon) {
   position: absolute;
   top: calc(10px * var(--track-base-size));
-  right: calc(10px * var(--track-base-size));
+  right: calc(17px * var(--track-base-size));
 }
 
 a:has(.download-icon) {

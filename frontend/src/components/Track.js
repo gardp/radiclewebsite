@@ -33,17 +33,19 @@ const Track = ({ track, isActive, onClick, size }) => {
           <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer">
             <img
               className="track-icon stream-icon"
-              src={`${process.env.PUBLIC_URL}/images/icons8-music-100.png`}
+              src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-100.png`}
               alt="Stream"
             />
             <span className="tooltip">Stream</span>
           </a>
         )}
         {track.links?.buyLink && (
+          // <a target="_blank" href="https://icons8.com/icon/bIBxUlWeBjq8/cart">Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+          // https://icons8.com/icons/set/music--static--red--corners-round
           <a href={track.links.buyLink} target="_blank" rel="noopener noreferrer">
             <img
               className="track-icon buy-icon"
-              src={`${process.env.PUBLIC_URL}/images/icons8-cart-100.png`}
+              src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-65.png`}
               alt="Buy"
             />
             <span className="tooltip">Buy</span>
@@ -53,7 +55,7 @@ const Track = ({ track, isActive, onClick, size }) => {
           <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer">
             <img
               className="track-icon download-icon"
-              src={`${process.env.PUBLIC_URL}/images/icons8-listening-to-music-on-headphones-100.png`}
+              src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
               alt="Download"
             />
             <span className="tooltip">Download</span>
