@@ -5,6 +5,7 @@ import Contact from './components/Contact';
 import AboutUs from './components/AboutUs';
 import './App.css';
 import CustomNavbar from './components/CustomNavbar';
+import Catalog from './components/Catalog';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<AboutUs />} />
+              <Route path="/catalog" element={<Catalog />} />
               {/* Add more routes as needed */}
             </Routes>
           </main>

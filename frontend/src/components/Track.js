@@ -19,7 +19,7 @@ const Track = ({ track, isActive, onClick, size }) => {
   return (
     <div 
       className={`track-item ${isActive ? 'active' : ''}`}
-      style={{ display: isActive ? 'none' : 'inline-block' }}
+      // style={{ display: isActive ? 'none' : 'inline-block' }}
     >
       <div className="track-thumb-container">
         <img
