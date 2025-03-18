@@ -4,7 +4,7 @@ import TrackFrame from "./TrackFrame";
 import "../styles/AudioPlayer.css";
 
 
-const AudioPlayer = ({ tracks, trackSize }) => {
+const AudioPlayer = ({ tracks, trackSize, controlsSize }) => {
   console.log("AudioPlayer received tracks:", tracks); // Debug log// State
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);

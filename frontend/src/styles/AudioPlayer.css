@@ -13,6 +13,13 @@
   --track-title-font-size: calc(0.72rem * var(--track-base-size));
   --track-artist-font-size: calc(0.64rem * var(--track-base-size));
   --track-frame-item-width: calc(120px * var(--track-base-size));
+  
+  /* Base sizes for audio controls */
+  --controls-base-size: 1; /* Multiplier for all control elements */
+  --controls-width: calc(60% * var(--controls-base-size));
+  --controls-margin-bottom: calc(12px * var(--controls-base-size));
+  --prev-next-button-size: calc(28px * var(--controls-base-size));
+  --play-pause-button-size: calc(32px * var(--controls-base-size));
 }
 
 * {
@@ -94,20 +101,20 @@ input[type="range"] {
 .audio-controls {
   display: flex;
   justify-content: space-between;
-  width: 60%;
-  margin: 0 auto 12px;
+  width: var(--controls-width);
+  margin: 0 auto var(--controls-margin-bottom);
 }
 
-.audio-controls .prev svg,
-.audio-controls .next svg {
-  width: 28px;
-  height: 28px;
+.audio-controls .prev img,
+.audio-controls .next img {
+  width: var(--prev-next-button-size);
+  height: var(--prev-next-button-size);
 }
 
-.audio-controls .play svg,
-.audio-controls .pause svg {
-  height: 32px;
-  width: 32px;
+.audio-controls .play img,
+.audio-controls .pause img {
+  height: var(--play-pause-button-size);
+  width: var(--play-pause-button-size);
 }
 
 .audio-controls path {

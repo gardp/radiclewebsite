@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Import SVGs as URLs from public folder
 const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';
@@ -10,45 +10,53 @@ const AudioControls = ({
   isPlaying,
   onPlayPauseClick,
   onPrevClick,
-  onNextClick
-}) => (
-  <div className="audio-controls">
-    <button
-      type="button"
-      className="prev"
-      aria-label="Previous"
-      onClick={onPrevClick}
-    >
-      <img src={prevIcon} alt="Previous" />
-    </button>
-    {isPlaying ? (
+  onNextClick,
+  controlsSize = 1 // Default to 1 if not provided
+}) => {
+  // Set the CSS variable for controls size when the component mounts or size changes
+  useEffect(() => {
+    document.documentElement.style.setProperty('--controls-base-size', controlsSize);
+  }, [controlsSize]);
+
+  return (
+    <div className="audio-controls">
       <button
         type="button"
-        className="pause"
-        onClick={() => onPlayPauseClick(false)}
-        aria-label="Pause"
+        className="prev"
+        aria-label="Previous"
+        onClick={onPrevClick}
       >
-        <img src={pauseIcon} alt="Pause" />
+        <img src={prevIcon} alt="Previous" />
       </button>
-    ) : (
+      {isPlaying ? (
+        <button
+          type="button"
+          className="pause"
+          onClick={() => onPlayPauseClick(false)}
+          aria-label="Pause"
+        >
+          <img src={pauseIcon} alt="Pause" />
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="play"
+          onClick={() => onPlayPauseClick(true)}
+          aria-label="Play"
+        >
+          <img src={playIcon} alt="Play" />
+        </button>
+      )}
       <button
         type="button"
-        className="play"
-        onClick={() => onPlayPauseClick(true)}
-        aria-label="Play"
+        className="next"
+        aria-label="Next"
+        onClick={onNextClick}
       >
-        <img src={playIcon} alt="Play" />
+        <img src={nextIcon} alt="Next" />
       </button>
-    )}
-    <button
-      type="button"
-      className="next"
-      aria-label="Next"
-      onClick={onNextClick}
-    >
-      <img src={nextIcon} alt="Next" />
-    </button>
-  </div>
-);
+    </div>
+  );
+};
 
 export default AudioControls;
