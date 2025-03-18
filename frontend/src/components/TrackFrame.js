@@ -5,7 +5,7 @@ import { Nav, Tab } from 'react-bootstrap';
 import Track from './Track';
 
 const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize }) => (
-  <Tab.Container>
+  <Tab.Container defaultActiveKey={0}>
     <Nav variant="tabs">
       {tabs.map((tab, index) => (
         <Nav.Item key={index}>

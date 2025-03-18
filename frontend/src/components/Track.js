@@ -19,7 +19,15 @@ const Track = ({ track, isActive, onClick, size }) => {
   return (
     <div 
       className={`track-item ${isActive ? 'active' : ''}`}
-      // style={{ display: isActive ? 'none' : 'inline-block' }}
+      // style={isActive ? {
+      //   // transform: 'scale(1.05)',
+      //   // boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+      //   // border: '1px solid rgba(255, 255, 255, 0.2)',
+      //   // borderRadius: '12px',
+      //   // padding: '8px',
+      //   background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.003))',
+      //   // backdropFilter: 'blur(5px)'
+      // } : {}}
     >
       <div className="track-thumb-container">
         <img
