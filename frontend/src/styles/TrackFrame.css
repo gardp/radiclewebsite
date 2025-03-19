@@ -1,0 +1,22 @@
+.track-frame {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .track-list {
+    width: 100%;
+    padding: 0 10px; /* Reduce the padding from the sides */
+    box-sizing: border-box;
+  }
+  
+  .tab-content {
+    width: 100%;
+  }
+  
+  .tab-pane {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+  }

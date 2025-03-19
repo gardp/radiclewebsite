@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/AudioPlayer.css';
-import '../styles/TrackFrame.css';
+// import '../styles/TrackFrame.css';
 import { Nav, Tab } from 'react-bootstrap';
 import Track from './Track';
 
-const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize }) => (
+const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, orientation }) => (
   <Tab.Container defaultActiveKey={0}>
     <Nav variant="tabs">
       {tabs.map((tab, index) => (
@@ -14,10 +14,11 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize }) 
       ))}
     </Nav>
     <div className="track-frame">
-      <div className="track-list" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+      <div className="track-list" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
         <Tab.Content>
           {tabs.map((tab, index) => (
             <Tab.Pane eventKey={index} key={index}>
+              <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
               {tab.content.map((track, trackIndex) => (
                 <Track
                   key={track.id}
@@ -27,6 +28,7 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize }) 
                   size={trackSize}
                 />
               ))}
+              </div>
             </Tab.Pane>
           ))}
         </Tab.Content>

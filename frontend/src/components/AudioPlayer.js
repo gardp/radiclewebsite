@@ -163,38 +163,26 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize }) => {
             trackSize={trackSize}
           />
         </div>
-        <div className="controls-container">
-          <div className="track-info">
-            <img
-              className="artwork"
-              src={tracks[currentTrackIndex]?.image}
-              alt={`track artwork for ${tracks[currentTrackIndex]?.title}`}
-            />
-            <h2 className="title">{tracks[currentTrackIndex]?.title}</h2>
-            <h3 className="artist">{tracks[currentTrackIndex]?.artist}</h3>
-          </div>
-          <input
-            type="range"
-            value={trackProgress}
-            step="1"
-            min="0"
-            max={audioRef.current.duration ? audioRef.current.duration : `${audioRef.current.duration}`}
-            className="progress"
-            onChange={(e) => onScrub(e.target.value)}
-            onMouseUp={onScrubEnd}
-            onKeyUp={onScrubEnd}
-            style={{ background: trackStyling }}
-          />
-
-      <AudioControls
-        isPlaying={isPlaying}
-        onPlayPauseClick={isPlaying ? handlePause : handlePlay}
-        onPrevClick={toPrevTrack}
-        onNextClick={toNextTrack}
-      />
-              </div>
-              </div>
+        <AudioControls
+          isPlaying={isPlaying}
+          onPlayPauseClick={isPlaying ? handlePause : handlePlay}
+          onPrevClick={toPrevTrack}
+          onNextClick={toNextTrack}
+          trackProgress={trackProgress}
+          onScrub={onScrub}
+          onScrubEnd={onScrubEnd}
+          trackStyling={trackStyling}
+          audioRef={audioRef}
+          image={image}
+          title={title}
+          artist={artist}
+          audioSrc={audioSrc}
+          color={color}
+          controlsSize={controlsSize}
+        />
+      </div>
     </div>
+
   );
 };
 

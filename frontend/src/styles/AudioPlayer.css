@@ -105,6 +105,17 @@ input[type="range"] {
   margin: 0 auto var(--controls-margin-bottom);
 }
 
+/* Added for proper scaling and centering of the controls container */
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
 .audio-controls .prev img,
 .audio-controls .next img {
   width: var(--prev-next-button-size);
@@ -292,7 +303,6 @@ input[type="range"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
   grid-area: controls-container;
   min-height: 100%;
 }
