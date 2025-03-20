@@ -4,8 +4,10 @@ import TrackFrame from "./TrackFrame";
 import "../styles/AudioPlayer.css";
 
 
-const AudioPlayer = ({ tracks, trackSize, controlsSize }) => {
-  console.log("AudioPlayer received tracks:", tracks); // Debug log// State
+const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0 }) => {
+  console.log("AudioPlayer received tracks:", tracks); // Debug log
+  console.log("AudioPlayer orientation:", orientation); // Debug log for orientation
+  // State
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   // console.log("Initial render - isPlaying:", isPlaying, "isActive:", isActive);
@@ -141,7 +143,7 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize }) => {
 
   return (
     <div className="audio-player">
-      <div className="player-grid">
+      <div className={`player-grid ${orientation === 1 ? 'vertical-layout' : ''}`}>
         <div className="track-frame-container">
           <TrackFrame 
             tabs={

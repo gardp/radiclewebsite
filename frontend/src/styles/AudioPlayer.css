@@ -296,6 +296,7 @@ input[type="range"] {
 .track-frame-container {
   width: 100%;
   grid-area: track-frame-container;
+  transform: translateY(-100px);
 }
 
 .controls-container {
@@ -359,5 +360,16 @@ input[type="range"] {
     grid-template-areas: 
       "controls-container track-frame-container";
     gap: 2.4rem;
+    align-items: center; /* Center items vertically */
+  }
+  
+  /* For orientation=1, always use vertical layout */
+  .player-grid.vertical-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "controls-container"
+      "track-frame-container";
+    gap: 1.6rem;
+    align-items: start; /* Reset to start for vertical layout */
   }
 }

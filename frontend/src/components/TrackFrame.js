@@ -18,7 +18,14 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, or
         <Tab.Content>
           {tabs.map((tab, index) => (
             <Tab.Pane eventKey={index} key={index}>
-              <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
+              <div style={{ 
+                display: 'flex', 
+                gap: '15px', 
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'flex-start',
+                height: '100%' 
+              }}>
               {tab.content.map((track, trackIndex) => (
                 <Track
                   key={track.id}
