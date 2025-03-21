@@ -25,3 +25,17 @@
     justify-content: center;
     align-items: center;
   }
+
+  /* Style for the semi-circle in TrackFrame */
+  .semi-circle {
+    width: 160px;
+    height: 80px;
+    background-color: var(--highlight-color, #FF5500);
+    border-radius: 160px 160px 0 0;
+    border: 1px solid black;
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    z-index: 1;
+  }
