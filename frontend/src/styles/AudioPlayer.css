@@ -220,6 +220,7 @@ input[type="range"] {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   width: 100%;
+  transform: translateY(13px);
 }
 
 .track-frame .track-list {
@@ -373,3 +374,11 @@ input[type="range"] {
     align-items: start; /* Reset to start for vertical layout */
   }
 }
+
+/* .semi-circle {
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+} */
