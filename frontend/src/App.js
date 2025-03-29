@@ -15,10 +15,12 @@ function App() {
         <CustomNavbar />
           <main className="main-content">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/contact" element={<Contact />} />
+            <Route path="/" exact element={<HomePage />} />
+            <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/catalog" element={<Catalog />} />
+              {/* ADD this <Route path="*" element={<NotFound />} /> */}
+              {/* Always start with the most specific routes first then move to the more general ones... */}
               {/* Add more routes as needed */}
             </Routes>
           </main>

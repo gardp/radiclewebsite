@@ -298,6 +298,8 @@ input[type="range"] {
   width: 100%;
   grid-area: track-frame-container;
   transform: translateY(-100px);
+  position: relative;
+  overflow: visible; /* Allow the cut-out effect to be visible */
 }
 
 .controls-container {
