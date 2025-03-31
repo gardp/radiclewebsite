@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/AudioPlayer.css';
 import '../styles/Track.css';
+import PricingTable from './PricingTable';
 
 const Track = ({ track, isActive, onClick, size }) => {
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+  
   // Function to handle track image click
   const handleTrackImageClick = (e) => {
     // Only trigger onClick if clicking directly on the track image
@@ -15,64 +18,84 @@ const Track = ({ track, isActive, onClick, size }) => {
   useEffect(() => {
     document.documentElement.style.setProperty('--track-base-size', size);
   }, [size]);
+  
+  // Handle cart icon click to open pricing modal
+  const handleCartClick = (e) => {
+    e.preventDefault();
+    setIsPricingModalOpen(true);
+  };
+  
+  // Close the pricing modal
+  const closePricingModal = () => {
+    setIsPricingModalOpen(false);
+  };
 
   return (
-    <div 
-      className={`track-item ${isActive ? 'active' : ''}`}
-      // style={isActive ? {
-      //   // transform: 'scale(1.05)',
-      //   // boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-      //   // border: '1px solid rgba(255, 255, 255, 0.2)',
-      //   // borderRadius: '12px',
-      //   // padding: '8px',
-      //   background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.003))',
-      //   // backdropFilter: 'blur(5px)'
-      // } : {}}
-    >
-      <div className="track-thumb-container">
-        <img
-          className="track-thumb"
-          src={track.image}
-          alt={`track artwork for ${track.title}`}
-          // onClick={handleTrackImageClick}
-          onClick={onClick}
-        />
-        {track.links?.streamLink && (
-          <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer">
-            <img
-              className="track-icon stream-icon"
-              src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-100.png`}
-              alt="Stream"
-            />
-            <span className="tooltip">Stream</span>
-          </a>
-        )}
-        {track.links?.buyLink && (
-          // <a target="_blank" href="https://icons8.com/icon/bIBxUlWeBjq8/cart">Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-          // https://icons8.com/icons/set/music--static--red--corners-round
-          <a href={track.links.buyLink} target="_blank" rel="noopener noreferrer">
-            <img
-              className="track-icon buy-icon"
-              src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-65.png`}
-              alt="Buy"
-            />
-            <span className="tooltip">Buy</span>
-          </a>
-        )}
-        {track.links?.downloadLink && (
-          <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer">
-            <img
-              className="track-icon download-icon"
-              src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
-              alt="Download"
-            />
-            <span className="tooltip">Download</span>
-          </a>
-        )}
+    <>
+      <div 
+        className={`track-item ${isActive ? 'active' : ''}`}
+        // style={isActive ? {
+        //   // transform: 'scale(1.05)',
+        //   // boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+        //   // border: '1px solid rgba(255, 255, 255, 0.2)',
+        //   // borderRadius: '12px',
+        //   // padding: '8px',
+        //   background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.003))',
+        //   // backdropFilter: 'blur(5px)'
+        // } : {}}
+      >
+        <div className="track-thumb-container">
+          <img
+            className="track-thumb"
+            src={track.image}
+            alt={`track artwork for ${track.title}`}
+            // onClick={handleTrackImageClick}
+            onClick={onClick}
+          />
+          {track.links?.streamLink && (
+            <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer">
+              <img
+                className="track-icon stream-icon"
+                src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-100.png`}
+                alt="Stream"
+              />
+              <span className="tooltip">Stream</span>
+            </a>
+          )}
+          {track.links?.buyLink && (
+            // <a target="_blank" href="https://icons8.com/icon/bIBxUlWeBjq8/cart">Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+            // https://icons8.com/icons/set/music--static--red--corners-round
+            <a href="#" onClick={handleCartClick}>
+              <img
+                className="track-icon buy-icon"
+                src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-65.png`}
+                alt="Buy"
+              />
+              <span className="tooltip">Buy</span>
+            </a>
+          )}
+          {track.links?.downloadLink && (
+            <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer">
+              <img
+                className="track-icon download-icon"
+                src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
+                alt="Download"
+              />
+              <span className="tooltip">Download</span>
+            </a>
+          )}
+        </div>
+        <h4 className="track-title">{track.title}</h4>
+        <p className="track-artist">{track.artist}</p>
       </div>
-      <h4 className="track-title">{track.title}</h4>
-      <p className="track-artist">{track.artist}</p>
-    </div>
+      
+      {/* Pricing Table Modal */}
+      <PricingTable 
+        isOpen={isPricingModalOpen}
+        onClose={closePricingModal}
+        track={track}
+      />
+    </>
   );
 };
 

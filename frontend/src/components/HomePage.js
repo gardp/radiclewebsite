@@ -16,7 +16,7 @@ const HomePage = () => {
     <div style={{ marginTop: '56px' }}>
     <CustomCarousel />
     <br></br>
-<CustomNavbar/>
+{/* <CustomNavbar/> */}
     {/* <TabGroup>
   <NewTab content="New Beats" href="#tab1" tabID="tab1">  
   </NewTab>
