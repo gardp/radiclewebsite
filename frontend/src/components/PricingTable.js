@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/PricingTable.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { closePricingModal } from '../features/priceLicensing/priceLicensing.js';
 
-const PricingTable = ({ isOpen, onClose, track }) => {
+// const PricingTable = ({ isOpen, onClose, track }) => {
+const PricingTable = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
+  const { isOpen, currentTrack: track } = useSelector((state) => state.priceLicensing); //destructuring the state
+
   // Close modal when ESC key is pressed
   useEffect(() => {
     const handleEscapeKey = (e) => {
       if (e.key === 'Escape' && isOpen) {
-        onClose();
+        dispatch(closePricingModal());
       }
     };
     
@@ -18,7 +23,7 @@ const PricingTable = ({ isOpen, onClose, track }) => {
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
   
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -36,7 +41,7 @@ const PricingTable = ({ isOpen, onClose, track }) => {
   // Handle outside click to close modal
   const handleBackdropClick = (e) => {
     if (e.target.classList.contains('pricing-modal-backdrop')) {
-      onClose();
+      dispatch(closePricingModal());
     }
   };
   
@@ -45,7 +50,7 @@ const PricingTable = ({ isOpen, onClose, track }) => {
   };
   
   const handleContactClick = () => {
-    onClose();
+    dispatch(closePricingModal());
     navigate('/contact');
   };
   
@@ -53,7 +58,7 @@ const PricingTable = ({ isOpen, onClose, track }) => {
     if (selectedOption) {
       console.log(`Added ${track.title} with license option: ${selectedOption} to cart`);
       // Implement cart functionality here
-      onClose();
+      dispatch(closePricingModal());
     }
   };
   
@@ -62,7 +67,7 @@ const PricingTable = ({ isOpen, onClose, track }) => {
   return (
     <div className="pricing-modal-backdrop" onClick={handleBackdropClick}>
       <div className="pricing-modal-content">
-        <button className="close-button" onClick={onClose}>×</button>
+        <button className="close-button" onClick={() => dispatch(closePricingModal())}>×</button>
         
         <div className="pricing-header">
           <h2>License Options for "{track ? track.title : 'Track'}"</h2>

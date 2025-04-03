@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../styles/AudioPlayer.css';
 import '../styles/Track.css';
 import PricingTable from './PricingTable';
+import { useSelector, useDispatch } from 'react-redux';
+import { openPricingModal, closePricingModal } from '../features/priceLicensing/priceLicensing.js';
 
 const Track = ({ track, isActive, onClick, size }) => {
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { currentTrack } = useSelector((state) => state.priceLicensing); // read nad destructure currentTrack from state
   
   // Function to handle track image click
   const handleTrackImageClick = (e) => {
@@ -22,12 +26,13 @@ const Track = ({ track, isActive, onClick, size }) => {
   // Handle cart icon click to open pricing modal
   const handleCartClick = (e) => {
     e.preventDefault();
-    setIsPricingModalOpen(true);
+    dispatch(openPricingModal(track));
+    // currentTrack = track; //After reading the track from the useSelector, assign it to the currentTrack state
   };
   
   // Close the pricing modal
   const closePricingModal = () => {
-    setIsPricingModalOpen(false);
+    dispatch(closePricingModal());
   };
 
   return (
@@ -90,13 +95,14 @@ const Track = ({ track, isActive, onClick, size }) => {
       </div>
       
       {/* Pricing Table Modal */}
-      <PricingTable 
+      {/* <PricingTable 
         isOpen={isPricingModalOpen}
         onClose={closePricingModal}
         track={track}
-      />
+      /> */}
     </>
   );
 };
+
 
 export default Track;

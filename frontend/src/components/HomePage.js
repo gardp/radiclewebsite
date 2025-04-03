@@ -9,13 +9,16 @@ import Media from './Media';
 import NewsletterSub from './NewsletterSub';
 // import AboutUs from './AboutUs';
 import CustomNavbar from './CustomNavbar';
+import PricingTable from './PricingTable';
 
 const HomePage = () => {
   console.log('TracksData in HomePage:', tracksData); // Debug log
   return (
+    <>
     <div style={{ marginTop: '56px' }}>
     <CustomCarousel />
     <br></br>
+    <PricingTable/>
 {/* <CustomNavbar/> */}
     {/* <TabGroup>
   <NewTab content="New Beats" href="#tab1" tabID="tab1">  
@@ -25,7 +28,9 @@ const HomePage = () => {
 <Media/>
 <NewsletterSub/>
     </div>
+    </>
   );
 };
 
 export default HomePage;
+

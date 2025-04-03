@@ -18,6 +18,11 @@ const tracksData = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Featured",
     genre: "Rap",
@@ -34,6 +39,11 @@ const tracksData = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Featured",
     genre: "Rap",
@@ -49,6 +59,11 @@ const tracksData = [
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Remix",
@@ -69,6 +84,11 @@ const tracksData2 = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Featured",
     genre: "Rap",
@@ -84,6 +104,11 @@ const tracksData2 = [
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Featured",
@@ -101,6 +126,11 @@ const tracksData2 = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Remix",
     genre: "Rap",
@@ -112,7 +142,16 @@ const tracksData2 = [
     artist: "Gudfgfdgnna",
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
-    link: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Remix",
     genre: "Rap",
@@ -125,6 +164,11 @@ const tracksData2 = [
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
     link: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Remix",
     genre: "Rap",
@@ -137,7 +181,16 @@ const tracksData2 = [
     artist: "Gudfgfdgnna",
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
-    link: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Instrumental",
     genre: "Rap",
@@ -149,7 +202,16 @@ const tracksData2 = [
     artist: "Gudfgfdgnna",
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
-    link: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
+    },
     color: "#00aeb0",
     musicType: "Instrumental",
     genre: "Rap",
@@ -165,6 +227,11 @@ const tracksData2 = [
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+    },
+    licensingPrice: {
+      basic: 9.99, 
+      standard: 19.99,
+      premium: 29.99
     },
     color: "#00aeb0",     
     musicType: "Instrumental",
