@@ -3,7 +3,7 @@ import priceLicensingSlice from '../src/features/priceLicensing/priceLicensing.j
 
 export const store = configureStore({
   reducer: {
-    priceLicensing: priceLicensingSlice, // Add your reducers here
+    priceLicensing: priceLicensingSlice, // Add your reducers here from the priceLicensingSlice object
     // ... other reducers ...
   },
 });

@@ -1,0 +1,99 @@
+/* Cart.css */
+.cart-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #0c3bd8, #0e49ff);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-left: 15px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 2px 3px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.cart-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(255, 255, 255, 0) 100%);
+  border-radius: 50% 50% 100% 100% / 50% 50% 35% 35%;
+}
+
+.cart-button::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  right: 4px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.cart-button:hover {
+  background: linear-gradient(145deg, #0e49ff, #0c3bd8);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cart-button:active {
+  transform: translateY(1px);
+  background: linear-gradient(145deg, #0a33c2, #0d42f0);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url('/assets/images/icons8-cart-100.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cart-counter {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(145deg, #ff5500, #e04a00);
+  border-radius: 50%;
+  color: white;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.cart-button-container {
+  position: relative;
+  margin-left: 15px;
+}

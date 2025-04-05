@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FaGitSquare } from "react-icons/fa";
 
 // Import SVGs as URLs from public folder
 const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';

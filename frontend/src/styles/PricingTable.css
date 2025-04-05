@@ -24,23 +24,25 @@
   align-items: center;
   z-index: 1000;
   backdrop-filter: blur(8px);
+  padding-top: 60px; /* Add padding to avoid navbar overlap */
 }
 
 /* Modal Content */
 .pricing-modal-content {
-  width: 70%;
-  max-width: 1200px;
-  max-height: 90vh;
+  width: 80%;
+  max-width: 900px; /* Reduced from 1200px */
+  max-height: 80vh; /* Reduced from 90vh */
   overflow-y: auto;
   background: var(--pricing-background);
   border-radius: 16px;
   box-shadow: 0 22px 40px var(--pricing-shadow);
   color: var(--pricing-text);
-  padding: 32px;
+  padding: 24px; /* Reduced from 32px */
   position: relative;
   animation: modalFadeIn 0.3s ease-out;
   backdrop-filter: blur(10px);
   border: 1px solid var(--pricing-border);
+  margin: auto; /* Ensure centering */
 }
 
 /* Hide scrollbar but keep functionality */
@@ -61,15 +63,15 @@
 /* Close Button */
 .close-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--pricing-border);
   color: var(--pricing-text);
-  font-size: 24px;
+  font-size: 20px; /* Reduced from 24px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,19 +88,19 @@
 /* Header */
 .pricing-header {
   text-align: center;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
+  margin-bottom: 24px; /* Reduced from 32px */
+  padding-bottom: 12px; /* Reduced from 16px */
   border-bottom: 1px solid var(--pricing-border);
 }
 
 .pricing-header h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem; /* Reduced from 1.8rem */
   margin-bottom: 8px;
   color: var(--pricing-text);
 }
 
 .pricing-header p {
-  font-size: 1rem;
+  font-size: 0.9rem; /* Reduced from 1rem */
   opacity: 0.8;
 }
 
@@ -106,15 +108,15 @@
 .pricing-options-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: 16px; /* Reduced from 24px */
+  margin-bottom: 24px; /* Reduced from 32px */
 }
 
 /* Pricing Option Card */
 .pricing-option {
   background: var(--pricing-card-bg);
   border-radius: 12px;
-  padding: 24px;
+  padding: 16px; /* Reduced from 24px */
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid var(--pricing-border);
@@ -160,26 +162,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px; /* Reduced from 16px */
   position: relative;
   z-index: 1;
 }
 
 .pricing-option-header h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Reduced from 1.4rem */
   margin: 0;
 }
 
 .price {
-  font-size: 1.6rem;
+  font-size: 1.4rem; /* Reduced from 1.6rem */
   font-weight: bold;
   color: var(--pricing-primary);
 }
 
 .license-type {
-  font-size: 1rem;
-  margin-bottom: 16px;
-  padding-bottom: 16px;
+  font-size: 0.9rem; /* Reduced from 1rem */
+  margin-bottom: 12px; /* Reduced from 16px */
+  padding-bottom: 12px; /* Reduced from 16px */
   border-bottom: 1px solid var(--pricing-border);
   opacity: 0.9;
   position: relative;
@@ -189,17 +191,17 @@
 .usage-terms {
   list-style-type: none;
   padding: 0;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0; /* Reduced from 16px */
   flex-grow: 1;
   position: relative;
   z-index: 1;
 }
 
 .usage-terms li {
-  padding: 8px 0;
+  padding: 6px 0; /* Reduced from 8px */
   position: relative;
   padding-left: 24px;
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* Reduced from 0.9rem */
   line-height: 1.4;
 }
 
@@ -218,10 +220,10 @@
   border: 1px solid var(--pricing-border);
   border-radius: 20px;
   padding: 8px 16px;
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* Reduced from 0.9rem */
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-top: 16px;
+  margin-top: 12px; /* Reduced from 16px */
   width: 100%;
   position: relative;
   z-index: 1;
@@ -243,9 +245,9 @@
   background: var(--pricing-primary);
   color: white;
   border: none;
-  border-radius: 28px;
-  padding: 12px 32px;
-  font-size: 1rem;
+  border-radius: 24px; /* Reduced from 28px */
+  padding: 10px 24px; /* Reduced from 12px 32px */
+  font-size: 0.95rem; /* Reduced from 1rem */
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -298,12 +300,19 @@
   .pricing-options-container {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .pricing-modal-content {
+    width: 85%;
+    max-width: 800px;
+  }
 }
 
 @media (max-width: 768px) {
   .pricing-modal-content {
     width: 90%;
-    padding: 24px;
+    max-width: 90%;
+    padding: 20px;
+    max-height: 85vh;
   }
   
   .pricing-options-container {
@@ -311,14 +320,14 @@
   }
   
   .pricing-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   
   .pricing-option-header h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .price {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 }

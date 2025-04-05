@@ -4,6 +4,7 @@ import '../styles/TrackFrame.css';
 import { Nav, Tab } from 'react-bootstrap';
 import Track from './Track';
 
+// prop destructuring
 const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, orientation }) => (
   <>
   <div style={{ position: 'relative' }}>

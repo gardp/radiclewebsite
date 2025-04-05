@@ -3,6 +3,7 @@ import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+import '../styles/Cart.css';
 
 const CustomNavbar = () => {
   return (
@@ -22,6 +23,11 @@ const CustomNavbar = () => {
               <NavDropdown.Item as={Link} to="/merchandise">Merchandise</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/media">Media</NavDropdown.Item>
             </NavDropdown> */}
+            <div className="cart-button-container">
+              <button className="cart-button">
+                <div className="cart-icon"></div>
+              </button>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

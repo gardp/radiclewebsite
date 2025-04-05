@@ -21,6 +21,45 @@
   transform: scale(1.1);
 }
 
+/* Stream icon skeuomorphic styling */
+.stream-icon {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.stream-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.stream-icon:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.stream-icon:hover::before {
+  opacity: 1;
+}
+
+.stream-icon:active {
+  transform: scale(0.95) translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 /* Icon Positions */
 a:has(.stream-icon) {
   position: absolute;
@@ -44,7 +83,8 @@ a:has(.download-icon) {
 .tooltip {
   visibility: hidden;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, rgba(40, 40, 40, 0.95), rgba(0, 0, 0, 0.9));
   color: white;
   text-align: center;
   padding: calc(5px * var(--track-base-size)) calc(10px * var(--track-base-size));
@@ -55,6 +95,9 @@ a:has(.download-icon) {
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Position tooltips */
@@ -91,12 +134,13 @@ a:hover .tooltip {
   margin-left: calc(-5px * var(--track-base-size));
   border-width: calc(5px * var(--track-base-size));
   border-style: solid;
-  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 /* Adjust arrow position for bottom tooltip */
 a:has(.download-icon) .tooltip::after {
   top: auto;
   bottom: 100%;
-  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+  border-color: transparent transparent rgba(40, 40, 40, 0.95) transparent;
 }
