@@ -4,6 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import '../styles/Cart.css';
+import '../styles/SkeuomorphicButtons.css';
 
 const CustomNavbar = () => {
   return (
@@ -24,7 +25,10 @@ const CustomNavbar = () => {
               <NavDropdown.Item as={Link} to="/media">Media</NavDropdown.Item>
             </NavDropdown> */}
             <div className="cart-button-container">
-              <button className="cart-button">
+            <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                style={{ color: 'white', width: '18px', height: '18px', position: 'absolute', right: '0', bottom: '0', transform: 'translate(-5%, 40%)', zIndex: 3 }}
+                >3</div>
+              <button className="cart-button skeuomorphic-btn primary size-lg">
                 <div className="cart-icon"></div>
               </button>
             </div>

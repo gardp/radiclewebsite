@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FaGitSquare } from "react-icons/fa";
+import '../styles/SkeuomorphicButtons.css';
 
 // Import SVGs as URLs from public folder
 const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';
@@ -35,7 +36,7 @@ const AudioControls = ({
     <div className="controls-container" style={{ transform: `scale(${controlsSize})` }}>
       <div className="track-info">
         <img
-          className="artwork"
+          className="artwork skeuomorphic-btn light with-glare"
           src={image}
           alt={`track artwork for ${title}`}
         />
@@ -57,16 +58,16 @@ const AudioControls = ({
       <div className="audio-controls">
         <button
           type="button"
-          className="prev"
+          className="prev skeuomorphic-btn light size-sm"
           aria-label="Previous"
           onClick={onPrevClick}
         >
-          <img src={prevIcon} alt="Previous" />
+          <img src={prevIcon} alt="Previous Track" />
         </button>
         {isPlaying ? (
           <button
             type="button"
-            className="pause"
+            className="pause skeuomorphic-btn light size-md"
             onClick={() => onPlayPauseClick(false)}
             aria-label="Pause"
           >
@@ -75,7 +76,7 @@ const AudioControls = ({
         ) : (
           <button
             type="button"
-            className="play"
+            className="play skeuomorphic-btn primary size-md"
             onClick={() => onPlayPauseClick(true)}
             aria-label="Play"
           >
@@ -84,11 +85,11 @@ const AudioControls = ({
         )}
         <button
           type="button"
-          className="next"
+          className="next skeuomorphic-btn light size-sm"
           aria-label="Next"
           onClick={onNextClick}
         >
-          <img src={nextIcon} alt="Next" />
+          <img src={nextIcon} alt="Next Track" />
         </button>
       </div>
     </div>

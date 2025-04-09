@@ -9,7 +9,7 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, or
   <>
   <div style={{ position: 'relative' }}>
     {/* the inverted semi cricle for the left side */}
-    <div className='semi-circle'></div> 
+    {/* <div className='semi-circle'></div>  */}
     <Tab.Container defaultActiveKey={0}>
       <Nav variant="tabs">
         {tabs.map((tab, index) => (

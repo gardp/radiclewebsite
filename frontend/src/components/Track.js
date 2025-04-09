@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/AudioPlayer.css';
 import '../styles/Track.css';
+import '../styles/SkeuomorphicButtons.css';
 import PricingTable from './PricingTable';
 import { useSelector, useDispatch } from 'react-redux';
 import { openPricingModal, closePricingModal } from '../features/priceLicensing/priceLicensing.js';
@@ -60,8 +61,8 @@ const Track = ({ track, isActive, onClick, size }) => {
           {track.links?.streamLink && (
             <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer">
               <img
-                className="track-icon stream-icon"
-                src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-100.png`}
+                className="track-icon stream-icon skeuomorphic-btn light with-glare"
+                src={`${process.env.PUBLIC_URL}/assets/images/icons8-youtube-music-50.png`}
                 alt="Stream"
               />
               <span className="tooltip">Stream</span>
@@ -72,7 +73,7 @@ const Track = ({ track, isActive, onClick, size }) => {
             // https://icons8.com/icons/set/music--static--red--corners-round
             <a href="#" onClick={handleCartClick}>
               <img
-                className="track-icon buy-icon"
+                className="track-icon buy-icon skeuomorphic-btn primary with-glare"
                 src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-65.png`}
                 alt="Buy"
               />
@@ -82,7 +83,7 @@ const Track = ({ track, isActive, onClick, size }) => {
           {track.links?.downloadLink && (
             <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer">
               <img
-                className="track-icon download-icon"
+                className="track-icon download-icon skeuomorphic-btn accent with-glare"
                 src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
                 alt="Download"
               />
@@ -103,6 +104,5 @@ const Track = ({ track, isActive, onClick, size }) => {
     </>
   );
 };
-
 
 export default Track;

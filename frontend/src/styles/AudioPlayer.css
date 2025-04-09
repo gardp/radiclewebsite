@@ -64,12 +64,6 @@ input[type="range"] {
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.15);
   padding: 3px;
-  box-shadow: 
-    0 8px 16px rgba(0, 0, 0, 0.3),
-    0 4px 8px rgba(0, 0, 0, 0.2),
-    inset 0 2px 3px rgba(255, 255, 255, 0.1);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
-  transition: all 0.3s ease-out;
   display: block;
   margin: auto;
   margin-bottom: 1rem;
@@ -77,46 +71,7 @@ input[type="range"] {
   width: 480px;
   position: relative;
   overflow: hidden;
-}
-
-.artwork::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0) 60%
-  );
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.artwork:hover {
-  transform: scale(1.03) translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 
-    0 12px 24px rgba(0, 0, 0, 0.4),
-    0 6px 12px rgba(0, 0, 0, 0.3),
-    inset 0 2px 6px rgba(255, 255, 255, 0.2);
-}
-
-.artwork:hover::before {
-  opacity: 1;
-}
-
-.artwork:active {
-  transform: scale(0.98) translateY(2px);
-  box-shadow: 
-    0 5px 10px rgba(0, 0, 0, 0.25),
-    0 2px 4px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
-  transition: all 0.1s ease-out;
+  /* Skeuomorphic styling now handled by classes */
 }
 
 .track-info {
@@ -153,44 +108,14 @@ input[type="range"] {
   transition: transform 0.3s ease;
 }
 
-.audio-controls .prev img,
-.audio-controls .next img {
+.prev, .next {
   width: var(--prev-next-button-size);
   height: var(--prev-next-button-size);
 }
 
-.audio-controls .play img,
-.audio-controls .pause img {
-  height: var(--play-pause-button-size);
+.play, .pause {
   width: var(--play-pause-button-size);
-}
-
-.audio-controls path {
-  fill: var(--white);
-}
-
-.color-backdrop {
-  background: linear-gradient(45deg, var(--active-color) 20%, transparent 100%)
-    no-repeat;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.color-backdrop.playing {
-  animation: colorChange 20s alternate infinite;
-}
-
-@keyframes colorChange {
-  from {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
+  height: var(--play-pause-button-size);
 }
 
 /* Current Track Styles */
@@ -251,76 +176,7 @@ input[type="range"] {
   text-overflow: ellipsis;
 }
 
-.track-frame {
-  margin-top: 1.6rem;
-  padding: 0.8rem;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  width: 100%;
-  transform: translateY(13px);
-}
-
-.track-frame .track-list {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.track-frame .track-item {
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-  width: var(--track-frame-item-width);
-  text-align: center;
-}
-
-.track-frame .track-thumb {
-  width: var(--track-thumb-size);
-  height: var(--track-thumb-size);
-  border-radius: 50%;
-  margin-bottom: calc(0.4rem * var(--track-base-size));
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3px;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  transition: all 0.3s ease;
-}
-
-.track-frame .track-item:hover .track-thumb {
-  transform: scale(1.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25),
-              0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-.track-frame .track-item.active .track-thumb {
-  border-color: var(--active-color);
-  box-shadow: 0 8px 20px rgb(0, 23, 176),
-              0 0 30px rgba(0, 47, 176, 0.2);
-}
-
-.track-frame .track-title {
-  font-size: var(--track-title-font-size);
-  margin: calc(0.4rem * var(--track-base-size)) 0;
-  color: var(--white);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-frame .track-artist {
-  font-size: var(--track-artist-font-size);
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.track-frame .track-item.active {
-  background: var(--active-color);
-}
-
+/* Player Grid Layout */
 .player-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -348,52 +204,6 @@ input[type="range"] {
   min-height: 100%;
 }
 
-.controls button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.controls button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15),
-              0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-.controls button:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.controls button.play,
-.controls button.pause {
-  width: 56px;
-  height: 56px;
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.controls button.play:hover,
-.controls button.pause:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2),
-              0 0 25px rgba(255, 255, 255, 0.15);
-}
-
 @media (min-width: 768px) {
   .player-grid {
     grid-template-columns: 1fr 1fr;
@@ -414,10 +224,53 @@ input[type="range"] {
   }
 }
 
-/* .semi-circle {
-  width: 100px;
-  height: 50px;
-  background-color: red;
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-} */
+/* Tracks container for lists outside the frame */
+.tracks-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Adjust for small screens */
+@media (max-width: 768px) {
+  .audio-player {
+    width: 100%;
+    padding: 9.6px;
+  }
+
+  .artwork {
+    height: 240px;
+    width: 240px;
+  }
+
+  .audio-controls {
+    width: 80%;
+  }
+}
+
+/* Centralized skeuomorphic button styling */
+.button-skeuomorphic {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.button-skeuomorphic:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25),
+              0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.button-skeuomorphic:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
