@@ -4,7 +4,7 @@ import CustomCarousel from './Carousel';
 // import TabGroup from './TabGroup';
 // import NewTab from './NewTab';
 import MusicContainer from './MusicContainer';
-import tracksData from './Tracks';
+import { tracksData } from './Tracks';
 import Media from './Media';
 import NewsletterSub from './NewsletterSub';
 // import AboutUs from './AboutUs';
@@ -33,4 +33,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

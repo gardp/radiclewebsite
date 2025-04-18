@@ -6,6 +6,63 @@ const imgSrc = process.env.PUBLIC_URL + '/assets/images/';
 const Big = process.env.PUBLIC_URL + '/assets/music/';
 const Dreams = process.env.PUBLIC_URL + '/assets/music/GardlyRadicle- Bad Dreams Remi.mp3';
 
+// License options data with structured information
+const licenseOptions = [
+  {
+    id: 'basic',
+    name: 'Basic',
+    price: 29.99,
+    features: [
+      'Non-commercial use only',
+      'Credit required',
+      'No monetization allowed',
+      'Single project use'
+    ],
+    recommended: false
+  },
+  {
+    id: 'standard',
+    name: 'Standard',
+    price: 59.99,
+    features: [
+      'Commercial use allowed',
+      'Credit required',
+      'Limited monetization',
+      'Single project use',
+      'Up to 10,000 streams'
+    ],
+    recommended: true
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    price: 149.99,
+    features: [
+      'Full commercial rights',
+      'Credit required',
+      'Unlimited monetization',
+      'Multiple projects',
+      'Up to 100,000 streams',
+      'Broadcasting rights'
+    ],
+    recommended: false
+  },
+  {
+    id: 'exclusive',
+    name: 'Exclusive',
+    price: 499.99,
+    features: [
+      'Full ownership transfer',
+      'Credit optional',
+      'Unlimited use',
+      'All rights included',
+      'Unlimited streams',
+      'Full broadcasting rights'
+    ],
+    recommended: false
+  }
+];
+
 const tracksData = [
   {
     id: 1,
@@ -13,15 +70,11 @@ const tracksData = [
     artist: "Gunna",
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
+    licenseOption: licenseOptions[0],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
-    },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Featured",
@@ -34,15 +87,11 @@ const tracksData = [
     artist: "GardlyRadicle",
     audioSrc: Dreams,
     image: `${imgSrc}radicleavatar.jpg`,
+    licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
-    },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Featured",
@@ -55,15 +104,11 @@ const tracksData = [
     artist: "Gudfgfdgnna",
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
+    licenseOption: licenseOptions[2],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
-    },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Remix",
@@ -71,6 +116,8 @@ const tracksData = [
     bpm: 120,
   },
 ] ;
+
+
 
 const tracksData2 = [
   {
@@ -84,11 +131,6 @@ const tracksData2 = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
-    },
     color: "#00aeb0",
     musicType: "Featured",
     genre: "Rap",
@@ -99,16 +141,11 @@ const tracksData2 = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}radicleavatar.jpg`,  
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
-    },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Featured",
@@ -125,11 +162,6 @@ const tracksData2 = [
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
-    },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Remix",
@@ -147,11 +179,6 @@ const tracksData2 = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
-    },
     color: "#00aeb0",
     musicType: "Remix",
     genre: "Rap",
@@ -163,11 +190,10 @@ const tracksData2 = [
     artist: "Gudfgfdgnna",
     audioSrc: Big,
     image: `${imgSrc}radicleavatar.jpg`,
-    link: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
+    links:{
+      streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
+      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
     color: "#00aeb0",
     musicType: "Remix",
@@ -186,11 +212,6 @@ const tracksData2 = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
-    },
     color: "#00aeb0",
     musicType: "Instrumental",
     genre: "Rap",
@@ -206,11 +227,6 @@ const tracksData2 = [
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
-    },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
     },
     color: "#00aeb0",
     musicType: "Instrumental",
@@ -228,11 +244,6 @@ const tracksData2 = [
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
-    licensingPrice: {
-      basic: 9.99, 
-      standard: 19.99,
-      premium: 29.99
-    },
     color: "#00aeb0",     
     musicType: "Instrumental",
     genre: "Rap",
@@ -240,4 +251,8 @@ const tracksData2 = [
   },    
 ] ;
 
-export default tracksData;
+export { tracksData, licenseOptions };
+
+export default function Tracks() {
+  // No implementation provided
+}

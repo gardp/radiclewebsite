@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/PricingTable.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePricingModal } from '../features/priceLicensing/priceLicensing.js';
+import useCart from '../hooks/useCart';
+import { tracksData, licenseOptions } from './Tracks';
 
 // const PricingTable = ({ isOpen, onClose, track }) => {
 const PricingTable = () => {
@@ -10,7 +12,8 @@ const PricingTable = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isOpen, currentTrack: track } = useSelector((state) => state.priceLicensing); //destructuring the state
-
+  const { addTrackToCart, isTrackInCart } = useCart(); //importing the useCart hook and destructuring the addToCartfunction
+  
   // Close modal when ESC key is pressed
   useEffect(() => {
     const handleEscapeKey = (e) => {
@@ -45,8 +48,8 @@ const PricingTable = () => {
     }
   };
   
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+  const handleOptionSelect = (optionId) => {
+    setSelectedOption(optionId);
   };
   
   const handleContactClick = () => {
@@ -54,12 +57,28 @@ const PricingTable = () => {
     navigate('/contact');
   };
   
-  const handleAddToCart = () => {
-    if (selectedOption) {
-      console.log(`Added ${track.title} with license option: ${selectedOption} to cart`);
-      // Implement cart functionality here
-      dispatch(closePricingModal());
+  const handleAddToCart = () => { 
+    if (selectedOption && track) {
+      const licenseOption = licenseOptions.find(option => option.id === selectedOption); //finds the license option with the selected option id that was passed to selectedOption
+      
+      if (licenseOption) {
+        addTrackToCart(track, licenseOption); //adds the track to cart with the license option that was selected- This is from useCart...passed from cartContext
+        console.log("here is the track:", track);
+        dispatch(closePricingModal());
+        console.log("after close:", track)
+      }
     }
+  };
+  
+  // Get the selected license option details
+  const getSelectedOption = () => {
+    return licenseOptions.find(option => option.id === selectedOption);
+  };
+  
+  // Check if the selected license is already in cart
+  const isSelectedLicenseInCart = () => {
+    if (!selectedOption || !track) return false;
+    return isTrackInCart(track.id, selectedOption);
   };
   
   if (!isOpen) return null;
@@ -75,87 +94,47 @@ const PricingTable = () => {
         </div>
         
         <div className="pricing-options-container">
-          {/* Option 1 */}
-          <div 
-            className={`pricing-option ${selectedOption === 'basic' ? 'selected' : ''}`} 
-            onClick={() => handleOptionSelect('basic')}
-          >
-            <div className="pricing-option-header">
-              <h3>Basic</h3>
-              <div className="price">$80</div>
-            </div>
-            <div className="license-type">mp3 and wav (Non-exclusive)</div>
-            <ul className="usage-terms">
-              <li>Used for Music Recording</li>
-              <li>Distribute up to UNLIMITED copies</li>
-              <li>UNLIMITED Distribution and Streams</li>
-              <li>For Profit Live Performances</li>
-            </ul>
-          </div>
-          
-          {/* Option 2 */}
-          <div 
-            className={`pricing-option ${selectedOption === 'standard' ? 'selected' : ''}`} 
-            onClick={() => handleOptionSelect('standard')}
-          >
-            <div className="pricing-option-header">
-              <h3>Standard</h3>
-              <div className="price">$180</div>
-            </div>
-            <div className="license-type">mp3 + wave + stems (Non-Exclusive)</div>
-            <ul className="usage-terms">
-              <li>Distribute up to UNLIMITED copies</li>
-              <li>UNLIMITED Distribution and Streams</li>
-              <li>For Profit Live Performances</li>
-            </ul>
-          </div>
-          
-          {/* Option 3 */}
-          <div 
-            className={`pricing-option ${selectedOption === 'premium' ? 'selected' : ''}`} 
-            onClick={() => handleOptionSelect('premium')}
-          >
-            <div className="pricing-option-header">
-              <h3>Premium</h3>
-              <div className="price">$250</div>
-            </div>
-            <div className="license-type">mp3 + wave + stems</div>
-            <ul className="usage-terms">
-              <li>UNLIMITED Distribution and Streams</li>
-              <li>For Profit Live Performances (Unlimited)</li>
-            </ul>
-          </div>
-          
-          {/* Option 4 */}
-          <div 
-            className={`pricing-option ${selectedOption === 'exclusive' ? 'selected' : ''}`} 
-            onClick={() => handleOptionSelect('exclusive')}
-          >
-            <div className="pricing-option-header">
-              <h3>Exclusive</h3>
-              <div className="price">Negotiable</div>
-            </div>
-            <div className="license-type">Exclusive Rights</div>
-            <ul className="usage-terms">
-              <li>UNLIMITED Distribution and Streams</li>
-              <li>For Profit Live Performances (Unlimited)</li>
-            </ul>
-            <button 
-              className="contact-button" 
-              onClick={handleContactClick}
+          {licenseOptions.map(option => (
+            <div 
+              key={option.id}
+              className={`pricing-option ${selectedOption === option.id ? 'selected' : ''} ${option.recommended ? 'recommended' : ''}`} 
+              onClick={() => handleOptionSelect(option.id)}
             >
-              Contact Us
-            </button>
-          </div>
+              {option.recommended && <div className="recommended-badge">Recommended</div>}
+              <h3>{option.name} License</h3>
+              <div className="price">${option.price.toFixed(2)}</div>
+              <ul className="features">
+                {option.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
+              <button 
+                className={`select-button ${selectedOption === option.id ? 'selected' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleOptionSelect(option.id);
+                }}
+              >
+                {selectedOption === option.id ? 'Selected' : 'Select'}
+              </button>
+            </div>
+          ))}
         </div>
         
         <div className="pricing-footer">
+          <div className="custom-message">
+            <p>Need a custom license or have questions?</p>
+            <button className="contact-button" onClick={handleContactClick}>Contact Us</button>
+          </div>
+          
           <button 
-            className={`add-to-cart-button ${selectedOption ? 'active' : 'disabled'}`}
+            className={`add-to-cart-button ${!selectedOption ? 'disabled' : ''} ${isSelectedLicenseInCart() ? 'in-cart' : ''}`}
+            disabled={!selectedOption || isSelectedLicenseInCart()}
             onClick={handleAddToCart}
-            disabled={!selectedOption || selectedOption === 'exclusive'}
           >
-            {selectedOption === 'exclusive' ? 'Contact Us for Pricing' : 'Add to Cart'}
+            {isSelectedLicenseInCart() 
+              ? 'Already In Cart' 
+              : `Add to Cart ${selectedOption ? `- $${getSelectedOption()?.price.toFixed(2)}` : ''}`}
           </button>
         </div>
       </div>

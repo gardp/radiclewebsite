@@ -7,11 +7,12 @@ import './App.css';
 import CustomNavbar from './components/CustomNavbar';
 import Catalog from './components/Catalog';
 import PricingTable from './components/PricingTable';
-
+import { CartProvider } from './context/cart/CartProvider';
 
 function App() {
   return (
 <>
+    <CartProvider>
       <Router>
         <div className="app-container">
         <CustomNavbar />
@@ -31,7 +32,8 @@ function App() {
           {/* <PricingTable/> */}
         </div>
       </Router>
-      </>
+    </CartProvider>
+    </>
   );
 }
 
