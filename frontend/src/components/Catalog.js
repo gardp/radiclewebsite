@@ -16,7 +16,7 @@ const Catalog = () => {
     <div style={{ marginTop: '56px' }}>
     <br></br>
     <CustomNavbar/>
-<MusicContainer tracks={tracksData} trackSize={2} controlsSize={1.4} orientation={1} />
+<MusicContainer tracks={tracksData} trackSize={1} controlsSize={1} orientation={0} />
     </div>
   );
 };

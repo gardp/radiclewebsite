@@ -8,6 +8,7 @@ import CustomNavbar from './components/CustomNavbar';
 import Catalog from './components/Catalog';
 import PricingTable from './components/PricingTable';
 import { CartProvider } from './context/cart/CartProvider';
+import Checkout from './components/checkout/Checkout';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/pricing" element={<PricingTable />} />
+            <Route path="/checkout" element={<Checkout />} />
               {/* ADD this <Route path="*" element={<NotFound />} /> */}
               {/* Always start with the most specific routes first then move to the more general ones... */}
               {/* Add more routes as needed */}
