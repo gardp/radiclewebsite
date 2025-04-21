@@ -57,7 +57,7 @@ const useCart = () => {
    * @param {Object} licenseOption - Selected license option with price
    */
   const addTrackToCart = (track, licenseOption) => {
-    cart.addToCart({
+    cart.addToCart({ //this comes from the cart context
       id: track.id,
       name: track.title,
       description: `${track.title} by ${track.artist} - ${licenseOption.name} License`,

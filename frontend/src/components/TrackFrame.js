@@ -11,7 +11,7 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, or
     {/* the inverted semi cricle for the left side */}
     {/* <div className='semi-circle'></div>  */}
     <Tab.Container defaultActiveKey={0}>
-      <Nav variant="tabs">
+      <Nav variant="tabs" className="modern-tabs">
         {tabs.map((tab, index) => (
           <Nav.Item key={index}>
             <Nav.Link eventKey={index}>{tab.label}</Nav.Link>

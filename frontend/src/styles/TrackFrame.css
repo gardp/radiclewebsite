@@ -47,6 +47,119 @@
     align-items: center;
 }
 
+/* Modern tabs styling */
+.modern-tabs {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border: none !important;
+    padding: 0 1rem;
+}
+
+.modern-tabs .nav-item .nav-link {
+    border: none !important;
+}
+
+.modern-tab-item {
+    margin: 0 0.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.modern-tab-link {
+    padding: 0.8rem 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #0c3bd8, #0e49ff);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.modern-tab-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    border-radius: 7px 7px 0 0;
+    pointer-events: none;
+}
+
+.modern-tab-link:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    background: linear-gradient(145deg, #0e49ff, #0c3bd8);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modern-tab-link.active {
+    color: #fff;
+    font-weight: 600;
+    background: linear-gradient(145deg, #0a33c2, #0d42f0);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.modern-tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 174, 176, 0.2) 0%, rgba(0, 174, 176, 0) 100%);
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.modern-tab-link:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Override Bootstrap tab borders completely */
+.nav-tabs {
+    border-bottom: none !important;
+}
+
+.nav-tabs .nav-link {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+@media (max-width: 768px) {
+    .modern-tab-item {
+        margin: 0 0.25rem;
+    }
+    
+    .modern-tab-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
 /* Style for the semi-circle in TrackFrame */
 .semi-circle {
     width: 480px;
