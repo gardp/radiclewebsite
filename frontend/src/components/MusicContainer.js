@@ -1,4 +1,3 @@
-
 import { Container, Row, Col } from 'react-bootstrap';
 import AudioPlayer from './AudioPlayer';
 import '../styles/AudioPlayer.css';
@@ -17,19 +16,19 @@ const MusicContainer = ({ tracks, trackSize, controlsSize, orientation }) => {
 
   return (
     <Container fluid className="music-container">
-      <Row className="g-4">
-          <Col className="music-item">
-            <AudioPlayer 
-              tracks={tracks} 
-              trackSize={trackSize}
-              controlsSize={controlsSize}
-              orientation={orientation}
-              // isActive={activePlayer === index} // Boolean true or false to determine if the player is active
-              // onPlay={() => handlePlay(index)}
-              // onPause={() => setActivePlayer(null)}
-            />
-            {/* {console.log("The music container track is:", tracks)} */}
-          </Col>
+      <Row className="g-0 w-100"> 
+        <Col xs={12} className="music-item p-0 w-100"> 
+          <AudioPlayer 
+            tracks={tracks} 
+            trackSize={trackSize}
+            controlsSize={controlsSize}
+            orientation={orientation}
+            // isActive={activePlayer === index} // Boolean true or false to determine if the player is active
+            // onPlay={() => handlePlay(index)}
+            // onPause={() => setActivePlayer(null)}
+          />
+          {/* {console.log("The music container track is:", tracks)} */}
+        </Col>
       </Row>
     </Container>
   );

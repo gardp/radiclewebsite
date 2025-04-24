@@ -4,31 +4,43 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
+    /* background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); */
+    background: transparent;
+    border: none;
+    box-shadow: none;
     border-radius: 8px;
     padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1600px;
 }
  
 .music-item {
-    max-width: 200px;
+    max-width: 100%;
+    width: 100%; /* Explicitly set width to 100% */
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
+    align-items: center; /* Center vertically */
 }
 
-.g-4 {
+.g-0 {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any padding */
 }
 
 @media (max-width: 768px) {
     .music-container {
         padding: 1rem;
+        margin: 0 auto;
+        max-width: 1200px;
     }
     
     .music-item {

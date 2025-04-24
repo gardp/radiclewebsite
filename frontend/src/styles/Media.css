@@ -1,7 +1,17 @@
 .media-container {
-    padding: 2rem;
-    max-width: 1200px;
+    padding: 2rem 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
     margin: 0 auto;
+    max-width: 1600px;
 }
 
 .media-grid {
@@ -9,11 +19,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+    width: 100%;
 }
 
 .media-item {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
@@ -22,7 +33,9 @@
         0 4px 16px rgba(0, 0, 0, 0.1),
         inset 0 0 0 1px rgba(255, 255, 255, 0.15);
     transition: all 0.3s ease;
-    padding: 12px;
+    padding: 20px;
+    height: 450px;
+    width: 100%;
 }
 
 .media-item:hover {
@@ -36,10 +49,11 @@
 .media-content {
     width: 100%;
     position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 62.5%;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 280px;
 }
 
 .media-content iframe,
@@ -80,5 +94,16 @@
 
     .media-container {
         padding: 1rem;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    
+    .media-item {
+        height: auto;
+        min-height: 400px;
+    }
+    
+    .media-content {
+        height: 220px;
     }
 }

@@ -9,6 +9,12 @@
     align-items: center;
     justify-content: space-between;
     font-family: sans-serif;
+    padding: 4rem 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 12px;
   
     section {
       display: flex;
@@ -85,6 +91,7 @@
     backdrop-filter: blur(10px);
     margin: 2rem auto;
     max-width: 800px;
+    border-radius: 12px;
   }
 
   .newsletter-content {
