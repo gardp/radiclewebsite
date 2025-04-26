@@ -63,18 +63,20 @@ const licenseOptions = [
   }
 ];
 
+// ${imgSrc}radicleavatar.jpg
+
 const tracksData = [
   {
     id: 1,
     title: "Big",
     artist: "Gunna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}vinyl-yellow.png`,
     licenseOption: licenseOptions[0],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
-      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+      // downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
     color: "#00aeb0",
     musicType: "Featured",
@@ -86,12 +88,12 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}vinyl-black.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
-      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+      // downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
     color: "#00aeb0",
     musicType: "Featured",
@@ -103,12 +105,12 @@ const tracksData = [
     title: "Bidffgg",   
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}vinyl-dark-blue.png`,
     licenseOption: licenseOptions[2],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
-      downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
+      // downloadLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c"
     },
     color: "#00aeb0",
     musicType: "Remix",

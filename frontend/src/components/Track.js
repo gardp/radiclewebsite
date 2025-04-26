@@ -91,8 +91,10 @@ const Track = ({ track, isActive, onClick, size }) => {
             </a>
           )}
         </div>
-        <h4 className="track-title">{track.title}</h4>
-        <p className="track-artist">{track.artist}</p>
+        <div className="track-label">
+          <h4 className="track-title">{track.title}</h4>
+          <p className="track-artist">{track.artist}</p>
+        </div>
       </div>
       
       {/* Pricing Table Modal */}

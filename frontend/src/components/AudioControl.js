@@ -36,7 +36,8 @@ const AudioControls = ({
     <div className="controls-container" style={{ transform: `scale(${controlsSize})` }}>
       <div className="track-info">
         <img
-          className="artwork skeuomorphic-btn light with-glare"
+          className="artwork"
+          // className="artwork skeuomorphic-btn light with-glare"
           src={image}
           alt={`track artwork for ${title}`}
         />

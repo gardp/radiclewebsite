@@ -34,6 +34,7 @@
   width: var(--track-item-width);
   margin: 10px;
   padding: 10px;
+  opacity: 0.8;
 }
 
 .track-thumb-container {
@@ -75,14 +76,14 @@
 /* Icon Positions - keeping these intact */
 a:has(.stream-icon) {
   position: absolute;
-  top: calc(10px * var(--track-base-size));
-  left: calc(-10px * var(--track-base-size));
+  bottom: calc(17px * var(--track-base-size));
+  left: calc(1px * var(--track-base-size));
 }
 
 a:has(.buy-icon) {
   position: absolute;
-  top: calc(10px * var(--track-base-size));
-  right: calc(10px * var(--track-base-size));
+  bottom: calc(17px * var(--track-base-size));
+  right: calc(20px * var(--track-base-size));
 }
 
 a:has(.download-icon) {
@@ -156,11 +157,21 @@ a:has(.download-icon) .tooltip::after {
   border-color: transparent transparent rgba(40, 40, 40, 0.95) transparent;
 }
 
+.track-label {
+  background-color: rgb(212, 209, 209); /* Off-white color */
+  border-radius: 0px;
+  padding: 8px;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .track-title {
   font-size: var(--track-title-font-size);
   font-weight: 600;
-  margin: calc(10px * var(--track-base-size)) 0 calc(4px * var(--track-base-size));
-  color: #fff;
+  margin: 0 0 calc(4px * var(--track-base-size));
+  color: #000; /* Black color */
   text-align: center;
   width: 100%;
   white-space: nowrap;
@@ -170,7 +181,7 @@ a:has(.download-icon) .tooltip::after {
 
 .track-artist {
   font-size: var(--track-artist-font-size);
-  color: rgba(255, 255, 255, 0.8);
+  color: #333; /* Dark gray, almost black */
   margin: 0;
   text-align: center;
   width: 100%;

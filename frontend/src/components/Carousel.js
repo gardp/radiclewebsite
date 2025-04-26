@@ -12,7 +12,7 @@ const CustomCarousel = () => {
                     <img 
                         // If using import: src={carouselImage}
                         // For public folder:
-                        src={process.env.PUBLIC_URL + '/assets/images/carousel_image.png'} 
+                        src={process.env.PUBLIC_URL + '/assets/images/carousel-image-option.png'} 
                         alt="New York" 
                         className="carouselImage" 
                     />

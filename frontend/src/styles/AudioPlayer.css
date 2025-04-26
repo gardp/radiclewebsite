@@ -9,9 +9,12 @@
   --track-base-size: 1; /* Multiplier for all track elements */
   --track-item-width: calc(96px * var(--track-base-size));
   --track-thumb-size: calc(80px * var(--track-base-size));
-  --track-icon-size: calc(24px * var(--track-base-size));
-  --track-title-font-size: calc(0.72rem * var(--track-base-size));
-  --track-artist-font-size: calc(0.64rem * var(--track-base-size));
+  /* --track-icon-size: calc(24px * var(--track-base-size)); */
+  /* --track-title-font-size: calc(0.72rem * var(--track-base-size));
+  --track-artist-font-size: calc(0.64rem * var(--track-base-size)); */
+  --track-icon-size: calc(20px * var(--track-base-size));
+  --track-title-font-size: calc(0.52rem * var(--track-base-size));
+  --track-artist-font-size: calc(0.44rem * var(--track-base-size));
   --track-frame-item-width: calc(120px * var(--track-base-size));
   
   /* Base sizes for audio controls */
@@ -69,7 +72,7 @@ input[type="range"] {
 
 .artwork {
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.15);
+  /* border: 3px solid rgba(255, 255, 255, 0.15); */
   padding: 3px;
   display: block;
   margin: auto;
