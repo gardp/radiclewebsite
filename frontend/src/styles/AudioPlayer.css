@@ -1,9 +1,14 @@
 :root {
   --white: #fff;
-  /* --active-color: #1d3ae8; */
+  /* Haitian art inspired colors */
+  --haiti-blue: #0f3c78; /* Vivid blue */
+  --haiti-red: #c41230; /* Rich crimson red */
+  --haiti-gold: #e6b54c; /* Gold/yellow accent */
+  --haiti-dark: #1a1a1a; /* Neutral dark base */
+  
   /* Bootstrap color customization */
-  --bs-info: #0d42f0; /* Replace #0dcaf0 with your desired color */
-  --bs-info-rgb: 13, 202, 240; /* Replace with RGB values of your color */
+  --bs-info: var(--haiti-blue); /* Replace with Haitian blue */
+  --bs-info-rgb: 15, 60, 120; /* RGB values of Haitian blue */
   
   /* Base sizes for track items */
   --track-base-size: 1; /* Multiplier for all track elements */
@@ -48,9 +53,49 @@ input[type="range"] {
   width: 100%;
   margin-bottom: 8px;
   border-radius: 6.4px;
-  background: #3b7677;
+  background: rgba(196, 18, 48, 0.3); /* Rich crimson red with transparency for slider track */
   transition: background 0.2s ease;
   cursor: pointer;
+}
+
+/* Add progress bar and thumb styling */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--haiti-gold); /* Gold for the slider thumb */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--haiti-gold); /* Gold for the slider thumb */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:hover {
+  background: rgba(196, 18, 48, 0.5); /* Brighter red on hover */
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  background: var(--haiti-blue); /* Blue when actively sliding */
+  transform: scale(1.2);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  background: var(--haiti-blue); /* Blue when actively sliding */
+  transform: scale(1.2);
 }
 
 .audio-player {
@@ -58,13 +103,13 @@ input[type="range"] {
   width: 100%; 
   padding: 19.2px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* background: rgba(26, 26, 26, 0.65); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.1),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(196, 18, 48, 0.1); /* Subtle crimson red inner border */
   margin: 0 auto;
   color: var(--white);
   transition: all 0.3s ease;
@@ -93,11 +138,13 @@ input[type="range"] {
 .title {
   font-weight: 700;
   margin-bottom: 3.2px;
+  color: var(--haiti-gold); /* Gold accent for title */
 }
 
 .artist {
   font-weight: 300;
   margin-top: 0;
+  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for artist name */
 }
 
 .audio-controls {
@@ -144,6 +191,23 @@ input[type="range"] {
   margin: 1.6rem 0;
   overflow-x: auto;
   padding: 0.8rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--haiti-red) rgba(26, 26, 26, 0.3);
+}
+
+/* Styling for scrollbar */
+.track-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.track-list::-webkit-scrollbar-track {
+  background: rgba(26, 26, 26, 0.3);
+  border-radius: 4px;
+}
+
+.track-list::-webkit-scrollbar-thumb {
+  background-color: var(--haiti-red);
+  border-radius: 4px;
 }
 
 .track-item {
@@ -163,6 +227,8 @@ input[type="range"] {
   opacity: 1;
   transform: scale(1.04);
   transition: all 0.3s ease-in-out;
+  /* Add subtle highlight for active track */
+  box-shadow: 0 0 15px rgba(230, 181, 76, 0.3); /* Subtle gold glow */
 }
 
 .track-thumb {
@@ -170,6 +236,16 @@ input[type="range"] {
   height: var(--track-thumb-size);
   border-radius: 50%;
   margin-bottom: calc(0.4rem * var(--track-base-size));
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.track-item:hover .track-thumb {
+  border-color: var(--haiti-blue); /* Blue border on hover */
+}
+
+.track-item.active .track-thumb {
+  border-color: var(--haiti-gold); /* Gold border for active track */
 }
 
 .track-title {
@@ -178,6 +254,7 @@ input[type="range"] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--haiti-gold); /* Gold for track titles */
 }
 
 .track-artist {
@@ -187,6 +264,7 @@ input[type="range"] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for artists */
 }
 
 /* Player Grid Layout */

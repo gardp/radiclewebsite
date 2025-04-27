@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FaGitSquare } from "react-icons/fa";
 import '../styles/SkeuomorphicButtons.css';
+import '../styles/AudioControlButtons.css';
 
 // Import SVGs as URLs from public folder
 const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';

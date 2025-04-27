@@ -23,27 +23,40 @@
 }
 
 .media-item {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(26, 26, 26, 0.65); /* Dark neutral base with transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 
-        0 4px 16px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(196, 18, 48, 0.1); /* Subtle crimson red inner border */
     transition: all 0.3s ease;
     padding: 20px;
     height: 450px;
     width: 100%;
+    position: relative;
 }
 
 .media-item:hover {
     transform: translateY(-5px);
     box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.15),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.3);
+        0 12px 32px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(196, 18, 48, 0.2); /* Enhanced crimson red inner border on hover */
+    border-color: rgba(15, 60, 120, 0.3); /* Subtle blue border on hover */
+}
+
+/* Add a decorative accent element to the top right corner */
+.media-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, transparent 50%, rgba(230, 181, 76, 0.6) 50%);
+    border-top-right-radius: 12px;
 }
 
 .media-content {
@@ -52,7 +65,7 @@
     padding-top: 62.5%;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(230, 181, 76, 0.15); /* Subtle gold border for content */
     height: 280px;
 }
 
@@ -65,24 +78,73 @@
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.4s ease;
+}
+
+.media-item:hover .media-content iframe,
+.media-item:hover .media-content img {
+    transform: scale(1.02);
 }
 
 .media-caption {
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(26, 26, 26, 0.85); /* Dark background for captions */
+    color: #fff; /* White text for better contrast */
+    border-top: 1px solid rgba(230, 181, 76, 0.2); /* Subtle gold top border */
 }
 
 .media-caption h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1.2rem;
-    color: #333;
+    color: rgba(230, 181, 76, 0.9); /* Gold for headings */
+    position: relative;
+    display: inline-block;
+}
+
+/* Add a small accent underline to headings */
+.media-caption h3::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: rgba(196, 18, 48, 0.8); /* Crimson red underline */
 }
 
 .media-caption p {
     margin: 0;
-    color: #666;
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for paragraphs */
     font-size: 0.9rem;
     line-height: 1.4;
+}
+
+/* Add styled buttons within media items */
+.media-button {
+    background: linear-gradient(145deg, #0a2e5a, #0f3c78); /* Haitian blue */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.media-button:hover {
+    background: linear-gradient(145deg, #0f3c78, #1a4d8c);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.media-button.accent {
+    background: linear-gradient(145deg, #a30f28, #c41230); /* Haitian red */
+}
+
+.media-button.accent:hover {
+    background: linear-gradient(145deg, #c41230, #d42240);
 }
 
 /* Responsive Design */

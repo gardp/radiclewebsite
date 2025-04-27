@@ -58,16 +58,17 @@
 }
 
 /* Target Bootstrap Nav.Link elements - default state */
-.modern-tabs .nav-item .nav-link {
+.modern-tabs .nav-item .nav-link,
+.modern-tabs .modern-tab-item .modern-tab-link {
     padding: 0.6rem 1.2rem;
-    color: var(--secondary-text-color);
+    color: var(--white);
     font-weight: 500;
     font-size: 0.85rem;
     border: none !important;
     border-radius: 40px;
     position: relative;
     transition: all 0.3s ease;
-    background: linear-gradient(145deg, #0c3bd8, #0e49ff);
+    background: linear-gradient(145deg, #0a2e5a, #0f3c78); /* Haitian blue */
     box-shadow: 
         0 3px 6px rgba(0, 0, 0, 0.3),
         inset 0 2px 2px rgba(255, 255, 255, 0.3),
@@ -80,7 +81,8 @@
     opacity: 0.85;
 }
 
-.modern-tabs .nav-item .nav-link::before {
+.modern-tabs .nav-item .nav-link::before,
+.modern-tabs .modern-tab-item .modern-tab-link::before {
     content: '';
     position: absolute;
     top: 0;
@@ -93,10 +95,11 @@
 }
 
 /* Hover state - non-active tabs */
-.modern-tabs .nav-item .nav-link:hover:not(.active) {
-    color: var(--primary-text-color);
+.modern-tabs .nav-item .nav-link:hover:not(.active),
+.modern-tabs .modern-tab-item .modern-tab-link:hover:not(.active) {
+    color: var(--white);
     transform: translateY(-2px);
-    background: linear-gradient(145deg, #0e49ff, #0c3bd8);
+    background: linear-gradient(145deg, #0f3c78, #1a4d8c); /* Lighter Haitian blue */
     box-shadow: 
         0 5px 10px rgba(0, 0, 0, 0.4),
         inset 0 2px 4px rgba(255, 255, 255, 0.4),
@@ -105,10 +108,11 @@
 }
 
 /* Active tab - specific styling for active state only */
-.modern-tabs .nav-item .nav-link.active {
+.modern-tabs .nav-item .nav-link.active,
+.modern-tabs .modern-tab-item .modern-tab-link.active {
     color: #ffffff;
     font-weight: 700;
-    background: linear-gradient(145deg, #0a33c2, #0d42f0) !important;
+    background: linear-gradient(145deg, #a30f28, #c41230) !important; /* Haitian crimson red */
     box-shadow: 
         0 3px 10px rgba(0, 0, 0, 0.5),
         inset 0 1px 2px rgba(255, 255, 255, 0.4),
@@ -120,26 +124,33 @@
     border-radius: 40px;
 }
 
-.modern-tabs .nav-item .nav-link.active::after {
+.modern-tabs .nav-item .nav-link.active::after,
+.modern-tabs .modern-tab-item .modern-tab-link.active::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, rgba(0, 212, 255, 0.3) 0%, rgba(0, 212, 255, 0) 100%);
+    background: linear-gradient(0deg, rgba(230, 181, 76, 0.3) 0%, rgba(230, 181, 76, 0) 100%); /* Gold glow */
     border-radius: 40px;
     z-index: -1;
 }
 
-.modern-tabs .nav-item .nav-link:active {
+.modern-tabs .nav-item .nav-link:active,
+.modern-tabs .modern-tab-item .modern-tab-link:active {
     transform: translateY(1px);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Remove redundant classes that are not being used */
-.modern-tab-item, .modern-tab-link {
-    display: none; /* Hide these classes as they're not being used */
+/* Style the modern tab classes properly */
+.modern-tab-item {
+    display: inline-flex;
+}
+
+.modern-tab-link {
+    display: block;
+    text-decoration: none;
 }
 
 /* Override Bootstrap tab borders completely */

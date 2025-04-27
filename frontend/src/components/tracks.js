@@ -71,7 +71,7 @@ const tracksData = [
     title: "Big",
     artist: "Gunna",
     audioSrc: Big,
-    image: `${imgSrc}vinyl-yellow.png`,
+    image: `${imgSrc}vinyl-warm-red.png`,
     licenseOption: licenseOptions[0],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -105,7 +105,7 @@ const tracksData = [
     title: "Bidffgg",   
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}vinyl-dark-blue.png`,
+    image: `${imgSrc}vinyl-matted-brown.png`,
     licenseOption: licenseOptions[2],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",

@@ -1,7 +1,18 @@
+/* Define our Haitian art-inspired color variables */
+:root {
+  --haiti-blue: #0f3c78; /* Vivid blue */
+  --haiti-red: #c41230; /* Rich crimson red */
+  --haiti-gold: #e6b54c; /* Gold/yellow accent */
+  --haiti-dark: #1a1a1a; /* Neutral dark base */
+}
+
 .navbar {
   font-family: 'Montserrat', sans-serif;
-  background-color: #2d2d30;
-  opacity: 0.9;
+  background-color: rgba(26, 26, 26, 0.9); /* Dark neutral base with transparency */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(196, 18, 48, 0.15); /* Subtle crimson red border */
 }
 
 .navbar-nav {
@@ -9,11 +20,112 @@
   padding-right: 30px;
 }
 
-.navbar-brand, .nav-link {
-  color: #d5d5d5 !important;
+.navbar-brand {
+  color: var(--haiti-gold) !important;
   padding: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand:hover {
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--haiti-red);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  opacity: 0;
 }
 
 .nav-link:hover {
-  color: #fff !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.nav-link:hover::after {
+  width: 60%;
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: var(--haiti-gold) !important;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 70%;
+  opacity: 1;
+  background-color: var(--haiti-gold);
+}
+
+/* Navbar toggle button (mobile) */
+.navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 5px 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  border-color: var(--haiti-gold) !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(230, 181, 76, 0.3) !important;
+  outline: none !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(230, 181, 76, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Styling for dropdown menus if you have them */
+.dropdown-menu {
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(196, 18, 48, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 8px 0;
+  margin-top: 10px;
+}
+
+.dropdown-item {
+  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  padding: 8px 16px;
+  position: relative;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(15, 60, 120, 0.25);
+  color: var(--haiti-gold);
+  transform: translateX(5px);
+}
+
+.dropdown-item.active, 
+.dropdown-item:active {
+  background-color: rgba(196, 18, 48, 0.35);
+  color: #ffffff;
 }

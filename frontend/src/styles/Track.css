@@ -60,7 +60,7 @@
 }
 
 .track-item.active .track-thumb {
-  box-shadow: 0 0 0 3px rgba(29, 58, 232, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(196, 18, 48, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
   border: none;
 }
 
@@ -158,34 +158,69 @@ a:has(.download-icon) .tooltip::after {
 }
 
 .track-label {
-  background-color: rgb(212, 209, 209); /* Off-white color */
-  border-radius: 0px;
-  padding: 8px;
+  background: rgba(26, 26, 26, 0.75); /* Dark neutral base with transparency */
+  border-radius: 8px;
+  padding: 10px;
   margin-top: 20px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(196, 18, 48, 0.1); /* Subtle crimson red border */
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.track-item:hover .track-label {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(196, 18, 48, 0.2); /* Enhanced crimson red border on hover */
+}
+
+.track-item.active .track-label {
+  background: linear-gradient(to right, rgba(15, 60, 120, 0.7), rgba(26, 26, 26, 0.85)); /* Gradient with Haitian blue */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(230, 181, 76, 0.3); /* Gold accent for active tracks */
+  border-color: rgba(196, 18, 48, 0.25); 
 }
 
 .track-title {
   font-size: var(--track-title-font-size);
   font-weight: 600;
   margin: 0 0 calc(4px * var(--track-base-size));
-  color: #000; /* Black color */
+  color: rgba(230, 181, 76, 0.9); /* Gold for titles */
   text-align: center;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .track-artist {
   font-size: var(--track-artist-font-size);
-  color: #333; /* Dark gray, almost black */
+  color: rgba(255, 255, 255, 0.8); /* White with transparency */
   margin: 0;
   text-align: center;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 400;
+}
+
+.track-item.active .track-title {
+  color: rgba(230, 181, 76, 1); /* Brighter gold for active track title */
+}
+
+.track-item.active .track-artist {
+  color: rgba(255, 255, 255, 0.95); /* Brighter white for active track artist */
+}
+
+/* Update thumb border color for active tracks */
+.track-item.active .track-thumb {
+  box-shadow: 0 0 0 3px rgba(196, 18, 48, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3); /* Crimson red border for active tracks */
+  border: none;
 }

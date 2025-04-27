@@ -13,8 +13,8 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, or
     <Tab.Container defaultActiveKey={0}>
       <Nav variant="tabs" className="modern-tabs">
         {tabs.map((tab, index) => (
-          <Nav.Item key={index}>
-            <Nav.Link eventKey={index}>{tab.label}</Nav.Link>
+          <Nav.Item key={index} className="modern-tab-item">
+            <Nav.Link eventKey={index} className="modern-tab-link">{tab.label}</Nav.Link>
           </Nav.Item>
         ))}
       </Nav>

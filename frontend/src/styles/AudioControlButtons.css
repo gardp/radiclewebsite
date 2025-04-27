@@ -1,0 +1,163 @@
+/* AudioControlButtons.css */
+:root {
+  --haiti-blue: #0f3c78; /* Vivid blue */
+  --haiti-red: #c41230; /* Rich crimson red */
+  --haiti-gold: #e6b54c; /* Gold/yellow accent */
+  --haiti-dark: #1a1a1a; /* Neutral dark base */
+}
+
+/* Progress bar styling */
+.progress {
+  height: 4px;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: rgba(196, 18, 48, 0.3) !important; /* Rich crimson red with transparency */
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.progress:hover {
+  background: rgba(196, 18, 48, 0.5) !important;
+}
+
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--haiti-gold) !important; /* Gold for the slider thumb */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.progress::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--haiti-gold) !important; /* Gold for the slider thumb */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.progress:active::-webkit-slider-thumb {
+  background: var(--haiti-blue) !important; /* Blue when actively sliding */
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(15, 60, 120, 0.5);
+}
+
+.progress:active::-moz-range-thumb {
+  background: var(--haiti-blue) !important; /* Blue when actively sliding */
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(15, 60, 120, 0.5);
+}
+
+/* Audio controls button styling */
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Custom styling for the prev and next buttons */
+.audio-controls .prev.skeuomorphic-btn.light,
+.audio-controls .next.skeuomorphic-btn.light {
+  background: linear-gradient(145deg, rgba(15, 60, 120, 0.15), rgba(15, 60, 120, 0.25));
+  border: 1px solid rgba(15, 60, 120, 0.3);
+  box-shadow: 
+    0 3px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.audio-controls .prev.skeuomorphic-btn.light:hover,
+.audio-controls .next.skeuomorphic-btn.light:hover {
+  background: linear-gradient(145deg, rgba(15, 60, 120, 0.25), rgba(15, 60, 120, 0.35));
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+.audio-controls .prev.skeuomorphic-btn.light:active,
+.audio-controls .next.skeuomorphic-btn.light:active {
+  background: linear-gradient(145deg, rgba(15, 60, 120, 0.35), rgba(15, 60, 120, 0.25));
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styling for the pause button */
+.audio-controls .pause.skeuomorphic-btn.light {
+  background: linear-gradient(145deg, rgba(196, 18, 48, 0.15), rgba(196, 18, 48, 0.25));
+  border: 1px solid rgba(196, 18, 48, 0.3);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.audio-controls .pause.skeuomorphic-btn.light:hover {
+  background: linear-gradient(145deg, rgba(196, 18, 48, 0.25), rgba(196, 18, 48, 0.35));
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 14px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+.audio-controls .pause.skeuomorphic-btn.light:active {
+  background: linear-gradient(145deg, rgba(196, 18, 48, 0.35), rgba(196, 18, 48, 0.25));
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styling for the play button */
+.audio-controls .play.skeuomorphic-btn.primary {
+  background: linear-gradient(145deg, #0a2e5a, #0f3c78);
+  border: 1px solid rgba(15, 60, 120, 0.6);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.25),
+    inset 0 1px 3px rgba(255, 255, 255, 0.25);
+}
+
+.audio-controls .play.skeuomorphic-btn.primary:hover {
+  background: linear-gradient(145deg, #0f3c78, #1a4d8c);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+.audio-controls .play.skeuomorphic-btn.primary:active {
+  background: linear-gradient(145deg, #082544, #0a2e5a);
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced icons */
+.audio-controls button img {
+  filter: brightness(1.2);
+  max-width: 60%;
+  max-height: 60%;
+}
+
+/* Specific sizes to make buttons more prominent */
+.audio-controls .prev.skeuomorphic-btn.size-sm,
+.audio-controls .next.skeuomorphic-btn.size-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.audio-controls .play.skeuomorphic-btn.size-md,
+.audio-controls .pause.skeuomorphic-btn.size-md {
+  width: 48px;
+  height: 48px;
+}

@@ -15,7 +15,7 @@
   right: 0;
   height: 40%;
   background: linear-gradient(to bottom, 
-    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(255, 255, 255, 0.2) 0%, 
     rgba(255, 255, 255, 0) 100%);
   border-radius: 50% 50% 100% 100% / 50% 50% 35% 35%;
 }
@@ -56,6 +56,7 @@
   background-position: center;
   position: relative;
   z-index: 2;
+  filter: brightness(1.2); /* Make the icon slightly brighter */
 }
 
 .cart-counter {
@@ -78,4 +79,36 @@
 .cart-button-container {
   position: relative;
   margin-left: 15px;
+}
+
+/* Item count badge with Haitian color theme */
+.rounded-circle.bg-danger {
+  background-color: #c41230 !important; /* Haitian red */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+/* Cart preview animation */
+.cart-preview {
+  border-color: rgba(196, 18, 48, 0.2) !important; /* Subtle crimson red border */
+}
+
+.cart-preview-header {
+  background: linear-gradient(145deg, rgba(15, 60, 120, 0.9), rgba(26, 26, 26, 0.95)) !important;
+  border-bottom: 1px solid rgba(230, 181, 76, 0.2) !important; /* Subtle gold border */
+}
+
+.cart-preview-header h5 {
+  color: rgba(230, 181, 76, 0.9) !important; /* Gold for headings */
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cart-preview-body {
+  background-color: rgba(26, 26, 26, 0.85) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }

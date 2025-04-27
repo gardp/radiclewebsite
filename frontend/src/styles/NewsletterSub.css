@@ -10,11 +10,16 @@
     justify-content: space-between;
     font-family: sans-serif;
     padding: 4rem 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(26, 26, 26, 0.65); /* Dark neutral base with transparency */
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     margin: 2rem auto;
     max-width: 800px;
     border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(196, 18, 48, 0.1); /* Subtle crimson red inner border */
   
     section {
       display: flex;
@@ -27,20 +32,21 @@
       font-weight: 400;
       text-align: center;
       margin: 40px 0 10px 0;
-      color: #2A354F;
+      color: rgba(230, 181, 76, 0.9); /* Gold for headings */
     }
   
     p {
       width: 400px;
       font-size: 16px;
       line-height: 24px;
-      color: #2A354F;
+      color: rgba(255, 255, 255, 0.9); /* White text for better readability */
       margin-bottom: 40px;
   
       em {
         display: block;
         margin-top: 10px;
         font-size: 14px;
+        color: rgba(255, 255, 255, 0.7); /* Slightly dimmed emphasis text */
       }
     }
   
@@ -54,16 +60,17 @@
       font-weight: 300;
       line-height: 1.5;
       color: #869ab8;
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.05); /* Very subtle input background */
       background-clip: padding-box;
-      border: 1px solid #dde1ed;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 2px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       outline: none;
       box-sizing: border-box;
+      color: rgba(255, 255, 255, 0.9); /* Ensure text is visible */
       
       &.error {
-        border: 1px solid #FA5252;
+        border: 1px solid #c41230; /* Using Haitian red for error state */
       }
     }
   
@@ -78,20 +85,36 @@
       border-radius: 2px;
       border: none;
       color: #fff;
-      background-color: #274991;
+      background-color: #0f3c78; /* Haitian blue for buttons */
       box-sizing: border-box;
       outline: none;
       cursor: pointer;
+      box-shadow: 0 2px 10px rgba(15, 60, 120, 0.3); /* Subtle shadow for depth */
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: #0a2e5a; /* Darker blue on hover */
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(1px);
+      }
     }
   }
   
   .newsletter-container {
     padding: 4rem 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(26, 26, 26, 0.65); /* Dark neutral base with transparency */
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     margin: 2rem auto;
     max-width: 800px;
     border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(196, 18, 48, 0.1); /* Subtle crimson red inner border */
   }
 
   .newsletter-content {
@@ -100,15 +123,13 @@
   }
 
   .newsletter-content h2 {
-    font-size: 2rem;
+    color: rgba(230, 181, 76, 0.9); /* Gold for headings */
     margin-bottom: 1rem;
-    color: #fff;
   }
-
+  
   .newsletter-content p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
   }
 
   .newsletter-form {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 import '../styles/Cart.css';
 import '../styles/SkeuomorphicButtons.css';
@@ -11,6 +11,7 @@ import useCart from '../hooks/useCart';
 const CustomNavbar = () => {
   const [cartPreviewOpen, setCartPreviewOpen] = useState(false);
   const { totalItems } = useCart();
+  const location = useLocation(); // Get current location to highlight active link
   
   const toggleCartPreview = () => {
     setCartPreviewOpen(prevState => !prevState);
@@ -20,19 +21,24 @@ const CustomNavbar = () => {
     setCartPreviewOpen(false);
   };
   
+  // Helper function to determine if a link is active
+  const isActive = (path) => {
+    return location.pathname === path ? 'active' : '';
+  };
+  
   return (
     <Navbar fixed="top" expand="lg" className="navbar">
       <Container>
-        <Navbar.Brand as={Link} to="/">Logo</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Radicle</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="navbar-nav ms-auto">
-            <Nav.Link as={Link} to="/">HOME</Nav.Link>
-            <Nav.Link as={Link} to="/catalog">CATALOG</Nav.Link>
-            <Nav.Link as={Link} to="/licensing">MUSIC LICENSING</Nav.Link>
+            <Nav.Link as={Link} to="/" className={isActive('/')}>HOME</Nav.Link>
+            <Nav.Link as={Link} to="/catalog" className={isActive('/catalog')}>CATALOG</Nav.Link>
+            <Nav.Link as={Link} to="/licensing" className={isActive('/licensing')}>MUSIC LICENSING</Nav.Link>
             {/* <Nav.Link as={Link} to="/services">STUDIO SERVICES</Nav.Link> */}
-            <Nav.Link as={Link} to="/about">ABOUT</Nav.Link>
-            <Nav.Link as={Link} to="/contact">CONTACT</Nav.Link>
+            <Nav.Link as={Link} to="/about" className={isActive('/about')}>ABOUT</Nav.Link>
+            <Nav.Link as={Link} to="/contact" className={isActive('/contact')}>CONTACT</Nav.Link>
             {/* <NavDropdown title="MORE" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/merchandise">Merchandise</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/media">Media</NavDropdown.Item>
@@ -42,7 +48,7 @@ const CustomNavbar = () => {
               <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
                 style={{ color: 'white', width: '18px', height: '18px', position: 'absolute', right: '0', bottom: '0', transform: 'translate(-5%, 40%)', zIndex: 3 }}
               >
-               3 {totalItems}
+               {totalItems}
               </div>
             )}
               <button 
