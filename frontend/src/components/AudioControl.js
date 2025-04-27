@@ -78,7 +78,7 @@ const AudioControls = ({
         ) : (
           <button
             type="button"
-            className="play skeuomorphic-btn primary size-md"
+            className="play primary size-md"
             onClick={() => onPlayPauseClick(true)}
             aria-label="Play"
           >

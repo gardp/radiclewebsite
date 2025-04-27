@@ -20,7 +20,7 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, or
       </Nav>
       <div className="track-frame">
         <div className="track-list" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
-          <div className="track-frame::before"></div>
+          {/* Remove the skeuomorphic element */}
           <Tab.Content>
             {tabs.map((tab, index) => (
               <Tab.Pane eventKey={index} key={index}>
