@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
@@ -10,8 +10,26 @@ import useCart from '../hooks/useCart';
 
 const CustomNavbar = () => {
   const [cartPreviewOpen, setCartPreviewOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { totalItems } = useCart();
   const location = useLocation(); // Get current location to highlight active link
+  
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   const toggleCartPreview = () => {
     setCartPreviewOpen(prevState => !prevState);
@@ -27,7 +45,7 @@ const CustomNavbar = () => {
   };
   
   return (
-    <Navbar fixed="top" expand="lg" className="navbar">
+    <Navbar fixed="top" expand="lg" className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <Container>
         <Navbar.Brand as={Link} to="/">Radicle</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

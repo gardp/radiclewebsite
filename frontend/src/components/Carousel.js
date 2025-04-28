@@ -1,39 +1,39 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 import '../styles/Carousel.css';
-// Import the image directly if it's in your assets folder
-// import carouselImage from '../assets/images/carousel_image.png';
 
 const CustomCarousel = () => {
     return (
         <div className="carousel-container">
-            <Carousel id="myCarousel" className="carousel">
+            <Carousel id="myCarousel" className="carousel" indicators={true} controls={true} interval={5000}>
                 <Carousel.Item>
                     <img 
-                        // If using import: src={carouselImage}
-                        // For public folder:
                         src={process.env.PUBLIC_URL + '/assets/images/carousel-image-option.png'} 
-                        alt="New York" 
+                        alt="Music Production" 
                         className="carouselImage" 
                     />
                     <Carousel.Caption>
-                        <h3>New York</h3>
-                        <p>The atmosphere in New York is lorem ipsum.</p>
+                        <h3>Quality Production</h3>
+                        <p>Professional audio engineering and music production for your creative projects.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img 
-                        src="https://www.w3schools.com/w3images/la.jpg" 
-                        alt="Los Angeles" 
+                        src={process.env.PUBLIC_URL + '/assets/images/carousel-image-bg.png'} 
+                        alt="Music Licensing" 
                         className="carouselImage" 
                     />
                     <Carousel.Caption>
-                        <h3>Los Angeles</h3>
-                        <p>The atmosphere in Los Angeles is lorem ipsum.</p>
+                        <h3>Premium Beats</h3>
+                        <p>Find the perfect sound for your next project from our curated catalog.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-                {/* Add more slides as needed */}
             </Carousel>
+            <Link to="/licensing" className="licensing-link">
+                License Music <FaArrowRight />
+            </Link>
         </div>
     );
 };

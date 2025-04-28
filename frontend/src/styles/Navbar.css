@@ -8,11 +8,17 @@
 
 .navbar {
   font-family: 'Montserrat', sans-serif;
-  background-color: rgba(26, 26, 26, 0.9); /* Dark neutral base with transparency */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+  background-color: rgba(26, 26, 26, 0.4); /* More transparent background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid rgba(196, 18, 48, 0.15); /* Subtle crimson red border */
+  z-index: 1030; /* Ensure it's above carousel */
+  transition: background-color 0.3s ease; /* Smooth transition for scrolling effect */
+}
+
+.navbar.scrolled {
+  background-color: rgba(26, 26, 26, 0.9); /* Less transparent when scrolled */
 }
 
 .navbar-nav {
