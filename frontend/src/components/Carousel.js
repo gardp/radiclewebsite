@@ -7,7 +7,15 @@ import '../styles/Carousel.css';
 const CustomCarousel = () => {
     return (
         <div className="carousel-container">
-            <Carousel id="myCarousel" className="carousel" indicators={true} controls={true} interval={5000}>
+            <Carousel 
+                id="myCarousel" 
+                className="carousel" 
+                indicators={true} 
+                controls={true} 
+                interval={5000}
+                prevIcon={<span className="carousel-control-prev-icon" aria-hidden="true"></span>}
+                nextIcon={<span className="carousel-control-next-icon" aria-hidden="true"></span>}
+            >
                 <Carousel.Item>
                     <img 
                         src={process.env.PUBLIC_URL + '/assets/images/carousel-image-option.png'} 

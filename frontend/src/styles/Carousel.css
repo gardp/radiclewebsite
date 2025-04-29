@@ -65,14 +65,18 @@
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     width: 44px;
-    height: 44px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border-radius: 50%;
     background-image: none !important; /* Remove default background */
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    color: rgba(230, 181, 76, 0.9); /* Gold text using Haitian palette */
 }
 
 .carousel-control-prev-icon::before,
@@ -82,11 +86,24 @@
     width: 100%;
     height: 100%;
     background: rgba(26, 26, 26, 0.7); /* Dark background with transparency */
-    border-radius: 50%;
     z-index: -1;
     backdrop-filter: blur(3px);
     border: 1px solid rgba(230, 181, 76, 0.2); /* Subtle gold border */
     transition: all 0.3s ease;
+}
+
+.carousel-control-prev-icon::after {
+    content: 'PREV';
+    display: block;
+    transform: rotate(-90deg); /* Rotate text */
+    transform-origin: center center;
+}
+
+.carousel-control-next-icon::after {
+    content: 'NEXT';
+    display: block;
+    transform: rotate(90deg); /* Rotate text */
+    transform-origin: center center;
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon::before,
@@ -95,37 +112,14 @@
     transform: scale(1.05);
 }
 
-.carousel-control-prev-icon::after,
-.carousel-control-next-icon::after {
-    content: '';
-    display: block;
-    width: 14px;
-    height: 14px;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    position: absolute;
-    top: 50%;
-    transform-origin: center;
-    z-index: 2;
-    border-color: rgba(230, 181, 76, 0.9); /* Gold arrows */
-    transition: all 0.3s ease;
-}
-
-.carousel-control-prev-icon::after {
-    transform: translateY(-50%) rotate(135deg);
-    left: 45%;
-}
-
-.carousel-control-next-icon::after {
-    transform: translateY(-50%) rotate(-45deg);
-    right: 45%;
-}
-
 .carousel-control-prev:hover .carousel-control-prev-icon::after,
 .carousel-control-next:hover .carousel-control-next-icon::after {
-    border-color: white; /* White arrows on hover */
-    width: 16px;
-    height: 16px;
+    color: white; /* White text on hover */
+    transform: rotate(-90deg) scale(1.1); /* Slightly larger text on hover */
+}
+
+.carousel-control-next:hover .carousel-control-next-icon::after {
+    transform: rotate(90deg) scale(1.1); /* Correct rotation for next button */
 }
 
 .carousel-control-prev:active .carousel-control-prev-icon::before,
@@ -246,12 +240,6 @@
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         width: 36px;
-        height: 36px;
-    }
-    
-    .carousel-control-prev-icon::after,
-    .carousel-control-next-icon::after {
-        width: 12px;
-        height: 12px;
+        height: 120px;
     }
 }
