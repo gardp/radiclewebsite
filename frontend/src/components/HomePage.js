@@ -11,10 +11,10 @@ const HomePage = () => {
   return (
     <div className="page-wrapper">
       {/* Hero Section - Full Viewport Height Carousel */}
-      <section className="hero-section">
-        <CustomCarousel />
-      </section>
-      
+      {/* <section className="hero-section">
+
+      </section> */}
+      <CustomCarousel />
       {/* Main Content Sections */}
       <div className="main-content">
         <div className="content-section">
