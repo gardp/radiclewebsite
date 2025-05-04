@@ -101,7 +101,7 @@
     font-size: 0.9rem;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* Add animation for button */
@@ -121,7 +121,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     background-color: rgba(15, 60, 120, 0.15); /* Vivid blue with low opacity */
     cursor: pointer;
     z-index: 10;
@@ -129,9 +129,50 @@
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Base pseudo-element for hover preview backgrounds */
+.slider-control::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Place behind the text */
+    transition: opacity 0.3s ease;
+    filter: blur(8px); /* Apply blur directly to the background image */
+}
+
+/* Hover effect to show the image preview */
+.slider-control:hover::before {
+    opacity: 0.6; /* Semi-transparent to work with the blur effect */
+}
+
+/* Next control shows left edge of next slide */
+.slider-control.next-control::before {
+    background-image: var(--preview-image);
+    background-position: left center; /* Show left edge of the image */
+    right: 0;
+}
+
+/* Prev control shows right edge of previous slide */
+.slider-control.prev-control::before {
+    background-image: var(--preview-image);
+    background-position: right center; /* Show right edge of the image */
+    left: 0;
 }
 
 /* Add hover effect to make controls more interactive */
+.slider-control:hover {
+    background-color: rgba(15, 60, 120, 0.25); /* Slightly more opaque on hover */
+}
+
 .slider-control:hover .control-text {
     color: white;
     transform: rotate(-90deg) scale(1.1); /* Slightly larger on hover */

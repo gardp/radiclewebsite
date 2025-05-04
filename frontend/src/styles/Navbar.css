@@ -22,8 +22,11 @@
 }
 
 .navbar-nav {
-  margin-left: auto; /* Aligns nav items to the right */
-  padding-right: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
 }
 
 .navbar-brand {

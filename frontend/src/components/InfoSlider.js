@@ -50,9 +50,17 @@ const InfoSlider = ({ slides }) => {
         }, 300); // Match this with the CSS transition duration
     };
     
-    // Get current and next slide data as currentSlide is used for the key of the slides object
+    // Get current, next, and previous slide data
     const currentSlideData = slides[currentSlide];
     const nextSlideData = nextSlide !== null ? slides[nextSlide] : null;
+    
+    // Calculate indices for hover previews
+    const nextSlideIndex = (currentSlide === totalSlides - 1) ? 0 : currentSlide + 1;
+    const prevSlideIndex = (currentSlide === 0) ? totalSlides - 1 : currentSlide - 1;
+    
+    // Get the image URLs for hover previews
+    const nextSlideImageUrl = slides[nextSlideIndex].url;
+    const prevSlideImageUrl = slides[prevSlideIndex].url;
     
     // Define slide titles based on slide index/alt text
     const slideTitles = {
@@ -68,7 +76,13 @@ const InfoSlider = ({ slides }) => {
     
     return (
         <div className="info-slider">
-            <div className="slider-control prev-control" onClick={prevSlide}>
+            <div 
+                className="slider-control prev-control" 
+                onClick={prevSlide}
+                style={{
+                    '--preview-image': `url(${prevSlideImageUrl})`
+                }}
+            >
                 <span className="control-text">PREV</span>
             </div>
             
@@ -98,7 +112,13 @@ const InfoSlider = ({ slides }) => {
                 </div>
             </div>
             
-            <div className="slider-control next-control" onClick={nextSlideHandler}>
+            <div 
+                className="slider-control next-control" 
+                onClick={nextSlideHandler}
+                style={{
+                    '--preview-image': `url(${nextSlideImageUrl})`
+                }}
+            >
                 <span className="control-text">NEXT</span>
             </div>
         </div>  
