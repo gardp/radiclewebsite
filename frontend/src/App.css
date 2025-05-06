@@ -1,10 +1,19 @@
 /* Element selectors */
-:root {
+/* :root {
     height: 100%;
     --primary-text-color: #f0f0f0;
     --secondary-text-color: #e0e0e0;
     --accent-text-color: #00d4ff;
     --primary-heading-color: #ffffff;
+    --body-text-color: #d8d8d8;
+} */
+
+:root {
+    height: 100%;
+    --primary-text-color: #f2eeda;
+    --secondary-text-color: #e0e0e0;
+    --accent-text-color: #00d4ff;
+    --primary-heading-color: #f2eeda;
     --body-text-color: #d8d8d8;
 }
 
@@ -22,7 +31,8 @@ body {
     padding: 0px;
     min-height: 100vh;
     width: 100%;
-    background: url('/assets/images/website-background.png') center center fixed;
+    background: url('/assets/images/original-background-empty.png') center center fixed;
+    /* background: url('/assets/images/website-background.png') center center fixed; */
     /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('/assets/images/website-background.png') center center fixed; */
     background-size: cover;
     font-family: 'Montserrat', 'Roboto', sans-serif;
@@ -75,7 +85,7 @@ body {
     position: relative;
     z-index: 2;
     /* background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)); */
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
     flex: 1;
 }
 
@@ -126,7 +136,8 @@ body {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0;
+    /* padding: 0 2rem; */
 }
 
 /* Make sure the navbar appears above the content */

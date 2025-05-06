@@ -47,7 +47,7 @@ const CustomNavbar = () => {
   return (
     <Navbar fixed="top" expand="lg" className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <Container>
-        <Navbar.Brand as={Link} to="/">Radicle</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/"><img src="/assets/images/Radicle-Sound_white.svg" alt="Radicle Sound" className="navbar-logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="navbar-nav ms-auto">
@@ -61,24 +61,25 @@ const CustomNavbar = () => {
               <NavDropdown.Item as={Link} to="/merchandise">Merchandise</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/media">Media</NavDropdown.Item>
             </NavDropdown> */}
-            <div className="cart-button-container">
-            {totalItems > 0 && (
-              <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
-                style={{ color: 'white', width: '18px', height: '18px', position: 'absolute', right: '0', bottom: '0', transform: 'translate(-5%, 40%)', zIndex: 3 }}
-              >
-               {totalItems}
-              </div>
-            )}
-              <button 
-                className="cart-button skeuomorphic-btn primary size-lg"
-                onClick={toggleCartPreview}
-                aria-label="Open cart"
-              >
-                <div className="cart-icon"></div>
-              </button>
-            </div>
           </Nav>
         </Navbar.Collapse>
+        
+        <div className="cart-button-container">
+          {totalItems > 0 && (
+            <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+              style={{ color: 'white', width: '18px', height: '18px', position: 'absolute', right: '0', bottom: '0', transform: 'translate(-5%, 40%)', zIndex: 3 }}
+            >
+             {totalItems}
+            </div>
+          )}
+          <button 
+            className="cart-button primary size-lg"
+            onClick={toggleCartPreview}
+            aria-label="Open cart"
+          >
+            <div className="cart-icon" href="https://icons8.com"></div>
+          </button>
+        </div>
       </Container>
       
       <CartPreview 

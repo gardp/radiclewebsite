@@ -68,6 +68,12 @@ const InfoSlider = ({ slides }) => {
         "Songwriting & Arrangement": "Creative Songwriting & Arrangement"
     };
     
+    // Define slide sub-headlines
+    const slideSubheadlines = {
+        "Music Production": "State-of-the-art recording and mixing services",
+        "Songwriting & Arrangement": "Expert composition for your creative vision"
+    };
+    
     // Define slide navigation links
     const slideLinks = {
         "Music Production": "/services",
@@ -100,6 +106,11 @@ const InfoSlider = ({ slides }) => {
                         <h2 className="slide-title">
                             {slideTitles[currentSlideData.alt] || currentSlideData.alt}
                         </h2>
+                        
+                        {/* Sub-headline */}
+                        <p className="slide-subheadline">
+                            {slideSubheadlines[currentSlideData.alt] || ""}
+                        </p>
                         
                         {/* Navigation Button */}
                         <Link 
