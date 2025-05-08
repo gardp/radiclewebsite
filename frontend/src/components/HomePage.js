@@ -21,7 +21,7 @@ const HomePage = () => {
           <PricingTable/>
         </div>
         <div className="content-section">
-          <MusicContainer tracks={tracksData} trackSize={1.5} controlsSize={1} orientation={0} />
+          <MusicContainer tracks={tracksData} trackSize={1.5} controlsSize={0.6} orientation={0} playerTitle="New Features" />
         </div>
         <div className="content-section">
           <Media/>

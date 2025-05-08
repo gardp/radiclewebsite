@@ -3,15 +3,17 @@
     height: 100%;
     position: relative;  
     overflow: hidden; 
-    display: flex; /* Use flexbox to arrange controls and image side by side */
+    /* Changed from flexbox to allow for full-width background positioning */
+    display: block;
 }
 
 /* Container for slides to ensure proper positioning */
 .slides-container {
-    position: relative;
-    flex: 1; /* Take up remaining space between controls */
+    position: absolute;
+    width: 100%; /* Full viewport width */
     height: 100%;
     overflow: hidden; /* Hide overflow for sliding effect */
+    z-index: 1; /* Lower than controls */
 }
 
 /* Base styling for all slides */
@@ -106,8 +108,8 @@
 /* Navigation button styling */
 .slide-nav-button {
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 3rem;
+    left: 20rem;
     padding: 0.8rem 1.5rem;
     background-color: rgba(15, 60, 120, 0.8); /* Vivid blue from Haitian palette */
     color: white;
@@ -145,7 +147,8 @@
     box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    position: relative;
+    position: absolute;
+    top: 0;
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -177,10 +180,20 @@
     right: 0;
 }
 
+/* Position the next control at the right edge */
+.slider-control.next-control {
+    right: 0;
+}
+
 /* Prev control shows right edge of previous slide */
 .slider-control.prev-control::before {
     background-image: var(--preview-image);
     background-position: right center; /* Show right edge of the image */
+    left: 0;
+}
+
+/* Position the prev control at the left edge */
+.slider-control.prev-control {
     left: 0;
 }
 

@@ -117,7 +117,7 @@ const InfoSlider = ({ slides }) => {
                             to={slideLinks[currentSlideData.alt] || "#"} 
                             className="slide-nav-button"
                         >
-                            Learn More
+                            Buy Beats!
                         </Link>
                     </div>
                 </div>

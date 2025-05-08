@@ -4,7 +4,7 @@ import '../styles/AudioPlayer.css';
 import '../styles/MusicContainer.css';
 import React from 'react';
 
-const MusicContainer = ({ tracks, trackSize, controlsSize, orientation }) => {
+const MusicContainer = ({ tracks, trackSize, controlsSize, orientation, playerTitle }) => {
   // trackSize is for the track title and artist in the TrackFrame
   // controlsSize the control of the currently playing tracks in the AudioControls component
   console.log("MusicContainer received tracks:", tracks); // Debug log
@@ -23,6 +23,7 @@ const MusicContainer = ({ tracks, trackSize, controlsSize, orientation }) => {
             trackSize={trackSize}
             controlsSize={controlsSize}
             orientation={orientation}
+            playerTitle={playerTitle}
             // isActive={activePlayer === index} // Boolean true or false to determine if the player is active
             // onPlay={() => handlePlay(index)}
             // onPause={() => setActivePlayer(null)}

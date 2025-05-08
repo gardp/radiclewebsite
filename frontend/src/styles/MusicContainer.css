@@ -4,9 +4,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(26, 26, 26, 0.4);
+    /* background-color: rgba(26, 26, 26, 0.4);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); */
     border-bottom: 1px solid rgba(196, 18, 48, 0.15);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
     border-radius: 0;
@@ -43,3 +43,29 @@
         margin-bottom: 1rem;
     }
 }
+
+/* gemini */
+.audio-player {
+    background-color: transparent; /* Still transparent */
+    padding: 40px 0; /* Adjust padding as needed */
+    position: relative;
+    z-index: 1;
+    /* Add a subtle inner padding to prevent content from touching edges */
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .audio-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* **Adjusted:** Use a darker, slightly more opaque overlay */
+    background-color: RGBA(0, 0, 0, 0.5); /* Example: 50% black overlay */
+    z-index: -1; /* Below the content */
+    /* Optional: Add a subtle border to the overlay for definition */
+     border: 1px solid RGBA(230, 230, 230, 0.05); /* Very light border */
+  }
+  /* gemini */

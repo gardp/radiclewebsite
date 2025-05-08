@@ -4,7 +4,7 @@ import TrackFrame from "./TrackFrame";
 import "../styles/AudioPlayer.css";
 
 
-const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0 }) => {
+const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0, playerTitle}) => {
   console.log("AudioPlayer received tracks:", tracks); // Debug log
   console.log("AudioPlayer orientation:", orientation); // Debug log for orientation
   // State
@@ -143,6 +143,7 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0 }) => {
 
   return (
     <div className="audio-player">
+      {playerTitle && <h2 className="player-title">{playerTitle}</h2>}
       <div className={`player-grid ${orientation === 1 ? 'vertical-layout' : ''}`}>
         <div className="track-frame-container">
           <TrackFrame 
