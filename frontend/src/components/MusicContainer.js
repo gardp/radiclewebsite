@@ -17,7 +17,6 @@ const MusicContainer = ({ tracks, trackSize, controlsSize, orientation, playerTi
   return (
     <Container fluid className="music-container">
       <Row className="g-0 w-100"> 
-        <Col xs={12} className="music-item p-0 w-100"> 
           <AudioPlayer 
             tracks={tracks} 
             trackSize={trackSize}
@@ -29,7 +28,6 @@ const MusicContainer = ({ tracks, trackSize, controlsSize, orientation, playerTi
             // onPause={() => setActivePlayer(null)}
           />
           {/* {console.log("The music container track is:", tracks)} */}
-        </Col>
       </Row>
     </Container>
   );

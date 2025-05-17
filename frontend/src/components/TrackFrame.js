@@ -4,51 +4,55 @@ import '../styles/TrackFrame.css';
 import { Nav, Tab } from 'react-bootstrap';
 import Track from './Track';
 
-// prop destructuring
+/**
+ * TrackFrame Component
+ * 
+ * A elegant playlist-style track container that complements the AudioControls component.
+ * This component displays tracks in a vertical list format with smaller thumbnails
+ * and action icons aligned in a consistent way.
+ *
+ * @param {Array} tabs - Array of tab objects with label and content properties
+ * @param {Number} currentTrackIndex - Index of currently playing track
+ * @param {Function} onTrackSelect - Callback when track is selected
+ * @param {Number} trackSize - Size multiplier for tracks
+ * @param {String} orientation - Layout orientation (not currently used)
+ */
 const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, orientation }) => (
   <>
-  <div style={{ position: 'relative' }}>
-    {/* the inverted semi cricle for the left side */}
-    {/* <div className='semi-circle'></div>  */}
-    <Tab.Container defaultActiveKey={0}>
-      <Nav variant="tabs" className="modern-tabs">
-        {tabs.map((tab, index) => (
-          <Nav.Item key={index} className="modern-tab-item">
-            <Nav.Link eventKey={index} className="modern-tab-link">{tab.label}</Nav.Link>
-          </Nav.Item>
-        ))}
-      </Nav>
-      <div className="track-frame">
-        <div className="track-list" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap'}}>
-          {/* Remove the skeuomorphic element */}
-          <Tab.Content>
-            {tabs.map((tab, index) => (
-              <Tab.Pane eventKey={index} key={index}>
-                <div style={{ 
-                  display: 'flex', 
-                  gap: '15px', 
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  alignItems: 'flex-start',
-                  height: '100%' 
-                }}>
-                {tab.content.map((track, trackIndex) => (
-                  <Track
-                    key={track.id}
-                    track={track}
-                    isActive={trackIndex === currentTrackIndex}
-                    onClick={() => onTrackSelect(trackIndex)}
-                    size={trackSize}
-                  />
-                ))}
-                </div>
-              </Tab.Pane>
-            ))}
-          </Tab.Content>
+    <div className="track-frame-wrapper">
+      <Tab.Container defaultActiveKey={0}>
+        {/* Tabs navigation */}
+        <Nav variant="tabs" className="modern-tabs">
+          {tabs.map((tab, index) => (
+            <Nav.Item key={index} className="modern-tab-item">
+              <Nav.Link eventKey={index} className="modern-tab-link">{tab.label}</Nav.Link>
+            </Nav.Item>
+          ))}
+        </Nav>
+        
+        {/* Track frame container */}
+        <div className="track-frame">
+          <div className="track-list">
+            <Tab.Content>
+              {tabs.map((tab, index) => (
+                <Tab.Pane eventKey={index} key={index}>
+                  {/* Map through tracks in the current tab */}
+                  {tab.content.map((track, trackIndex) => (
+                    <Track
+                      key={track.id}
+                      track={track}
+                      isActive={trackIndex === currentTrackIndex}
+                      onClick={() => onTrackSelect(trackIndex)}
+                      size={trackSize}
+                    />
+                  ))}
+                </Tab.Pane>
+              ))}
+            </Tab.Content>
+          </div>
         </div>
-      </div>
-    </Tab.Container>
-  </div>
+      </Tab.Container>
+    </div>
   </>
 );
 

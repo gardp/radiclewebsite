@@ -1,0 +1,223 @@
+/* AudioControls.css */
+:root {
+  --haiti-blue: #0f3c78; /* Vivid blue */
+  --haiti-red: #c41230; /* Rich crimson red */
+  --haiti-gold: #e6b54c; /* Gold/yellow accent */
+  --haiti-dark: #1a1a1a; /* Neutral dark base */
+}
+
+/* Now Playing frame styling */
+.now-playing-container {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(230, 181, 76, 0.15);
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Gold-colored glow on the border */
+.now-playing-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(230, 181, 76, 0.3);
+  box-shadow: 0 0 15px rgba(230, 181, 76, 0.2);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.now-playing-title {
+  color: var(--haiti-gold);
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(230, 181, 76, 0.2);
+  padding-bottom: 0.75rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+/* Track info frame styling */
+.track-info-frame {
+  background: rgba(15, 60, 120, 0.2);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(15, 60, 120, 0.3);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Controls frame styling */
+.controls-frame {
+  background: rgba(196, 18, 48, 0.1);
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid rgba(196, 18, 48, 0.2);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  margin-top: 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* Modified controls-container to have better proportions */
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  transform-origin: center;
+  box-sizing: border-box;
+}
+
+/* Vinyl artwork styling */
+.vinyl-artwork-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  max-height: 70%;
+}
+
+.vinyl-artwork {
+  width: 80%;
+  max-width: 240px;
+  aspect-ratio: 1/1;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%; /* Keep perfectly circular */
+  border: 2px solid rgba(230, 181, 76, 0.3); /* Gold border matching Haitian art theme */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 0 5px rgba(26, 26, 26, 0.3); /* Dual shadow for depth */
+  transition: all 0.3s ease;
+}
+
+/* Add a record-like appearance */
+.vinyl-artwork-container {
+  position: relative;
+}
+
+.vinyl-artwork-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(230, 181, 76, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Rotation animation when playing */
+@keyframes rotate-vinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.is-playing .vinyl-artwork {
+  animation: rotate-vinyl 20s linear infinite;
+  box-shadow: 0 8px 30px rgba(196, 18, 48, 0.15), 0 0 0 5px rgba(26, 26, 26, 0.3);
+}
+
+/* Ensure smooth animation */
+.vinyl-artwork {
+  will-change: transform;
+  transform-origin: center;
+}
+
+/* Enhance title and artist styling */
+.track-info .title {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--haiti-gold);
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-info .artist {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Progress bar adjustments */
+.progress {
+  height: 6px;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+/* Audio controls styling */
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .now-playing-container {
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .now-playing-title {
+    font-size: 1.2rem;
+  }
+  
+  .vinyl-artwork {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 768px) {
+  .now-playing-container {
+    margin: 0 auto;
+    padding: 1.5rem;
+    width: 100%;
+  }
+  .controls-container {
+    align-items: center;
+  }
+}
+    

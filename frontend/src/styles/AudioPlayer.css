@@ -99,13 +99,18 @@ input[type="range"]:active::-moz-range-thumb {
 }
 
 .audio-player {
-  max-width: 100%; /* Changed from 1500px to 100% to ensure it spans the full width */
-  width: 100%; 
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
   padding: 19.2px;
   border-radius: 16px;
   margin: 0 auto;
   color: var(--white);
   transition: all 0.3s ease;
+  /* display: block; */
+  align-items: center;
+  /* justify-content: center; */
+  box-sizing: border-box;
 }
 
 /* Player title styling - modeled after InfoSlider's title styling */
@@ -221,6 +226,7 @@ input[type="range"]:active::-moz-range-thumb {
   cursor: pointer;
   transition: transform 0.3s ease;
   opacity: 0.7;
+
 }
 
 .track-item:hover {
@@ -230,7 +236,7 @@ input[type="range"]:active::-moz-range-thumb {
 
 .track-item.active {
   opacity: 1;
-  transform: scale(1.04);
+  /* transform: scale(1.04); */
   transition: all 0.3s ease-in-out;
   /* Add subtle highlight for active track */
   box-shadow: 0 0 15px rgba(230, 181, 76, 0.3); /* Subtle gold glow */
@@ -281,18 +287,25 @@ input[type="range"]:active::-moz-range-thumb {
     "track-frame-container";
   gap: 1.6rem;
   align-items: center;
-  width: 100%; /* Ensure the grid takes the full width */
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .track-frame-container {
   width: 100%;
+  max-width: 1000px;
   grid-area: track-frame-container;
-  transform: translateY(0);
   position: relative;
-  overflow: visible; /* Allow the cut-out effect to be visible */
+  overflow: hidden; /*hide overflow*/
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transform-origin: left top;
+  box-sizing: border-box;
+  transform: scale(var(--track-base-size));
+  margin: 0;
+  transition: transform 0.3s ease;
 }
 
 /* .controls-container {
@@ -306,11 +319,22 @@ input[type="range"]:active::-moz-range-thumb {
 
 @media (min-width: 768px) {
   .player-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
     grid-template-areas: 
       "controls-container track-frame-container";
     gap: 2.4rem;
-    align-items: center; /* Center items vertically */
+    align-items: center; 
+    height: 100%;
+    max-width: 100%;
+  }
+  
+  /* Adjust containers to fill height appropriately for 16:7 ratio */
+  .controls-container,
+  .track-frame-container {
+    height: 100%;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
   }
   
   /* For orientation=1, always use vertical layout */
@@ -320,8 +344,9 @@ input[type="range"]:active::-moz-range-thumb {
       "controls-container"
       "track-frame-container";
     gap: 1.6rem;
-    align-items: start; /* Reset to start for vertical layout */
+    align-items: start;
   }
+
 }
 
 /* Tracks container for lists outside the frame */
@@ -350,6 +375,12 @@ input[type="range"]:active::-moz-range-thumb {
 
   .audio-controls {
     width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .track-frame-container {
+    align-items: center;
   }
 }
 

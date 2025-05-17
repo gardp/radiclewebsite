@@ -1,112 +1,212 @@
-.track-frame {
+/* Elegant track frame to match the AudioControls styling */
+
+.track-frame-wrapper {
     width: 100%;
-    padding: 0;
+    max-width: 800px;
+    height: 100%;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    /* Remove clip-path for a more straightforward design */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    transform-origin: left top;
+    transform: scale(var(--track-base-size));
+    transition: transform 0.3s ease;
 }
 
-/* .track-frame::before {
-    content: "";
+.track-frame {
+    width: 100%;
+    height: 100%;
+    padding: 2.75rem 1.5rem 1.5rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Gold-colored glow on the border - matching AudioControls */
+.track-frame::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    clip-path: path('M0,0 L100%,0 L100%,100% L0,100% L0,0 M140px,50% a140px,140px 0 0,0 280px,0 a140px,140px 0 0,0 -280px,0');
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    /* border: 1px solid rgba(230, 181, 76, 0.3);
+    box-shadow: 0 0 15px rgba(230, 181, 76, 0.2); */
     pointer-events: none;
-    z-index: 2;
-} */
+    z-index: -1;
+}
 
+/* Track list - styled as a playlist */
 .track-list {
     width: 100%;
-    padding: 0 10px; /* Reduce the padding from the sides */
+    height: 100%;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
+    flex-grow: 1;
+    overflow-y: auto;
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(196, 18, 48, 0.5) rgba(26, 26, 26, 0.3);
+    transform-origin: center top;
 }
 
+/* Custom scrollbar styling for WebKit browsers */
+.track-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.track-list::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.3);
+    border-radius: 10px;
+}
+
+.track-list::-webkit-scrollbar-thumb {
+    background: rgba(196, 18, 48, 0.5);
+    border-radius: 10px;
+}
+
+.track-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(196, 18, 48, 0.7);
+}
+
+/* Tab content styling */
 .tab-content {
     width: 100%;
+    margin-top: 0.5rem;
 }
 
+/* Tab pane styling - adjusted for playlist layout */
 .tab-pane {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
 }
 
-/* Modern tabs styling */
+/* Modern tabs styling - updated for minimalistic design */
 .modern-tabs {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0;
     border: none !important;
-    padding: 0 1rem;
+    padding: 0.75rem 1.5rem 0;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* Subtle indicator line below tabs */
+.modern-tabs::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: rgba(230, 181, 76, 0.15);
+    z-index: 1;
+}
+
+/* Add a playlist title above the tabs */
+.track-frame::after {
+    content: 'Track Library';
+    display: block;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    /* color: var(--haiti-gold); */
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-align: right;
 }
 
 /* Target Bootstrap Nav.Link elements - default state */
 .modern-tabs .nav-item .nav-link,
 .modern-tabs .modern-tab-item .modern-tab-link {
-    padding: 0.6rem 1.2rem;
-    color: var(--white);
+    padding: 0.5rem 1rem 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 500;
     font-size: 0.85rem;
     border: none !important;
-    border-radius: 40px;
+    border-radius: 0;
     position: relative;
     transition: all 0.3s ease;
-    background-color: rgba(15, 60, 120, 0.8); /* Flat Haitian blue */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: transparent;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.02em;
-    margin: 0 0.4rem;
+    margin: 0 0.8rem 5px 0;
     opacity: 0.85;
+    text-transform: uppercase;
+    z-index: 2;
 }
 
-.modern-tabs .nav-item .nav-link::before,
-.modern-tabs .modern-tab-item .modern-tab-link::before {
-    display: none; /* Remove gradient overlay */
+/* Bottom indicator for tabs */
+.modern-tabs .nav-item .nav-link::after,
+.modern-tabs .modern-tab-item .modern-tab-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--haiti-gold);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    z-index: 1;
 }
 
 /* Hover state - non-active tabs */
 .modern-tabs .nav-item .nav-link:hover:not(.active),
 .modern-tabs .modern-tab-item .modern-tab-link:hover:not(.active) {
-    color: var(--white);
-    transform: translateY(-2px);
-    background-color: rgba(15, 60, 120, 0.95); /* Slightly darker on hover */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    color: var(--haiti-gold);
     opacity: 1;
+}
+
+/* Indicator animation on hover */
+.modern-tabs .nav-item .nav-link:hover::after,
+.modern-tabs .modern-tab-item .modern-tab-link:hover::after {
+    opacity: 0.5;
+    transform: scaleX(0.4);
 }
 
 /* Active tab - specific styling for active state only */
 .modern-tabs .nav-item .nav-link.active,
 .modern-tabs .modern-tab-item .modern-tab-link.active {
-    color: #ffffff;
-    font-weight: 700;
-    background-color: rgba(196, 18, 48, 0.85) !important; /* Flat Haitian crimson red */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transform: translateY(-1px);
+    color: var(--haiti-gold);
+    font-weight: 600;
+    background-color: transparent !important;
     opacity: 1;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 40px;
+    border: none !important;
 }
 
+/* Active tab indicator line */
 .modern-tabs .nav-item .nav-link.active::after,
 .modern-tabs .modern-tab-item .modern-tab-link.active::after {
-    display: none; /* Remove the glow effect */
+    transform: scaleX(1);
+    opacity: 1;
 }
 
 .modern-tabs .nav-item .nav-link:active,
 .modern-tabs .modern-tab-item .modern-tab-link:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    opacity: 0.9;
+    transition: all 0.1s ease;
 }
 
 /* Style the modern tab classes properly */
@@ -146,6 +246,17 @@
         padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
         border-radius: 40px;
+    }
+}
+
+@media (min-width: 768px) {
+    .track-frame-wrapper {
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .track-frame {
+        margin-right: auto;
+        margin-left: 0;
     }
 }
 

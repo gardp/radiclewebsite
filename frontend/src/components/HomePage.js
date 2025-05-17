@@ -17,11 +17,11 @@ const HomePage = () => {
       <CustomCarousel />
       {/* Main Content Sections */}
       <div className="main-content">
-        <div className="content-section">
+        {/* <div className="content-section">
           <PricingTable/>
-        </div>
+        </div> */}
         <div className="content-section">
-          <MusicContainer tracks={tracksData} trackSize={1.5} controlsSize={0.6} orientation={0} playerTitle="New Features" />
+          <MusicContainer tracks={tracksData} trackSize={1} controlsSize={1} orientation={0} playerTitle="New Features" />
         </div>
         <div className="content-section">
           <Media/>

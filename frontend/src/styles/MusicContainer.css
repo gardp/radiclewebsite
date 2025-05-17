@@ -1,61 +1,27 @@
 .music-container {
+    transform: scale(0.7);
+    /* Fixed aspect ratio container */
+    aspect-ratio: 16/7;
+    width: 100%;
+    max-width: 1600px; /* Maximum width to maintain quality */
+    margin: 0 auto;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgba(26, 26, 26, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); */
     border-bottom: 1px solid rgba(196, 18, 48, 0.15);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
     border-radius: 0;
-    width: 100%;
-    margin: 0;
-    max-width: none;
-}
- 
-.music-item {
-    max-width: 100%;
-    width: 100%; /* Explicitly set width to 100% */
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center vertically */
-}
-
-.g-0 {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 0; /* Remove any margins */
-    padding: 0; /* Remove any padding */
-}
-
-@media (max-width: 768px) {
-    .music-container {
-        padding: 1rem;
-        margin: 0 auto;
-        max-width: 1200px;
-    }
-    
-    .music-item {
-        margin-bottom: 1rem;
-    }
-}
-
-/* gemini */
-.audio-player {
-    background-color: transparent; /* Still transparent */
-    padding: 40px 0; /* Adjust padding as needed */
+    background-color: transparent;
     position: relative;
     z-index: 1;
-    /* Add a subtle inner padding to prevent content from touching edges */
-    padding-left: 15px;
-    padding-right: 15px;
+    /* Using padding for internal spacing only */
+    padding: 0 15px;
+    box-sizing: border-box;
+    overflow: hidden;
   }
   
-  .audio-player::before {
+  .music-container::before {
     content: '';
     position: absolute;
     top: 0;
@@ -69,3 +35,26 @@
      border: 1px solid RGBA(230, 230, 230, 0.05); /* Very light border */
   }
   /* gemini */
+ 
+.g-0 {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 2rem 0; /* Keep bottom margin from music-item */
+    padding: 0; /* Remove any padding */
+}
+
+@media (max-width: 768px) {
+    .music-container {
+        padding: 1rem;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    
+    .g-0 {
+        margin-bottom: 1rem;
+    }
+}
+

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FaGitSquare } from "react-icons/fa";
 import '../styles/SkeuomorphicButtons.css';
 import '../styles/AudioControlButtons.css';
+import '../styles/AudioControls.css';
 
 // Import SVGs as URLs from public folder
 const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';
@@ -35,64 +36,76 @@ const AudioControls = ({
 
   return (
     <div className="controls-container" style={{ transform: `scale(${controlsSize})` }}>
-      <div className="track-info">
-        <img
-          className="artwork"
-          // className="artwork skeuomorphic-btn light with-glare"
-          src={image}
-          alt={`track artwork for ${title}`}
+      <div className="now-playing-container">
+        <h1 className="now-playing-title">Now Playing</h1>
+        
+        <div className={`vinyl-artwork-container ${isPlaying ? 'is-playing' : ''}`}>
+          <img
+            className="vinyl-artwork"
+            src={image}
+            alt={`track artwork for ${title}`}
+          />
+        </div>
+        
+        <div className="track-info-frame">
+          <div className="track-info">
+            <h2 className="title">{title}</h2>
+            <h3 className="artist">{artist}</h3>
+          </div>
+        </div>
+        
+        <input
+          type="range"
+          value={trackProgress}
+          step="1"
+          min="0"
+          max={audioRef.current.duration ? audioRef.current.duration : `${audioRef.current.duration}`}
+          className="progress"
+          onChange={(e) => onScrub(e.target.value)}
+          onMouseUp={onScrubEnd}
+          onKeyUp={onScrubEnd}
+          style={{ background: trackStyling }}
         />
-        <h2 className="title">{title}</h2>
-        <h3 className="artist">{artist}</h3>
-      </div>
-      <input
-        type="range"
-        value={trackProgress}
-        step="1"
-        min="0"
-        max={audioRef.current.duration ? audioRef.current.duration : `${audioRef.current.duration}`}
-        className="progress"
-        onChange={(e) => onScrub(e.target.value)}
-        onMouseUp={onScrubEnd}
-        onKeyUp={onScrubEnd}
-        style={{ background: trackStyling }}
-      />
-      <div className="audio-controls">
-        <button
-          type="button"
-          className="prev skeuomorphic-btn light size-sm"
-          aria-label="Previous"
-          onClick={onPrevClick}
-        >
-          <img src={prevIcon} alt="Previous Track" />
-        </button>
-        {isPlaying ? (
-          <button
-            type="button"
-            className="pause skeuomorphic-btn light size-md"
-            onClick={() => onPlayPauseClick(false)}
-            aria-label="Pause"
-          >
-            <img src={pauseIcon} alt="Pause" />
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="play primary size-md"
-            onClick={() => onPlayPauseClick(true)}
-            aria-label="Play"
-          >
-            <img src={playIcon} alt="Play" />
-          </button>
-        )}
-        <button
-          type="button"
-          className="next skeuomorphic-btn light size-sm"
-          aria-label="Next"
-          onClick={onNextClick}
-        >
-          <img src={nextIcon} alt="Next Track" />
-        </button>
+        
+        <div className="controls-frame">
+          <div className="audio-controls">
+            <button
+              type="button"
+              className="prev skeuomorphic-btn light size-sm"
+              aria-label="Previous"
+              onClick={onPrevClick}
+            >
+              <img src={prevIcon} alt="Previous Track" />
+            </button>
+            {isPlaying ? (
+              <button
+                type="button"
+                className="pause skeuomorphic-btn light size-md"
+                onClick={() => onPlayPauseClick(false)}
+                aria-label="Pause"
+              >
+                <img src={pauseIcon} alt="Pause" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="play primary size-md"
+                onClick={() => onPlayPauseClick(true)}
+                aria-label="Play"
+              >
+                <img src={playIcon} alt="Play" />
+              </button>
+            )}
+            <button
+              type="button"
+              className="next skeuomorphic-btn light size-sm"
+              aria-label="Next"
+              onClick={onNextClick}
+            >
+              <img src={nextIcon} alt="Next Track" />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

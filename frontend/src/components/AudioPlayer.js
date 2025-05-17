@@ -143,7 +143,7 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0, playerT
 
   return (
     <div className="audio-player">
-      {playerTitle && <h2 className="player-title">{playerTitle}</h2>}
+      {/* {playerTitle && <h2 className="player-title">{playerTitle}</h2>} */}
       <div className={`player-grid ${orientation === 1 ? 'vertical-layout' : ''}`}>
         <div className="track-frame-container">
           <TrackFrame 

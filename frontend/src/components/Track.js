@@ -40,38 +40,30 @@ const Track = ({ track, isActive, onClick, size }) => {
     <>
       <div 
         className={`track-item ${isActive ? 'active' : ''}`}
-        // style={isActive ? {
-        //   // transform: 'scale(1.05)',
-        //   // boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-        //   // border: '1px solid rgba(255, 255, 255, 0.2)',
-        //   // borderRadius: '12px',
-        //   // padding: '8px',
-        //   background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.003))',
-        //   // backdropFilter: 'blur(5px)'
-        // } : {}}
+        onClick={onClick}
       >
+        {/* Vinyl thumbnail - reduced to 1/3 size */}
         <div className="track-thumb-container">
           <img
             className="track-thumb"
             src={track.image}
             alt={`track artwork for ${track.title}`}
-            // onClick={handleTrackImageClick}
-            onClick={onClick}
           />
-          {track.links?.streamLink && (
-            <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer">
-              <img
-                className="track-icon stream-icon skeuomorphic-btn light with-glare"
-                src={`${process.env.PUBLIC_URL}/assets/images/icons8-youtube-music-50.png`}
-                alt="Stream"
-              />
-              <span className="tooltip">Stream</span>
-            </a>
-          )}
+        </div>
+        
+        {/* Track details - positioned between stream icon and buy/download icons */}
+        <div className="track-label">
+          <div className="track-info-line">
+            <span className="track-title">{track.title}</span>
+            <span className="track-separator"> - </span>
+            <span className="track-artist">{track.artist}</span>
+          </div>  
+        </div>
+        
+        {/* Buy and Download icons - repositioned to right */}
+        <div className="track-icons-left">
           {track.links?.buyLink && (
-            // <a target="_blank" href="https://icons8.com/icon/bIBxUlWeBjq8/cart">Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-            // https://icons8.com/icons/set/music--static--red--corners-round
-            <a href="#" onClick={handleCartClick}>
+            <a href="#" onClick={(e) => { e.stopPropagation(); handleCartClick(e); }}>
               <img
                 className="track-icon buy-icon skeuomorphic-btn primary with-glare"
                 src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-65.png`}
@@ -81,7 +73,7 @@ const Track = ({ track, isActive, onClick, size }) => {
             </a>
           )}
           {track.links?.downloadLink && (
-            <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer">
+            <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
               <img
                 className="track-icon download-icon skeuomorphic-btn accent with-glare"
                 src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
@@ -91,9 +83,18 @@ const Track = ({ track, isActive, onClick, size }) => {
             </a>
           )}
         </div>
-        <div className="track-label">
-          <h4 className="track-title">{track.title}</h4>
-          <p className="track-artist">{track.artist}</p>
+        {/* Stream icon stays on the left */}
+        <div className="track-icons-right">
+          {track.links?.streamLink && (
+            <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+              <img
+                className="track-icon stream-icon skeuomorphic-btn light with-glare"
+                src={`${process.env.PUBLIC_URL}/assets/images/icons8-youtube-music-50.png`}
+                alt="Stream"
+              />
+              <span className="tooltip">Stream</span>
+            </a>
+          )}
         </div>
       </div>
       
