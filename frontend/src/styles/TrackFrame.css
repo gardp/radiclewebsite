@@ -1,5 +1,6 @@
 /* Elegant track frame to match the AudioControls styling */
 
+/* Track frame wrapper - container for the entire track section */
 .track-frame-wrapper {
     width: 100%;
     max-width: 800px;
@@ -13,12 +14,15 @@
     transform-origin: left top;
     transform: scale(var(--track-base-size));
     transition: transform 0.3s ease;
+    /* Better vertical space utilization */
+    overflow: hidden;
 }
 
+/* Main track frame container */
 .track-frame {
     width: 100%;
     height: 100%;
-    padding: 2.75rem 1.5rem 1.5rem;
+    padding: 0 1.5rem; /* Removed vertical padding, kept horizontal padding */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -26,10 +30,12 @@
     border-radius: 12px;
     box-sizing: border-box;
     overflow: hidden;
+    /* Better space utilization based on reference proportions */
+    min-height: 300px;
 }
 
 /* Gold-colored glow on the border - matching AudioControls */
-.track-frame::before {
+/* .track-frame::before {
     content: '';
     position: absolute;
     top: 0;
@@ -37,25 +43,28 @@
     right: 0;
     bottom: 0;
     border-radius: 12px;
-    /* border: 1px solid rgba(230, 181, 76, 0.3);
-    box-shadow: 0 0 15px rgba(230, 181, 76, 0.2); */
+    border: 1px solid rgba(230, 181, 76, 0.3);
+    box-shadow: 0 0 15px rgba(230, 181, 76, 0.2);
     pointer-events: none;
     z-index: -1;
-}
+} */
 
-/* Track list - styled as a playlist */
+/* Track list - styled as a playlist with maximum vertical space */
 .track-list {
     width: 100%;
-    height: 100%;
-    padding: 0;
+    height: calc(100% - 40px); /* Only minimal space for tabs */
+    padding: 0; /* No padding to maximize vertical space */
     margin: 0;
     box-sizing: border-box;
     flex-grow: 1;
     overflow-y: auto;
-    /* Custom scrollbar styling */
+    /* Custom scrollbar styling - maintaining Haitian theme */
     scrollbar-width: thin;
     scrollbar-color: rgba(196, 18, 48, 0.5) rgba(26, 26, 26, 0.3);
     transform-origin: center top;
+    /* Ensure tracks are displayed with appropriate spacing */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Custom scrollbar styling for WebKit browsers */
@@ -83,28 +92,30 @@
     margin-top: 0.5rem;
 }
 
-/* Tab pane styling - adjusted for playlist layout */
+/* Tab pane styling - maximized to fill vertical space */
 .tab-pane {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 8px;
-    padding: 8px 0;
+    gap: 10px; /* Maintain the specified gap between track items */
+    padding: 5px 0 0 0; /* Minimal top padding only */
+    height: 100%; /* Fill available height */
 }
 
-/* Modern tabs styling - updated for minimalistic design */
+/* Modern tabs styling - minimized vertical footprint */
 .modern-tabs {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-bottom: 0;
     border: none !important;
-    padding: 0.75rem 1.5rem 0;
+    padding: 0.4rem 1.5rem 0; /* Reduced top padding */
     position: relative;
     z-index: 2;
     box-sizing: border-box;
     background: transparent;
     overflow: hidden;
+    min-height: 30px; /* Ensure minimum height */
 }
 
 /* Subtle indicator line below tabs */
@@ -121,7 +132,7 @@
 
 /* Add a playlist title above the tabs */
 .track-frame::after {
-    content: 'Track Library';
+    /* content: 'Track Library'; */
     display: block;
     position: absolute;
     top: 1.25rem;
