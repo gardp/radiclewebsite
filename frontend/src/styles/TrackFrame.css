@@ -3,7 +3,7 @@
 /* Track frame wrapper - container for the entire track section */
 .track-frame-wrapper {
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     height: 100%;
     margin: 0;
     position: relative;
@@ -23,6 +23,7 @@
     width: 100%;
     height: 100%;
     padding: 0 1.5rem; /* Removed vertical padding, kept horizontal padding */
+    padding-left: 0;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

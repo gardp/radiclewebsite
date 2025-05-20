@@ -60,41 +60,45 @@ const Track = ({ track, isActive, onClick, size }) => {
           </div>  
         </div>
         
-        {/* Buy and Download icons - repositioned to right */}
-        <div className="track-icons-left">
-          {track.links?.buyLink && (
-            <a href="#" onClick={(e) => { e.stopPropagation(); handleCartClick(e); }}>
-              <img
-                className="track-icon buy-icon skeuomorphic-btn primary with-glare"
-                src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-65.png`}
-                alt="Buy"
-              />
-              <span className="tooltip">Buy</span>
-            </a>
-          )}
-          {track.links?.downloadLink && (
-            <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-              <img
-                className="track-icon download-icon skeuomorphic-btn accent with-glare"
-                src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
-                alt="Download"
-              />
-              <span className="tooltip">Download</span>
-            </a>
-          )}
-        </div>
-        {/* Stream icon stays on the left */}
-        <div className="track-icons-right">
-          {track.links?.streamLink && (
-            <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-              <img
-                className="track-icon stream-icon skeuomorphic-btn light with-glare"
-                src={`${process.env.PUBLIC_URL}/assets/images/icons8-youtube-music-50.png`}
-                alt="Stream"
-              />
-              <span className="tooltip">Stream</span>
-            </a>
-          )}
+        {/* Icons container - stacked vertically */}
+        <div className="track-icons">
+          {/* Buy and Download icons */}
+          <div className="track-icons-left">
+            {track.links?.buyLink && (
+              <a href="#" onClick={(e) => { e.stopPropagation(); handleCartClick(e); }}>
+                <img
+                  // className="track-icon buy-icon skeuomorphic-btn primary with-glare" justink
+                  className="track-icon buy-icon primary with-glare"
+                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-beige.png`}
+                  alt="Buy"
+                />
+                <span className="tooltip">Buy</span>
+              </a>
+            )}
+            {track.links?.downloadLink && (
+              <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                <img
+                  className="track-icon download-icon skeuomorphic-btn accent with-glare"
+                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
+                  alt="Download"
+                />
+                <span className="tooltip">Download</span>
+              </a>
+            )}
+          </div>
+          {/* Stream icon */}
+          <div className="track-icons-right">
+            {track.links?.streamLink && (
+              <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                <img
+                  className="track-icon stream-icon skeuomorphic-btn light with-glare"
+                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-youtube-music-50.png`}
+                  alt="Stream"
+                />
+                <span className="tooltip">Stream</span>
+              </a>
+            )}
+          </div>
         </div>
       </div>
       

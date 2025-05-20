@@ -27,8 +27,8 @@
   transform: scale(1.04);
 } */
 
-/* Track Item - Horizontal playlist layout with reference proportions */
-/* Track Item - Expanded to fill vertical space */
+/* Track Item - Horizontal playlist layout without visual styling */
+/* Track Item - Now only a layout container */
 .track-item {
   display: flex;
   flex-direction: row;
@@ -36,34 +36,14 @@
   width: 100%; /* Full width for a playlist format */
   height: 120px; /* Significantly taller to fill available space */
   margin: 0 0 10px 0; /* Bottom margin only (trackItemGap from reference) */
-  padding: 18px 24px; /* Scaled up padding for visual balance */
-  opacity: 0.9;
-  border-radius: 15px; /* Slightly larger border radius for visual balance */
-  background: rgba(26, 26, 26, 0.6); /* Semi-transparent background - keeping Haitian theme */
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(230, 181, 76, 0.1); /* Subtle gold border - keeping Haitian theme */
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.18); /* Enhanced shadow for larger element */
   position: relative;
-  overflow: hidden;
   box-sizing: border-box;
-  transform-origin: center;
+  cursor: pointer;
 }
 
-/* Hover state */
-.track-item:hover {
-  background: rgba(26, 26, 26, 0.75);
-  border-color: rgba(230, 181, 76, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
+/* Hover state moved from track-item to individual elements */
 
-/* Active track styling */
-.track-item.active {
-  background: linear-gradient(to right, rgba(15, 60, 120, 0.4), rgba(26, 26, 26, 0.7));
-  border-color: rgba(230, 181, 76, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
+/* Active track styling moved to individual elements */
 
 /* Track thumbnail container - Scaled up vinyl icon for larger track items */
 .track-thumb-container {
@@ -106,7 +86,7 @@
 /* Track info container - Scaled up for larger track items */
 .track-info-line {
   display: flex;
-  align-items: center;
+  align-items: center; /* Center horizontally */
   white-space: nowrap;
   overflow: hidden;
   width: calc(100% - 240px); /* Account for larger thumbnail and icons */
@@ -114,7 +94,9 @@
   height: 60%; /* Maintain same proportion of container height */
   padding: 0 10px; /* Increased padding for balance */
   flex-direction: column; /* Stack title and artist for better vertical use */
-  justify-content: center;
+  justify-content: center; /* Center vertically */
+  margin: 0 auto; /* Center in parent */
+  text-align: center; /* Ensure text is centered */
 }
 
 /* Title styling for larger track items */
@@ -129,7 +111,7 @@
   white-space: nowrap;
   width: 100%; /* Full width in stacked layout */
   margin-bottom: 8px; /* Increased spacing between title and artist */
-  text-align: left; /* Left-aligned text */
+  text-align: center; /* Center-aligned text */
 }
 
 /* Separator styling - hidden in stacked layout */
@@ -147,7 +129,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%; /* Full width in stacked layout */
-  text-align: left; /* Left-aligned text */
+  text-align: center; /* Center-aligned text */
 }
 
 /* Track icon styling - Enhanced for larger track items */
@@ -183,26 +165,46 @@
   border: 1px solid rgba(230, 181, 76, 0.3);
 }
 
-/* Left-side track icons (stream) */
+/* Container for all icons - now in vertical layout with frame */
+.track-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; /* Vertical spacing between icon groups */
+  margin-left: auto; /* Push to right side */
+  margin-right: 20px; /* Right margin for balance */
+  flex-shrink: 0; /* Prevent shrinking */
+  
+  /* Frame styling to match track-label */
+  padding: 18px 24px; /* Match track-label padding */
+  opacity: 0.9;
+  border-radius: 0px; /* Match track-label */
+  background: rgba(26, 26, 26, 0.6); /* Match track-label background */
+  backdrop-filter: blur(8px); /* Match track-label */
+  border: 1px solid rgba(230, 181, 76, 0.1); /* Match track-label gold border */
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.18); /* Match track-label shadow */
+  transition: all 0.3s ease;
+  
+  /* Match track-item height */
+  height: 120px; /* Same as track-item height */
+  box-sizing: border-box;
+}
+
+/* Buy and download icons container */
 .track-icons-left {
   display: flex;
   align-items: center;
   gap: 6px;
-  /* margin-left: 12px; */
 }
 
-/* Right-side track icons (buy and download) - Enhanced for larger track items */
+/* Stream icon container */
 .track-icons-right {
   display: flex;
   align-items: center;
-  gap: 16px; /* Increased spacing between icons */
-  margin-left: auto; /* Push to right side */
-  margin-right: 20px; /* Increased margin for balance */
-  flex-shrink: 0; /* Prevent shrinking */
-  /* Fixed width zone for icons, expanded for larger track items */
-  width: 42px; /* Wider to accommodate larger icons */
+  gap: 16px; /* Spacing between icons */
+  width: 42px; /* Width to accommodate the icon */
   justify-content: flex-end;
-  margin-left: 10px;
 }
 
 /* Icon Positions - general styling */
@@ -214,10 +216,7 @@ a:has(.download-icon) {
   margin: 0 3px;
 }
 
-/* Make the track item have cursor pointer to indicate it's clickable */
-.track-item {
-  cursor: pointer;
-}
+/* Cursor pointer moved to track-item main declaration */
 
 /* Tooltip Styling */
 .tooltip {
@@ -284,10 +283,10 @@ a:has(.download-icon) .tooltip::after {
   border-color: transparent transparent rgba(40, 40, 40, 0.95) transparent;
 }
 
-/* Track label - Repositioned to right of thumbnail */
+/* Track label - Now contains the visual styling that was on track-item */
 .track-label {
   flex: 1;
-  padding: 0 12px;
+  padding: 18px 24px; /* Adopted from track-item */
   text-align: center;
   transition: all 0.3s ease;
   display: flex;
@@ -296,19 +295,46 @@ a:has(.download-icon) .tooltip::after {
   width: auto;
   box-sizing: border-box;
   overflow: hidden;
+  opacity: 0.9;
+  border-radius: 0px; /* From track-item justink */
+  background: rgba(26, 26, 26, 0.6); /* From track-item - Semi-transparent background */
+  backdrop-filter: blur(8px); /* From track-item */
+  border: 1px solid rgba(230, 181, 76, 0.1); /* From track-item - Subtle gold border */
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.18); /* From track-item */
+  transform-origin: center;
+  margin-right: 10px; /* Add spacing for visual separation */
 }
 
+/* Hover effect directly on track-label */
 .track-item:hover .track-label {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  border-color: rgba(196, 18, 48, 0.2); /* Enhanced crimson red border on hover */
+  transform: translateY(-2px);
+  background: rgba(26, 26, 26, 0.75); /* From track-item hover */
+  border-color: rgba(230, 181, 76, 0.2); /* From track-item hover */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* From track-item hover */
 }
 
-.track-item.active {
+/* Hover effect for track-icons frame - matches track-label */
+.track-item:hover .track-icons {
+  transform: translateY(-2px);
+  background: rgba(26, 26, 26, 0.75); /* Match track-label hover */
+  border-color: rgba(230, 181, 76, 0.2); /* Match track-label hover */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Match track-label hover */
+}
+
+/* Active styling applied to track-label */
+.track-item.active .track-label {
   background: linear-gradient(to right, rgba(15, 60, 120, 0.7), rgba(26, 26, 26, 0.85)); /* Gradient with Haitian blue */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
               0 0 0 1px rgba(230, 181, 76, 0.3); /* Gold accent for active tracks */
-  border-color: rgba(196, 18, 48, 0.25); 
+  border-color: rgba(196, 18, 48, 0.25);
+}
+
+/* Active styling applied to track-icons frame - matches track-label */
+.track-item.active .track-icons {
+  background: linear-gradient(to right, rgba(15, 60, 120, 0.7), rgba(26, 26, 26, 0.85)); /* Gradient with Haitian blue */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(230, 181, 76, 0.3); /* Gold accent for active tracks */
+  border-color: rgba(196, 18, 48, 0.25);
 }
 
 /* Track title styling - Left aligned for playlist look */
@@ -317,7 +343,7 @@ a:has(.download-icon) .tooltip::after {
   font-weight: 600;
   margin: 0 0 calc(3px * var(--track-base-size));
   color: rgba(230, 181, 76, 0.9); /* Gold for titles */
-  text-align: right;
+  text-align: center; /* Centered text */
   width: 100%;
   display: inline-block;
   white-space: nowrap;
@@ -339,6 +365,7 @@ a:has(.download-icon) .tooltip::after {
   text-overflow: ellipsis;
 }
 
+/* Track title and artist active styling - maintained */
 .track-item.active .track-title {
   color: rgba(230, 181, 76, 1); /* Brighter gold for active track title */
 }

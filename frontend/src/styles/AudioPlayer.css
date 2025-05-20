@@ -234,13 +234,13 @@ input[type="range"]:active::-moz-range-thumb {
   opacity: 0.9;
 }
 
-.track-item.active {
-  opacity: 1;
+/* .track-item.active {
+  opacity: 1; */
   /* transform: scale(1.04); */
-  transition: all 0.3s ease-in-out;
+  /* transition: all 0.3s ease-in-out; */
   /* Add subtle highlight for active track */
-  box-shadow: 0 0 15px rgba(230, 181, 76, 0.3); /* Subtle gold glow */
-}
+  /* box-shadow: 0 0 15px rgba(230, 181, 76, 0.3); Subtle gold glow */
+/* } */
 
 .track-thumb {
   width: var(--track-thumb-size);
@@ -255,7 +255,7 @@ input[type="range"]:active::-moz-range-thumb {
   border-color: var(--haiti-blue); /* Blue border on hover */
 }
 
-.track-item.active .track-thumb {
+.track-thumb.active {
   border-color: var(--haiti-gold); /* Gold border for active track */
 }
 
@@ -322,7 +322,7 @@ input[type="range"]:active::-moz-range-thumb {
     grid-template-columns: 40% 60%;
     grid-template-areas: 
       "controls-container track-frame-container";
-    gap: 2.4rem;
+    gap: 1.4rem;
     align-items: center; 
     height: 100%;
     max-width: 100%;
@@ -380,7 +380,7 @@ input[type="range"]:active::-moz-range-thumb {
 
 @media (min-width: 768px) {
   .track-frame-container {
-    align-items: center;
+    align-items: flex-start;
   }
 }
 

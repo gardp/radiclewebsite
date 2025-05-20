@@ -10,7 +10,7 @@
 .now-playing-container {
   position: relative;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 0px; /* justink */
   background: rgba(26, 26, 26, 0.6);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -32,7 +32,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 12px;
+  border-radius: 0px; /* justink */
   border: 1px solid rgba(230, 181, 76, 0.3);
   box-shadow: 0 0 15px rgba(230, 181, 76, 0.2);
   pointer-events: none;
@@ -56,7 +56,7 @@
 /* Track info frame styling */
 .track-info-frame {
   background: rgba(15, 60, 120, 0.2);
-  border-radius: 10px;
+  border-radius: 0px; /* justink */
   padding: 1.25rem;
   margin-bottom: 1.5rem;
   border: 1px solid rgba(15, 60, 120, 0.3);
@@ -69,7 +69,7 @@
 /* Controls frame styling */
 .controls-frame {
   background: rgba(196, 18, 48, 0.1);
-  border-radius: 10px;
+  border-radius: 0px; /* justink */
   padding: 0.8rem;
   border: 1px solid rgba(196, 18, 48, 0.2);
   backdrop-filter: blur(5px);

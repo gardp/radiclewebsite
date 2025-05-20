@@ -60,7 +60,7 @@ button.cart-button.primary.size-lg:active {
 .cart-icon {
   width: 30px;
   height: 30px;
-  background-image: url('/assets/images/icons8-shopping-cart-64-beige.png');
+  background-image: url('/assets/images/icons8-cart-beige.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
