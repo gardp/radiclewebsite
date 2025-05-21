@@ -64,14 +64,15 @@ const InfoSlider = ({ slides }) => {
     
     // Define slide titles based on slide index/alt text
     const slideTitles = {
+        "Sonic Energy": "Sound Taking Us Back to Our Roots!",
         "Music Production": "Professional Music Production",
         "Songwriting & Arrangement": "Creative Songwriting & Arrangement"
     };
     
     // Define slide sub-headlines
     const slideSubheadlines = {
-        "Music Production": "State-of-the-art recording and mixing services",
-        "Songwriting & Arrangement": "Expert composition for your creative vision"
+        "Sonic Energy": "Percussive, Tribal, Electric and Novel",
+        "Production, Songwriting & Arrangement": "State-of-the-art Mixing services, Songwriting & Arrangement",
     };
     
     // Define slide navigation links
@@ -117,7 +118,7 @@ const InfoSlider = ({ slides }) => {
                             to={slideLinks[currentSlideData.alt] || "#"} 
                             className="slide-nav-button"
                         >
-                            Buy Beats!
+                            Buy Premium Beats!
                         </Link>
                     </div>
                 </div>
@@ -165,3 +166,14 @@ export default InfoSlider;
                 //         </div>
                 //     </div>
                 // )}
+                // const slideTitles = {
+                //     "Sonic Energy": "Sound Taking Us Back to Our Roots!",
+                //     "Music Production": "Professional Music Production",
+                //     "Songwriting & Arrangement": "Creative Songwriting & Arrangement"
+                // };
+                
+                // const slideSubheadlines = {
+                //     "Sonic Energy": "Percussive, Tribal, Electric and Modern",
+                //     "Music Production": "State-of-the-art recording and mixing services",
+                //     "Songwriting & Arrangement": "Expert composition for your creative vision"
+                // };

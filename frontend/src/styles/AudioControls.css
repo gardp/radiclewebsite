@@ -58,7 +58,7 @@
   background: rgba(15, 60, 120, 0.2);
   border-radius: 0px; /* justink */
   padding: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 10px;
   border: 1px solid rgba(15, 60, 120, 0.3);
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
@@ -91,7 +91,7 @@
   height: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  transform-origin: center;
+  transform-origin: center top;
   box-sizing: border-box;
 }
 
@@ -196,12 +196,12 @@
 @media (max-width: 768px) {
   .now-playing-container {
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.5rem;
     width: 100%;
   }
   
   .now-playing-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .vinyl-artwork {

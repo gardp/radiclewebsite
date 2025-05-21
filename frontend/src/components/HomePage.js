@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomCarousel from './Carousel';
+import FeaturedHighlight from './FeaturedHighlight';
 import MusicContainer from './MusicContainer';
 import { tracksData } from './Tracks';
 import Media from './Media';
@@ -15,6 +16,8 @@ const HomePage = () => {
 
       </section> */}
       <CustomCarousel />
+      {/* Visual transition component */}
+      <FeaturedHighlight />
       {/* Main Content Sections */}
       <div className="main-content">
         {/* <div className="content-section">

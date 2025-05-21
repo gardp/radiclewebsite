@@ -16,11 +16,11 @@ const CustomCarousel = () => {
     const slides = [
         {
             url: carouselImage1,
-            alt: "Music Production",
+            alt: "Sonic Energy",
         },
         {
             url: carouselImage2,
-            alt: "Songwriting & Arrangement",
+            alt: "Production, Songwriting & Arrangement",
         },
     ];
     return (

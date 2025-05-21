@@ -1,7 +1,7 @@
 .music-container {
     transform: scale(0.7);
     /* Fixed aspect ratio container */
-    aspect-ratio: 16/7;
+    aspect-ratio: 16/8;
     width: 100%;
     max-width: 1600px; /* Maximum width to maintain quality */
     margin: 0 auto;

@@ -110,13 +110,13 @@
     position: absolute;
     bottom: 3rem;
     left: 20rem;
-    padding: 0.8rem 1.5rem;
+    padding: 1.2rem 2.25rem; /* Increased by 50% from 0.8rem 1.5rem */
     background-color: rgba(15, 60, 120, 0.8); /* Vivid blue from Haitian palette */
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 6px; /* Increased by 50% from 4px */
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.35rem; /* Increased by 50% from 0.9rem */
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
     backdrop-filter: blur(15px);
