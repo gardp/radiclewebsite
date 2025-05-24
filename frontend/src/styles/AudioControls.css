@@ -17,6 +17,7 @@
   border: 1px solid rgba(230, 181, 76, 0.15);
   width: 100%;
   margin: 0 auto;
+  margin-top: 2rem; /* Adding explicit top margin and ensuring it comes AFTER the shorthand */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -110,8 +111,9 @@
   height: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  transform-origin: center top;
+  transform-origin: center center;
   box-sizing: border-box;
+  padding: 0; /* Remove any padding */
 }
 
 /* Vinyl artwork styling */
