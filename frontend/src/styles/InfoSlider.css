@@ -26,35 +26,58 @@
     border-radius: 10px;
     background-position: center;
     background-size: cover;
-    transition: opacity 0.3s ease; /* Only transition opacity for fade effect */
-}
-
-/* Current slide */
-.info-slide.current-slide {
-    z-index: 2;
+    transition: filter 0.8s ease, opacity 0.8s ease; /* Transition for both blur and opacity */
+    filter: blur(0px); /* Default state is clear/sharp */
+    will-change: filter, opacity; /* Optimize for animations */
     opacity: 1;
 }
 
-/* Animation for current slide fading out - both directions use same fade effect */
+/* Current slide - always clear and fully visible */
+.info-slide.current-slide {
+    z-index: 2;
+    opacity: 1 !important; /* Force full opacity */
+    filter: blur(0px) !important; /* Force no blur - override any transitioning state */
+}
+
+/* Animation for current slide blurring out */
 .info-slide.current-slide.slide-left,
 .info-slide.current-slide.slide-right {
-    opacity: 0;
+    z-index: 1; /* Move behind the incoming slide */
+    filter: blur(25px); /* High blur value for outgoing slide */
+    opacity: 0.7; /* Keep partially visible as it blurs out */
 }
 
-/* Next slide fading in */
+/* Next slide coming into focus */
 .info-slide.next-slide {
-    z-index: 1;
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
+    z-index: 3; /* Position above the current slide */
+    filter: blur(25px); /* Start blurry */
+    opacity: 0.7; /* Start partially visible */
+    animation: blurToClarity 0.8s ease forwards;
+    /* Ensure the animation end state persists */
+    animation-fill-mode: forwards;
 }
 
-/* Keyframe animations for fade effect */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+/* Keyframe animations for blur-to-clarity effect */
+@keyframes blurToClarity {
+    0% {
+        filter: blur(25px);
+        opacity: 0.7;
     }
-    to {
+    100% {
+        filter: blur(0px);
         opacity: 1;
+    }
+}
+
+/* Keyframe animations for clarity-to-blur effect */
+@keyframes clarityToBlur {
+    0% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+    100% {
+        filter: blur(25px);
+        opacity: 0.7;
     }
 }
 
@@ -139,7 +162,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(15, 60, 120, 0.15); /* Vivid blue with low opacity */
     cursor: pointer;
     z-index: 10;

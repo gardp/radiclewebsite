@@ -65,99 +65,103 @@
 }
 
 /* Custom styling for the prev and next buttons */
-.audio-controls .prev.skeuomorphic-btn.light,
-.audio-controls .next.skeuomorphic-btn.light {
-  background: linear-gradient(145deg, rgba(15, 60, 120, 0.15), rgba(15, 60, 120, 0.25));
-  border: 1px solid rgba(15, 60, 120, 0.3);
+.audio-controls .prev,
+.audio-controls .next {
+  border-radius: 50%; /* Make perfectly circular */
   box-shadow: 
-    0 3px 8px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    0 4px 10px rgba(0, 0, 0, 0.25),
+    inset 0 1px 3px rgba(230, 181, 76, 0.15);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s ease;
 }
 
-.audio-controls .prev.skeuomorphic-btn.light:hover,
-.audio-controls .next.skeuomorphic-btn.light:hover {
-  background: linear-gradient(145deg, rgba(15, 60, 120, 0.25), rgba(15, 60, 120, 0.35));
-  transform: translateY(-2px);
-  box-shadow: 
-    0 5px 12px rgba(0, 0, 0, 0.3),
-    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+.audio-controls .prev:hover,
+.audio-controls .next:hover {
+  transform: scale(1.08);
 }
 
-.audio-controls .prev.skeuomorphic-btn.light:active,
-.audio-controls .next.skeuomorphic-btn.light:active {
-  background: linear-gradient(145deg, rgba(15, 60, 120, 0.35), rgba(15, 60, 120, 0.25));
-  transform: translateY(1px);
+.audio-controls .prev:active,
+.audio-controls .next:active {
   box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  0 2px 6px rgba(0, 0, 0, 0.25),
+  inset 0 1px 2px rgba(0, 0, 0, 0.15);
+  transform: scale(0.98);
 }
 
 /* Custom styling for the pause button */
-.audio-controls .pause.skeuomorphic-btn.light {
-  background: linear-gradient(145deg, rgba(196, 18, 48, 0.15), rgba(196, 18, 48, 0.25));
-  border: 1px solid rgba(196, 18, 48, 0.3);
-  box-shadow: 
-    0 4px 10px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+.audio-controls .pause {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s ease;
 }
 
-.audio-controls .pause.skeuomorphic-btn.light:hover {
-  background: linear-gradient(145deg, rgba(196, 18, 48, 0.25), rgba(196, 18, 48, 0.35));
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 14px rgba(0, 0, 0, 0.3),
-    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+.audio-controls .pause:hover {
+  transform: scale(1.08);
 }
 
-.audio-controls .pause.skeuomorphic-btn.light:active {
-  background: linear-gradient(145deg, rgba(196, 18, 48, 0.35), rgba(196, 18, 48, 0.25));
-  transform: translateY(1px);
-  box-shadow: 
-    0 2px 5px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(0, 0, 0, 0.1);
+.audio-controls .pause:active {
+  transform: scale(0.98);
 }
 
 /* Custom styling for the play button */
-.audio-controls .play.skeuomorphic-btn.primary {
-  background: linear-gradient(145deg, #0a2e5a, #0f3c78);
-  border: 1px solid rgba(15, 60, 120, 0.6);
-  box-shadow: 
-    0 4px 10px rgba(0, 0, 0, 0.25),
-    inset 0 1px 3px rgba(255, 255, 255, 0.25);
+.audio-controls .play {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s ease;
 }
 
-.audio-controls .play.skeuomorphic-btn.primary:hover {
-  background: linear-gradient(145deg, #0f3c78, #1a4d8c);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 14px rgba(0, 0, 0, 0.35),
-    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+.audio-controls .play:hover {
+  transform: scale(1.08);
 }
 
-.audio-controls .play.skeuomorphic-btn.primary:active {
-  background: linear-gradient(145deg, #082544, #0a2e5a);
-  transform: translateY(1px);
-  box-shadow: 
-    0 2px 5px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(0, 0, 0, 0.15);
+.audio-controls .play:active {
+  transform: scale(0.98);
 }
 
 /* Enhanced icons */
 .audio-controls button img {
-  filter: brightness(1.2);
-  max-width: 60%;
-  max-height: 60%;
+  filter: brightness(1.5) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  max-width: 100%;
+  max-height: 100%;
+  transition: all 0.3s ease;
 }
 
-/* Specific sizes to make buttons more prominent */
-.audio-controls .prev.skeuomorphic-btn.size-sm,
-.audio-controls .next.skeuomorphic-btn.size-sm {
-  width: 32px;
-  height: 32px;
+.audio-controls button:hover img {
+  filter: brightness(1.8) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
-.audio-controls .play.skeuomorphic-btn.size-md,
-.audio-controls .pause.skeuomorphic-btn.size-md {
-  width: 48px;
-  height: 48px;
+/* Styling for the control button images */
+.control-button-img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Specific sizes for the next/prev buttons */
+.audio-controls .prev.size-sm,
+.audio-controls .next.size-sm {
+  width: 64px;
+  height: 64px;
+  /* Center the button better */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+}
+
+.audio-controls .play.size-md,
+.audio-controls .pause.size-md {
+  width: 64px;
+  height: 64px;
+  /* Center the button better */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
 }

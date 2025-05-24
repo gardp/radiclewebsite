@@ -2,7 +2,7 @@
 
 /* Base class for all skeuomorphic buttons */
 .skeuomorphic-btn {
-  /* border-radius: 50%; */
+  border-radius: 50%; /* Make all buttons circular by default */
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;

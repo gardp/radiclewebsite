@@ -19,16 +19,27 @@ const InfoSlider = ({ slides }) => {
         
         // Calculate previous slide index
         const prevIndex = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+        
+        // First render the next slide (which will appear blurry)
         setNextSlide(prevIndex);
-        setSlideDirection('slide-left');
+        
+        // Use a very small delay before setting the direction to ensure the next slide is rendered first
+        setTimeout(() => {
+            setSlideDirection('slide-right');
+        }, 50);
 
         // Wait for animation to complete before changing slide
         setTimeout(() => {
+            // Update the current slide FIRST
             setCurrentSlide(prevIndex);
-            setNextSlide(null);
-            setSlideDirection('');
-            setIsAnimating(false);
-        }, 300); // Match this with the CSS transition duration
+            
+            // Then use a small delay before removing the old slide to prevent flickering
+            setTimeout(() => {
+                setNextSlide(null);
+                setSlideDirection('');
+                setIsAnimating(false);
+            }, 50);
+        }, 800); // Matches the CSS blur transition duration
     };
     
     // Handler for next slide with circular navigation
@@ -38,16 +49,27 @@ const InfoSlider = ({ slides }) => {
         
         // Calculate next slide index
         const nextIndex = currentSlide === totalSlides - 1 ? 0 : currentSlide + 1;
-        setNextSlide(nextIndex);
-        setSlideDirection('slide-right');
         
+        // First render the next slide (which will appear blurry)
+        setNextSlide(nextIndex);
+        
+        // Use a very small delay before setting the direction to ensure the next slide is rendered first
+        setTimeout(() => {
+            setSlideDirection('slide-right');
+        }, 50);
+   
         // Wait for animation to complete before changing slide
         setTimeout(() => {
-            setCurrentSlide(nextIndex);;
-            setNextSlide(null);
-            setSlideDirection('');
-            setIsAnimating(false);
-        }, 300); // Match this with the CSS transition duration
+            // Update the current slide FIRST
+            setCurrentSlide(nextIndex);
+            
+            // Then use a small delay before removing the old slide to prevent flickering
+            setTimeout(() => {
+                setNextSlide(null);
+                setSlideDirection('');
+                setIsAnimating(false);
+            }, 50);
+        }, 800); // Matches the CSS blur transition duration
     };
     
     // Get current, next, and previous slide data
@@ -122,6 +144,37 @@ const InfoSlider = ({ slides }) => {
                         </Link>
                     </div>
                 </div>
+
+                {/* Next Slide - only rendered during transition */}
+                {nextSlideData && (
+                    <div 
+                        className="info-slide next-slide"
+                        style={{ 
+                            backgroundImage: `url(${nextSlideData.url})` 
+                        }}
+                    >
+                        {/* Slide Content Container */}
+                        <div className="slide-content">
+                            {/* Title Overlay */}
+                            <h2 className="slide-title">
+                                {slideTitles[nextSlideData.alt] || nextSlideData.alt}
+                            </h2>
+                            
+                            {/* Sub-headline */}
+                            <p className="slide-subheadline">
+                                {slideSubheadlines[nextSlideData.alt] || ""}
+                            </p>
+                            
+                            {/* Navigation Button */}
+                            <Link 
+                                to={slideLinks[nextSlideData.alt] || "#"} 
+                                className="slide-nav-button"
+                            >
+                                Buy Premium Beats!
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </div>
             
             <div 
@@ -138,42 +191,3 @@ const InfoSlider = ({ slides }) => {
 }
 
 export default InfoSlider;
-
-
-                //This is unecessary transition animation for the next slide...I might erase it later
-                // {/* aah so the data from the next slide is only rendered during transition.*/}
-                // {nextSlideData && (
-                //     <div 
-                //         className={`info-slide next-slide ${slideDirection === 'slide-left' ? 'from-right' : 'from-left'}`}
-                //         style={{ 
-                //             backgroundImage: `url(${nextSlideData.url})` 
-                //         }}
-                //     >
-                //         {/* Slide Content Container */}
-                //         <div className="slide-content">
-                //             {/* Title Overlay */}
-                //             <h2 className="slide-title">
-                //                 {slideTitles[nextSlideData.alt] || nextSlideData.alt}
-                //             </h2>
-                            
-                //             {/* Navigation Button */}
-                //             <Link 
-                //                 to={slideLinks[nextSlideData.alt] || "#"} 
-                //                 className="slide-nav-button"
-                //             >
-                //                 Learn More
-                //             </Link>
-                //         </div>
-                //     </div>
-                // )}
-                // const slideTitles = {
-                //     "Sonic Energy": "Sound Taking Us Back to Our Roots!",
-                //     "Music Production": "Professional Music Production",
-                //     "Songwriting & Arrangement": "Creative Songwriting & Arrangement"
-                // };
-                
-                // const slideSubheadlines = {
-                //     "Sonic Energy": "Percussive, Tribal, Electric and Modern",
-                //     "Music Production": "State-of-the-art recording and mixing services",
-                //     "Songwriting & Arrangement": "Expert composition for your creative vision"
-                // };

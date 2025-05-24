@@ -4,11 +4,11 @@ import '../styles/SkeuomorphicButtons.css';
 import '../styles/AudioControlButtons.css';
 import '../styles/AudioControls.css';
 
-// Import SVGs as URLs from public folder
-const playIcon = process.env.PUBLIC_URL + '/assets/images/play.svg';
-const pauseIcon = process.env.PUBLIC_URL + '/assets/images/pause.svg';
-const nextIcon = process.env.PUBLIC_URL + '/assets/images/next.svg';
-const prevIcon = process.env.PUBLIC_URL + '/assets/images/prev.svg';
+// Import images from public folder
+const playIcon = process.env.PUBLIC_URL + '/assets/images/icons8-play-button.png';
+const pauseIcon = process.env.PUBLIC_URL + '/assets/images/icons8-pause-button.png';
+const nextIcon = process.env.PUBLIC_URL + '/assets/images/icons8-next.png';
+const prevIcon = process.env.PUBLIC_URL + '/assets/images/icons8-prev.png';
 
 const AudioControls = ({
   isPlaying,
@@ -71,38 +71,38 @@ const AudioControls = ({
           <div className="audio-controls">
             <button
               type="button"
-              className="prev skeuomorphic-btn light size-sm"
+              className="prev size-sm"
               aria-label="Previous"
               onClick={onPrevClick}
             >
-              <img src={prevIcon} alt="Previous Track" />
+              <img src={prevIcon} alt="Previous Track" className="control-button-img" />
             </button>
             {isPlaying ? (
               <button
                 type="button"
-                className="pause skeuomorphic-btn light size-md"
+                className="pause size-md"
                 onClick={() => onPlayPauseClick(false)}
                 aria-label="Pause"
               >
-                <img src={pauseIcon} alt="Pause" />
+                <img src={pauseIcon} alt="Pause" className="control-button-img" />
               </button>
             ) : (
               <button
                 type="button"
-                className="play primary size-md"
+                className="play size-md"
                 onClick={() => onPlayPauseClick(true)}
                 aria-label="Play"
               >
-                <img src={playIcon} alt="Play" />
+                <img src={playIcon} alt="Play" className="control-button-img" />
               </button>
             )}
             <button
               type="button"
-              className="next skeuomorphic-btn light size-sm"
+              className="next size-sm"
               aria-label="Next"
               onClick={onNextClick}
             >
-              <img src={nextIcon} alt="Next Track" />
+              <img src={nextIcon} alt="Next Track" className="control-button-img" />
             </button>
           </div>
         </div>
