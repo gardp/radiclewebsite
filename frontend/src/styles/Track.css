@@ -39,6 +39,7 @@
   position: relative;
   box-sizing: border-box;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* Hover state moved from track-item to individual elements */
@@ -378,4 +379,65 @@ a:has(.download-icon) .tooltip::after {
 .track-item.active .track-thumb {
   box-shadow: 0 0 0 3px rgba(196, 18, 48, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3); /* Crimson red border for active tracks */
   border: none;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .track-item {
+    height: 80px; /* Reduce height for mobile */
+    margin: 0 0 6px 0; /* Maintain spacing but smaller */
+  }
+  
+  .track-thumb-container {
+    width: 50px; /* Smaller thumbnail */
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  
+  .track-label {
+    padding: 8px 12px; /* Smaller padding */
+    margin-right: 5px;
+    height: 80px; /* Explicitly set height to match track-item */
+    box-sizing: border-box;
+  }
+  
+  .track-info-line {
+    width: 100%; /* Full width of parent track-label */
+    height: 100%;
+    padding: 0 5px;
+  }
+  
+  .track-info-line .track-title {
+    font-size: 0.85rem; /* Smaller font */
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .track-info-line .track-artist {
+    font-size: 0.75rem; /* Smaller font */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .track-icons {
+    padding: 8px 12px;
+    margin-right: 5px;
+    height: 80px; /* Match track-item height */
+    gap: 8px;
+  }
+  
+  .track-icon {
+    width: 24px; /* Smaller icons */
+    height: 24px;
+    padding: 3px;
+  }
+  
+  /* Hide tooltips on mobile to save space */
+  .tooltip {
+    display: none;
+  }
 }
