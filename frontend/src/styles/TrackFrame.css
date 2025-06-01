@@ -62,10 +62,12 @@
     /* Custom scrollbar styling - maintaining Haitian theme */
     scrollbar-width: thin;
     scrollbar-color: rgba(196, 18, 48, 0.5) rgba(26, 26, 26, 0.3);
-    transform-origin: center top;
+    transform-origin: top left;
     /* Ensure tracks are displayed with appropriate spacing */
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 /* Custom scrollbar styling for WebKit browsers */
@@ -91,6 +93,11 @@
 .tab-content {
     width: 100%;
     margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: auto;
 }
 
 /* Tab pane styling - maximized to fill vertical space */
@@ -100,7 +107,9 @@
     width: 100%;
     gap: 10px; /* Maintain the specified gap between track items */
     padding: 5px 0 0 0; /* Minimal top padding only */
-    height: 100%; /* Fill available height */
+    height: auto; /* Allow natural height instead of filling */
+    align-items: flex-start; /* Align children to the top */
+    justify-content: flex-start; /* Start from the top */
 }
 
 /* Modern tabs styling - minimized vertical footprint */
@@ -250,14 +259,70 @@
 }
 
 @media (max-width: 768px) {
-    .modern-tabs .nav-item {
+    /* Track frame wrapper adjustments */
+    .track-frame-wrapper {
+        transform: scale(1); /* Remove any scaling effect at mobile */
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        padding: 0;
+        height: auto;
+        transform-origin: center top;
+    }
+    
+    /* Track frame container adjustments */
+    .track-frame {
+        padding: 0 0.5rem;
+        min-height: 200px; /* Reduce minimum height */
+        max-height: 300px; /* Add maximum height */
+        overflow: hidden;
+    }
+    
+    /* Track list adjustments */
+    .track-list {
+        padding: 0;
+        height: calc(100% - 30px); /* Reduce space for tabs */
+        max-height: 270px;
+        overflow-y: auto;
+    }
+    
+    /* Tab navigation adjustments */
+    .modern-tabs {
+        padding: 0.25rem 0.5rem 0;
+        min-height: 25px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar IE and Edge */
+    }
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .modern-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .modern-tabs .nav-item,
+    .modern-tabs .modern-tab-item {
+        margin: 0 0.2rem;
+        flex-shrink: 0;
+    }
+    
+    .modern-tabs .nav-item .nav-link,
+    .modern-tabs .modern-tab-item .modern-tab-link {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+        border-radius: 40px;
         margin: 0 0.2rem;
     }
     
-    .modern-tabs .nav-item .nav-link {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
-        border-radius: 40px;
+    /* Tab content adjustments */
+    .tab-content {
+        margin-top: 0.25rem;
+    }
+    
+    .tab-pane {
+        gap: 6px; /* Reduce spacing between tracks */
+        padding: 2px 0 0 0;
     }
 }
 

@@ -15,7 +15,6 @@ const AudioControls = ({
   onPlayPauseClick,
   onPrevClick,
   onNextClick,
-  controlsSize = 1, // Default to 1 if not provided
   // Track info props
   image,
   title,
@@ -29,16 +28,27 @@ const AudioControls = ({
   onScrubEnd,
   trackStyling,
 }) => {
-  // Set the CSS variable for controls size when the component mounts or size changes
-  useEffect(() => {
-    document.documentElement.style.setProperty('--controls-base-size', controlsSize);
-  }, [controlsSize]);
+  // Size customization functionality has been removed
+
+  // Using a ref to track media query for desktop view
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    // Check if we're on desktop
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    setIsDesktop(mediaQuery.matches);
+
+    // Update state when viewport size changes
+    const handleResize = (e) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener('change', handleResize);
+
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
 
   return (
-    <div className="controls-container" style={{ transform: `scale(${controlsSize})` }}>
-      <div className="now-playing-container">
-        <h1 className="now-playing-title">Now Playing</h1>
-        
+    <div className="controls-container">
+      {/* Vinyl artwork for desktop - direct child of controls-container */}
+      {isDesktop && (
         <div className={`vinyl-artwork-container ${isPlaying ? 'is-playing' : ''}`}>
           <img
             className="vinyl-artwork"
@@ -46,6 +56,19 @@ const AudioControls = ({
             alt={`track artwork for ${title}`}
           />
         </div>
+      )}
+      <h1 className="now-playing-title">Now Playing</h1>
+      <div className="now-playing-container">
+        {/* Vinyl artwork for mobile - inside now-playing-container */}
+        {!isDesktop && (
+          <div className={`vinyl-artwork-container ${isPlaying ? 'is-playing' : ''}`}>
+            <img
+              className="vinyl-artwork"
+              src={image}
+              alt={`track artwork for ${title}`}
+            />
+          </div>
+        )}
         
         <div className="track-info-frame">
           <div className="track-info">

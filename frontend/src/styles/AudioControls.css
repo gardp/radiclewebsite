@@ -1,4 +1,8 @@
-/* AudioControls.css */
+/* AudioControls.css - Restructured and consolidated */
+
+/* ====================
+   1. VARIABLES
+   ==================== */
 :root {
   --haiti-blue: #0f3c78; /* Vivid blue */
   --haiti-red: #c41230; /* Rich crimson red */
@@ -6,40 +10,50 @@
   --haiti-dark: #1a1a1a; /* Neutral dark base */
 }
 
-/* Now Playing frame styling */
+/* ====================
+   2. CONTAINERS & LAYOUT
+   ==================== */
+
+/* Main container for all audio controls */
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  transform-origin: center center;
+  box-sizing: border-box;
+  padding: 0;
+  min-height: 600px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Now Playing frame - transparent by default for desktop */
 .now-playing-container {
   position: relative;
   padding: 1.5rem;
-  border-radius: 0px; /* justink */
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(230, 181, 76, 0.15);
   width: 100%;
   margin: 0 auto;
-  margin-top: 2rem; /* Adding explicit top margin and ensuring it comes AFTER the shorthand */
-  overflow: hidden;
+  margin-top: 2rem;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  
+  /* Transparent by default for desktop */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  border-radius: 0;
 }
 
-/* Gold-colored glow on the border */
-.now-playing-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 0px; /* justink */
-  border: 1px solid rgba(230, 181, 76, 0.3);
-  box-shadow: 0 0 15px rgba(230, 181, 76, 0.2);
-  pointer-events: none;
-  z-index: -1;
-}
-
+/* Now playing title */
 .now-playing-title {
   color: var(--haiti-gold);
   text-align: center;
@@ -52,9 +66,10 @@
   padding-bottom: 0.75rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   width: 100%;
+  position: relative;
 }
 
-/* Track info frame styling */
+/* Track info frame */
 .track-info-frame {
   background: rgba(15, 60, 120, 0.2);
   border-radius: 0px; /* justink */
@@ -65,13 +80,14 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
-/* Controls frame styling */
+/* Controls frame */
 .controls-frame {
   background: rgba(26, 26, 26, 0.6);
   border-radius: 16px; /* Curved edges */
-  padding: 1rem;
+  padding: 0.25rem;
   border: 1px solid rgba(230, 181, 76, 0.2);
   backdrop-filter: blur(10px);
   box-shadow: 
@@ -86,7 +102,21 @@
   overflow: hidden;
 }
 
-/* Add subtle gold glow to the controls frame */
+/* ====================
+   3. VINYL ARTWORK STYLING
+   ==================== */
+
+/* Vinyl artwork container styling */
+.vinyl-artwork-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  max-height: 70%;
+  position: relative;
+}
+
+/* Gold glow on controls frame */
 .controls-frame::before {
   content: '';
   position: absolute;
@@ -101,30 +131,21 @@
   z-index: -1;
 }
 
-/* Modified controls-container to have better proportions */
-.controls-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  transform-origin: center center;
-  box-sizing: border-box;
-  padding: 0; /* Remove any padding */
-}
+/* ====================
+   3. VINYL ARTWORK
+   ==================== */
 
-/* Vinyl artwork styling */
+/* Vinyl artwork container */
 .vinyl-artwork-container {
   display: flex;
   justify-content: center;
   margin-bottom: 0.8rem;
   width: 100%;
   max-height: 70%;
+  position: relative;
 }
 
+/* Vinyl artwork base styling */
 .vinyl-artwork {
   width: 80%;
   max-width: 240px;
@@ -135,13 +156,24 @@
   border: 2px solid rgba(230, 181, 76, 0.3); /* Gold border matching Haitian art theme */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 0 5px rgba(26, 26, 26, 0.3); /* Dual shadow for depth */
   transition: all 0.3s ease;
+  will-change: transform;
+  transform-origin: center;
 }
 
-/* Add a record-like appearance */
-.vinyl-artwork-container {
-  position: relative;
+/* Vinyl rotation animation */
+@keyframes rotate-vinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
+/* Playing state styling for vinyl */
+.is-playing .vinyl-artwork {
+  animation: rotate-vinyl 20s linear infinite;
+  box-shadow: 0 8px 30px rgba(196, 18, 48, 0.15), 0 0 0 5px rgba(26, 26, 26, 0.3);
+}
+
+/* Note: Commented out the center hole styling but keeping for reference */
+/* 
 .vinyl-artwork-container::after {
   content: '';
   position: absolute;
@@ -155,26 +187,13 @@
   border: 1px solid rgba(230, 181, 76, 0.5);
   pointer-events: none;
   z-index: 1;
-}
+} */
 
-/* Rotation animation when playing */
-@keyframes rotate-vinyl {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* ====================
+   4. TRACK INFO STYLES
+   ==================== */
 
-.is-playing .vinyl-artwork {
-  animation: rotate-vinyl 20s linear infinite;
-  box-shadow: 0 8px 30px rgba(196, 18, 48, 0.15), 0 0 0 5px rgba(26, 26, 26, 0.3);
-}
-
-/* Ensure smooth animation */
-.vinyl-artwork {
-  will-change: transform;
-  transform-origin: center;
-}
-
-/* Enhance title and artist styling */
+/* Track title styling */
 .track-info .title {
   font-size: 1rem;
   margin-bottom: 0.4rem;
@@ -186,6 +205,7 @@
   white-space: nowrap;
 }
 
+/* Track artist styling */
 .track-info .artist {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.9);
@@ -197,14 +217,77 @@
   white-space: nowrap;
 }
 
-/* Progress bar adjustments */
+/* ====================
+   5. PROGRESS BAR STYLING
+   ==================== */
+
+/* Progress bar base styles - consolidated from all files */
 .progress {
-  height: 6px;
-  margin: 1.5rem 0;
+  height: 12px;
   width: 100%;
+  margin: 0.5rem 0;
+  position: relative;
+  z-index: 15; /* Higher than the now-playing-container */
+  border-radius: 6px;
+  background: rgba(196, 18, 48, 0.3); /* Rich crimson red with transparency for slider track */
+  transition: background 0.2s ease;
+  cursor: pointer;
+  -webkit-appearance: none; /* Reset default browser styling */
+  appearance: none; /* Standard property for compatibility */
 }
 
-/* Audio controls styling */
+/* Progress bar states */
+.progress:hover {
+  background: rgba(196, 18, 48, 0.5); /* Brighter red on hover */
+}
+
+.progress:focus {
+  outline: none;
+}
+
+/* Browser-specific slider styling - WebKit (Chrome/Safari) */
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--haiti-gold); /* Gold for the slider thumb */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+/* Browser-specific slider styling - Mozilla (Firefox) */
+.progress::-moz-range-thumb {
+  width: 12px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--haiti-gold); /* Gold for the slider thumb */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* Active states for slider thumb */
+.progress:active::-webkit-slider-thumb {
+  background: var(--haiti-blue); /* Blue when actively sliding */
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(15, 60, 120, 0.5);
+}
+
+.progress:active::-moz-range-thumb {
+  background: var(--haiti-blue); /* Blue when actively sliding */
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(15, 60, 120, 0.5);
+}
+
+/* ====================
+   6. AUDIO CONTROLS STYLING
+   ==================== */
+
+/* Audio controls button container */
 .audio-controls {
   display: flex;
   justify-content: center;
@@ -218,32 +301,161 @@
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive adjustments */
+/* ====================
+   7. RESPONSIVE STYLING
+   ==================== */
+
+/* Mobile styles (max-width: 768px) */
 @media (max-width: 768px) {
+  /* Container adjustments */
+  .controls-container {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.5rem;
+    margin: 0 auto;
+    overflow: visible;
+  }
+  
+  /* Now-playing-container styling for mobile only */
   .now-playing-container {
+    /* Visual styling for mobile */
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(230, 181, 76, 0.15);
+    border-radius: 0px;
+    
+    /* Layout adjustments */
     margin: 0 auto;
     padding: 0.5rem;
     width: 100%;
   }
   
+  /* Now playing title adjustments */
   .now-playing-title {
     font-size: 1rem;
   }
   
+  /* Vinyl artwork size for mobile */
   .vinyl-artwork {
     width: 140px;
     height: 140px;
   }
 }
 
+/* Desktop styles (min-width: 768px) */
 @media (min-width: 768px) {
-  .now-playing-container {
-    margin: 0 auto;
-    padding: 1.5rem;
-    width: 100%;
-  }
+  /* Main container adjustments */
   .controls-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;  /* Allow natural height based on content */
+    min-height: 500px; /* Minimum height to ensure vinyl has room to display */
+    padding-top: 0.5rem;
+    margin-top: 0;
+    margin-left: 2rem;
     align-items: center;
+  }
+  
+  /* Audio controls adjustments */
+  .audio-controls {
+    margin-bottom: 0;
+    z-index: 15;
+    position: relative;
+  }
+  
+  /* Controls frame adjustments */
+  .controls-frame {
+    z-index: 15;
+    position: relative;
+    margin-top: 0;
+  }
+  
+  /* Now playing container - completely unstyled for desktop */
+  .now-playing-container {
+    /* Positioning */
+    z-index: 10;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    
+    /* Remove all visual styling */
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    
+    /* Layout */
+    padding: 1.5rem;
+    padding-top: 5rem;
+    margin: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Now playing title adjustments */
+  .now-playing-title {
+    z-index: 15;
+    position: relative;
+    margin-bottom: 2rem;
+    color: #000000;
+    text-shadow: none;
+    align-self: flex-start;
+    order: -1;
+    padding-top: 10px;
+    margin-bottom: auto;
+    flex-shrink: 0;
+  }
+  
+  /* Track info frame adjustments */
+  .track-info-frame {
+    z-index: 15;
+    position: relative;
+    padding: 0.25rem;
+  }
+  
+  /* Track info text color for desktop */
+  .track-info .title,
+  .track-info .artist {
+    color: #000000;
+  }
+  
+  /* Progress container adjustments */
+  .progress-container {
+    z-index: 15;
+    position: relative;
+  }
+  
+  /* Vinyl artwork container positioning - dependent on controls container */
+  .controls-container > .vinyl-artwork-container {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    right: 0;
+    height: 180%;  /* Double the container height to allow for overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    max-height: none;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Vinyl artwork styling for desktop */
+  .vinyl-artwork {
+    max-width: calc(1200px);
+    width: auto;
+    position: relative;
+    z-index: 1;
+    border-width: 4px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 8px rgba(26, 26, 26, 0.4);
   }
 }
     

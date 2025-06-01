@@ -47,71 +47,23 @@ button {
   cursor: pointer;
 }
 
-input[type="range"] {
-  height: 4px;
-  /* -webkit-appearance: none; */
-  width: 100%;
-  margin-bottom: 8px;
-  border-radius: 6.4px;
-  background: rgba(196, 18, 48, 0.3); /* Rich crimson red with transparency for slider track */
-  transition: background 0.2s ease;
-  cursor: pointer;
-}
-
-/* Add progress bar and thumb styling */
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--haiti-gold); /* Gold for the slider thumb */
-  cursor: pointer;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--haiti-gold); /* Gold for the slider thumb */
-  cursor: pointer;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-  border: none;
-}
-
-input[type="range"]:focus {
-  outline: none;
-}
-
-input[type="range"]:hover {
-  background: rgba(196, 18, 48, 0.5); /* Brighter red on hover */
-}
-
-input[type="range"]:active::-webkit-slider-thumb {
-  background: var(--haiti-blue); /* Blue when actively sliding */
-  transform: scale(1.2);
-}
-
-input[type="range"]:active::-moz-range-thumb {
-  background: var(--haiti-blue); /* Blue when actively sliding */
-  transform: scale(1.2);
-}
+/* Progress bar styles moved to AudioControls.css */
 
 .audio-player {
   max-width: 100%;
   width: 100%;
   height: 100%;
-  padding: 0; /* Remove padding to match row dimensions */
-  border-radius: 16px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 0;
   color: var(--white);
   transition: all 0.3s ease;
-  display: flex; /* Ensure flexbox layout */
+  display: flex;
   align-items: center;
-  justify-content: center; /* Center content horizontally */
+  justify-content: center;
   box-sizing: border-box;
-  overflow: hidden; /* Prevent content from overflowing */
+  overflow: hidden;
+  /* Match parent container dimensions */
+  aspect-ratio: inherit;
 }
 
 /* Player title styling - modeled after InfoSlider's title styling */
@@ -162,7 +114,7 @@ input[type="range"]:active::-moz-range-thumb {
   display: flex;
   justify-content: space-between;
   width: var(--controls-width);
-  margin: 0 auto var(--controls-margin-bottom);
+  margin: 0;
 }
 
 /* Added for proper scaling and centering of the controls container */
@@ -291,6 +243,41 @@ input[type="range"]:active::-moz-range-thumb {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  /* Match parent container dimensions */
+  aspect-ratio: inherit;
+}
+
+/* Styles for medium-to-large screens */
+@media (min-width: 768px) {
+  .player-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "controls-container track-frame-container";
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 1680px;
+    padding: 1rem;
+    overflow: visible;
+  }
+  
+  /* controls-container styling moved to AudioControls.css */
+  
+  .now-playing-container {
+    background: rgba(26, 26, 26, 0.7); /* Slightly more opaque for better contrast with large vinyl */
+    border: 1px solid rgba(230, 181, 76, 0.2); /* Gold border from Haitian theme */
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    padding-bottom: 0rem;
+    overflow: visible;
+  }
+  
+  .track-frame-container {
+    align-self: center;
+    justify-self: flex-start;
+    height: auto;
+    padding-left: 2rem;
+  }
 }
 
 .track-frame-container {
@@ -327,6 +314,7 @@ input[type="range"]:active::-moz-range-thumb {
     align-items: center; 
     height: 100%;
     max-width: 100%;
+    padding-top: 1rem;
   }
   
   /* Adjust containers to fill height appropriately for 16:7 ratio */
@@ -366,16 +354,74 @@ input[type="range"]:active::-moz-range-thumb {
 @media (max-width: 768px) {
   .audio-player {
     width: 100%;
-    padding: 9.6px;
+    padding: 8px;
+    overflow: visible;
   }
 
-  .artwork {
-    height: 240px;
-    width: 240px;
+  .player-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "controls-container"
+      "track-frame-container";
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* controls-container mobile styling moved to AudioControls.css */
+
+  .now-playing-container {
+    transform: scale(0.85);
+    transform-origin: center top;
+    margin-bottom: 0.5rem;
+  }
+
+  .vinyl-artwork-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1rem;
+  }
+
+  .vinyl-artwork {
+    width: 100%;
+    height: 100%;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .artist {
+    font-size: 0.85rem;
   }
 
   .audio-controls {
     width: 80%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Scale down control buttons */
+  .prev, .next {
+    width: 24px;
+    height: 24px;
+  }
+
+  .play, .pause {
+    width: 32px;
+    height: 32px;
+  }
+
+  .control-button-img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ensure progress bar fits properly */
+  input[type="range"] {
+    height: 3px;
+    margin-bottom: 0.5rem;
   }
 }
 

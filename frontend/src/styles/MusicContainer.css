@@ -1,10 +1,9 @@
 .music-container {
-    transform: scale(0.7);
-    /* Fixed aspect ratio container */
+    /* Using the original scale transformation but ensuring children inherit dimensions */
     aspect-ratio: 16/8;
     width: 100%;
     max-width: 1600px; /* Maximum width to maintain quality */
-    margin: 1rem auto 0;
+    margin: 0 auto; /* Center container */
     padding: 0;
     display: flex;
     align-items: center;
@@ -15,11 +14,11 @@
     background-color: transparent;
     position: relative;
     z-index: 1;
-    /* Using padding for internal spacing only */
-    padding: 0 15px;
     box-sizing: border-box;
     overflow: hidden;
   }
+  
+/* Using Bootstrap Row instead of player-wrapper */
   
   .music-container::before {
     content: '';
@@ -41,20 +40,39 @@
     justify-content: center;
     align-items: center; /* Center vertically */
     width: 100%;
+    height: 100%; /* Match parent height */
     max-width: 100%;
-    margin: 0 0 2rem 0; /* Keep bottom margin from music-item */
-    padding: 0; /* Remove any padding */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
     .music-container {
-        padding: 1rem;
+        padding: 0;
         margin: 0 auto;
-        max-width: 1200px;
+        max-width: 100%;
+        aspect-ratio: auto; /* Remove fixed aspect ratio on mobile */
+        height: auto;
+        overflow: visible;
     }
     
     .g-0 {
-        margin-bottom: 1rem;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+    
+    /* Adjust background overlay */
+    .music-container::before {
+        opacity: 0.6; /* Slightly more opaque on mobile for better contrast */
     }
 }
 

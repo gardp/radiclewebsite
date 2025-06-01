@@ -6,55 +6,7 @@
   --haiti-dark: #1a1a1a; /* Neutral dark base */
 }
 
-/* Progress bar styling */
-.progress {
-  height: 4px;
-  width: 100%;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  background: rgba(196, 18, 48, 0.3) !important; /* Rich crimson red with transparency */
-  transition: background 0.2s ease;
-  cursor: pointer;
-}
-
-.progress:hover {
-  background: rgba(196, 18, 48, 0.5) !important;
-}
-
-.progress::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--haiti-gold) !important; /* Gold for the slider thumb */
-  cursor: pointer;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
-}
-
-.progress::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--haiti-gold) !important; /* Gold for the slider thumb */
-  cursor: pointer;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-  border: none;
-  transition: all 0.2s ease;
-}
-
-.progress:active::-webkit-slider-thumb {
-  background: var(--haiti-blue) !important; /* Blue when actively sliding */
-  transform: scale(1.2);
-  box-shadow: 0 0 8px rgba(15, 60, 120, 0.5);
-}
-
-.progress:active::-moz-range-thumb {
-  background: var(--haiti-blue) !important; /* Blue when actively sliding */
-  transform: scale(1.2);
-  box-shadow: 0 0 8px rgba(15, 60, 120, 0.5);
-}
+/* Progress bar styles moved to AudioControls.css */
 
 /* Audio controls button styling */
 .audio-controls {

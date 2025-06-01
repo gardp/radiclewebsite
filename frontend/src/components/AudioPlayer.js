@@ -4,9 +4,8 @@ import TrackFrame from "./TrackFrame";
 import "../styles/AudioPlayer.css";
 
 
-const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0, playerTitle}) => {
+const AudioPlayer = ({ tracks, playerTitle}) => {
   console.log("AudioPlayer received tracks:", tracks); // Debug log
-  console.log("AudioPlayer orientation:", orientation); // Debug log for orientation
   // State
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -144,7 +143,7 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0, playerT
   return (
     <div className="audio-player">
       {/* {playerTitle && <h2 className="player-title">{playerTitle}</h2>} */}
-      <div className={`player-grid ${orientation === 1 ? 'vertical-layout' : ''}`}>
+      <div className="player-grid">
         <div className="track-frame-container">
           <TrackFrame 
             tabs={
@@ -163,7 +162,6 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0, playerT
           //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
             currentTrackIndex={currentTrackIndex}
             onTrackSelect={setCurrentTrackIndex}
-            trackSize={trackSize}
           />
         </div>
         <AudioControls
@@ -181,7 +179,7 @@ const AudioPlayer = ({ tracks, trackSize, controlsSize, orientation = 0, playerT
           artist={artist}
           audioSrc={audioSrc}
           color={color}
-          controlsSize={controlsSize}
+          // controlsSize prop removed
         />
       </div>
     </div>

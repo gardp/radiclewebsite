@@ -14,10 +14,8 @@ import Track from './Track';
  * @param {Array} tabs - Array of tab objects with label and content properties
  * @param {Number} currentTrackIndex - Index of currently playing track
  * @param {Function} onTrackSelect - Callback when track is selected
- * @param {Number} trackSize - Size multiplier for tracks
- * @param {String} orientation - Layout orientation (not currently used)
  */
-const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, orientation }) => (
+const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect }) => (
   <>
     <div className="track-frame-wrapper">
       <Tab.Container defaultActiveKey={0}>
@@ -43,7 +41,6 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect, trackSize, or
                       track={track}
                       isActive={trackIndex === currentTrackIndex}
                       onClick={() => onTrackSelect(trackIndex)}
-                      size={trackSize}
                     />
                   ))}
                 </Tab.Pane>

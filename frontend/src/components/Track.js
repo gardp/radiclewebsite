@@ -6,7 +6,7 @@ import PricingTable from './PricingTable';
 import { useSelector, useDispatch } from 'react-redux';
 import { openPricingModal, closePricingModal } from '../features/priceLicensing/priceLicensing.js';
 
-const Track = ({ track, isActive, onClick, size }) => {
+const Track = ({ track, isActive, onClick }) => {
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { currentTrack } = useSelector((state) => state.priceLicensing); // read nad destructure currentTrack from state
@@ -19,10 +19,7 @@ const Track = ({ track, isActive, onClick, size }) => {
     }
   };
 
-  // Set the CSS variable for track size when the component mounts or size changes
-  useEffect(() => {
-    document.documentElement.style.setProperty('--track-base-size', size);
-  }, [size]);
+  // Size functionality has been removed
   
   // Handle cart icon click to open pricing modal
   const handleCartClick = (e) => {

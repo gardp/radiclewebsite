@@ -1,12 +1,11 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import AudioPlayer from './AudioPlayer';
 import '../styles/AudioPlayer.css';
 import '../styles/MusicContainer.css';
 import React from 'react';
 
-const MusicContainer = ({ tracks, trackSize, controlsSize, orientation, playerTitle }) => {
-  // trackSize is for the track title and artist in the TrackFrame
-  // controlsSize the control of the currently playing tracks in the AudioControls component
+const MusicContainer = ({ tracks, playerTitle, scale = 1 }) => {
+  // Props for customization have been simplified
   console.log("MusicContainer received tracks:", tracks); // Debug log
   // const [activePlayer, setActivePlayer] = useState(null);
 
@@ -14,20 +13,25 @@ const MusicContainer = ({ tracks, trackSize, controlsSize, orientation, playerTi
   //   setActivePlayer(index);
   // };
 
+  // Validate scale is within allowed range (0.5 to 1)
+  const validScale = Math.min(Math.max(scale, 0.5), 1);
+  
+  const containerStyle = {
+    transform: `scale(${validScale})`,
+    transformOrigin: 'center center',
+  };
+
   return (
-    <Container fluid className="music-container">
+    <Container fluid className="music-container" style={containerStyle}>
       <Row className="g-0 w-100"> 
-          <AudioPlayer 
-            tracks={tracks} 
-            trackSize={trackSize}
-            controlsSize={controlsSize}
-            orientation={orientation}
-            playerTitle={playerTitle}
-            // isActive={activePlayer === index} // Boolean true or false to determine if the player is active
-            // onPlay={() => handlePlay(index)}
-            // onPause={() => setActivePlayer(null)}
-          />
-          {/* {console.log("The music container track is:", tracks)} */}
+        <AudioPlayer 
+          tracks={tracks} 
+          playerTitle={playerTitle}
+          // isActive={activePlayer === index} // Boolean true or false to determine if the player is active
+          // onPlay={() => handlePlay(index)}
+          // onPause={() => setActivePlayer(null)}
+        />
+        {/* {console.log("The music container track is:", tracks)} */}
       </Row>
     </Container>
   );
