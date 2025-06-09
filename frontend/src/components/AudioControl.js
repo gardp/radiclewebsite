@@ -9,6 +9,14 @@ const playIcon = process.env.PUBLIC_URL + '/assets/images/icons8-play-button.png
 const pauseIcon = process.env.PUBLIC_URL + '/assets/images/icons8-pause-button.png';
 const nextIcon = process.env.PUBLIC_URL + '/assets/images/icons8-next.png';
 const prevIcon = process.env.PUBLIC_URL + '/assets/images/icons8-prev.png';
+const playIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-play-black.png';
+const pauseIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-pause-button-black.png';
+const nextIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-next-black.png';
+const prevIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-prev-black.png';
+const nextIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-next-yellow.png';
+const playIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-play-yellow.png';
+const pauseIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-pause-yellow.png';
+const prevIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-prev-yellow.png';
 
 const AudioControls = ({
   isPlaying,
@@ -98,7 +106,11 @@ const AudioControls = ({
               aria-label="Previous"
               onClick={onPrevClick}
             >
-              <img src={prevIcon} alt="Previous Track" className="control-button-img" />
+              <img 
+                src={isDesktop ? prevIconYellow : prevIcon} 
+                alt="Previous Track" 
+                className="control-button-img" 
+              />
             </button>
             {isPlaying ? (
               <button
@@ -107,7 +119,11 @@ const AudioControls = ({
                 onClick={() => onPlayPauseClick(false)}
                 aria-label="Pause"
               >
-                <img src={pauseIcon} alt="Pause" className="control-button-img" />
+                <img 
+                  src={isDesktop ? pauseIconYellow: pauseIcon} 
+                  alt="Pause" 
+                  className="control-button-img" 
+                />
               </button>
             ) : (
               <button
@@ -116,7 +132,11 @@ const AudioControls = ({
                 onClick={() => onPlayPauseClick(true)}
                 aria-label="Play"
               >
-                <img src={playIcon} alt="Play" className="control-button-img" />
+                <img 
+                  src={isDesktop ? playIconYellow : playIcon} 
+                  alt="Play" 
+                  className="control-button-img" 
+                />
               </button>
             )}
             <button
@@ -125,7 +145,11 @@ const AudioControls = ({
               aria-label="Next"
               onClick={onNextClick}
             >
-              <img src={nextIcon} alt="Next Track" className="control-button-img" />
+              <img 
+                src={isDesktop ? nextIconYellow : nextIcon} 
+                alt="Next Track" 
+                className="control-button-img" 
+              />
             </button>
           </div>
         </div>

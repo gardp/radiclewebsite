@@ -1,10 +1,4 @@
-/* FeaturedHighlight.css */
-:root {
-  --haiti-blue: #0f3c78; /* Vivid blue */
-  --haiti-red: #c41230; /* Rich crimson red */
-  --haiti-gold: #e6b54c; /* Gold/yellow accent */
-  --haiti-dark: #1a1a1a; /* Neutral dark base */
-}
+
 
 /* Transition container with gradient background */
 .featured-highlight-container {

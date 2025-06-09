@@ -61,7 +61,7 @@ button {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible; /* justink*/
   /* Match parent container dimensions */
   aspect-ratio: inherit;
 }
@@ -78,60 +78,12 @@ button {
   letter-spacing: 0.02em;
 }
 
-.artwork {
-  border-radius: 50%;
-  /* border: 3px solid rgba(255, 255, 255, 0.15); */
-  padding: 3px;
-  display: block;
-  margin: auto;
-  margin-bottom: 1rem;
-  height: 480px;
-  width: 480px;
-  position: relative;
-  overflow: hidden;
-  /* Skeuomorphic styling now handled by classes */
-}
 
-.track-info {
-  text-align: center;
-  z-index: 1;
-  position: relative;
-}
 
-.title {
-  font-weight: 700;
-  margin-bottom: 3.2px;
-  color: var(--haiti-gold); /* Gold accent for title */
-}
 
-.artist {
-  font-weight: 300;
-  margin-top: 0;
-  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for artist name */
-}
 
-.audio-controls {
-  display: flex;
-  justify-content: space-between;
-  width: var(--controls-width);
-  margin: 0;
-}
 
-/* Added for proper scaling and centering of the controls container */
-.controls-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  grid-area: controls-container;
-  min-height: 100%;
-  width: 100%; /* Ensure full width */
-  transform-origin: center center;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-}
-
-.prev, .next {
+/* .prev, .next {
   width: var(--prev-next-button-size);
   height: var(--prev-next-button-size);
 }
@@ -139,215 +91,56 @@ button {
 .play, .pause {
   width: var(--play-pause-button-size);
   height: var(--play-pause-button-size);
-}
+} */
 
-/* Current Track Styles */
-.current-track {
-  margin-bottom: 1.6rem;
-}
 
-/* Track List Styles */
-.track-list {
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  margin: 1.6rem 0;
-  overflow-x: auto;
-  padding: 0.8rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--haiti-red) rgba(26, 26, 26, 0.3);
-}
 
-/* Styling for scrollbar */
-.track-list::-webkit-scrollbar {
-  height: 6px;
-}
 
-.track-list::-webkit-scrollbar-track {
-  background: rgba(26, 26, 26, 0.3);
-  border-radius: 4px;
-}
-
-.track-list::-webkit-scrollbar-thumb {
-  background-color: var(--haiti-red);
-  border-radius: 4px;
-}
-
-.track-item {
-  flex: 0 0 auto;
-  width: var(--track-item-width);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  opacity: 0.7;
-
-}
-
-.track-item:hover {
-  transform: translateY(-4px);
-  opacity: 0.9;
-}
-
-/* .track-item.active {
-  opacity: 1; */
-  /* transform: scale(1.04); */
-  /* transition: all 0.3s ease-in-out; */
-  /* Add subtle highlight for active track */
-  /* box-shadow: 0 0 15px rgba(230, 181, 76, 0.3); Subtle gold glow */
-/* } */
-
-.track-thumb {
-  width: var(--track-thumb-size);
-  height: var(--track-thumb-size);
-  border-radius: 50%;
-  margin-bottom: calc(0.4rem * var(--track-base-size));
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.track-item:hover .track-thumb {
-  border-color: var(--haiti-blue); /* Blue border on hover */
-}
-
-.track-thumb.active {
-  border-color: var(--haiti-gold); /* Gold border for active track */
-}
-
-.track-title {
-  font-size: var(--track-title-font-size);
-  margin: calc(0.4rem * var(--track-base-size)) 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--haiti-gold); /* Gold for track titles */
-}
-
-.track-artist {
-  font-size: var(--track-artist-font-size);
-  margin: 0;
-  opacity: 0.8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for artists */
-}
 
 /* Player Grid Layout */
 .player-grid {
+  /* min-width: 1330px; */
+  /* width: 1330px; */
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-areas: 
     "controls-container"
     "track-frame-container";
-  gap: 1.6rem;
-  align-items: center;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  /* Match parent container dimensions */
-  aspect-ratio: inherit;
 }
 
 /* Styles for medium-to-large screens */
 @media (min-width: 768px) {
-  .player-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-      "controls-container track-frame-container";
-    align-items: flex-start;
-    gap: 2rem;
-    margin: 0 auto;
-    max-width: 1680px;
-    padding: 1rem;
-    overflow: visible;
-  }
-  
-  /* controls-container styling moved to AudioControls.css */
-  
-  .now-playing-container {
-    background: rgba(26, 26, 26, 0.7); /* Slightly more opaque for better contrast with large vinyl */
-    border: 1px solid rgba(230, 181, 76, 0.2); /* Gold border from Haitian theme */
-    backdrop-filter: blur(12px);
-    padding: 2rem;
-    padding-bottom: 0rem;
-    overflow: visible;
-  }
-  
-  .track-frame-container {
-    align-self: center;
-    justify-self: flex-start;
-    height: auto;
-    padding-left: 2rem;
-  }
-}
-
 .track-frame-container {
   width: 100%;
-  max-width: 1000px;
   grid-area: track-frame-container;
   position: relative;
-  overflow: hidden; /*hide overflow*/
+  overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   transform-origin: left top;
   box-sizing: border-box;
   transform: scale(var(--track-base-size));
-  margin: 0;
+  margin: auto;
   transition: transform 0.3s ease;
-}
+  height: 100%;
+  /* padding-right: 16px;*/
+} 
 
-/* .controls-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  grid-area: controls-container;
-  min-height: 100%;
-} */
-
-@media (min-width: 768px) {
   .player-grid {
     grid-template-columns: 40% 60%;
     grid-template-areas: 
       "controls-container track-frame-container";
     gap: 1.4rem;
     align-items: center; 
+    box-sizing: border-box;
     height: 100%;
-    max-width: 100%;
-    padding-top: 1rem;
+    width: 100%;
+    overflow: hidden;
   }
   
-  /* Adjust containers to fill height appropriately for 16:7 ratio */
-  .controls-container,
-  .track-frame-container {
-    height: 100%;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* For orientation=1, always use vertical layout */
-  .player-grid.vertical-layout {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "controls-container"
-      "track-frame-container";
-    gap: 1.6rem;
-    align-items: start;
-  }
-
-}
-
-/* Tracks container for lists outside the frame */
-.tracks-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px;
 }
 
 /* Adjust for small screens */
@@ -367,70 +160,16 @@ button {
     align-items: center;
     justify-items: center;
     max-height: none;
-    overflow: visible;
-  }
-
-  /* controls-container mobile styling moved to AudioControls.css */
-
-  .now-playing-container {
-    transform: scale(0.85);
-    transform-origin: center top;
-    margin-bottom: 0.5rem;
-  }
-
-  .vinyl-artwork-container {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 1rem;
-  }
-
-  .vinyl-artwork {
-    width: 100%;
-    height: 100%;
-  }
-
-  .title {
-    font-size: 1rem;
-  }
-
-  .artist {
-    font-size: 0.85rem;
+    overflow: hidden;
   }
 
   .audio-controls {
-    width: 80%;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Scale down control buttons */
-  .prev, .next {
-    width: 24px;
-    height: 24px;
-  }
-
-  .play, .pause {
-    width: 32px;
-    height: 32px;
-  }
-
-  .control-button-img {
     width: 100%;
-    height: auto;
-  }
-
-  /* Ensure progress bar fits properly */
-  input[type="range"] {
-    height: 3px;
     margin-bottom: 0.5rem;
   }
-}
 
-@media (min-width: 768px) {
-  .track-frame-container {
-    align-items: flex-start;
-  }
+  
 }
-
 /* Centralized skeuomorphic button styling */
 .button-skeuomorphic {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));

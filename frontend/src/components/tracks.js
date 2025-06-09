@@ -88,7 +88,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -105,7 +105,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -122,7 +122,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -139,7 +139,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -156,7 +156,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -173,7 +173,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -190,7 +190,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -207,7 +207,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -224,7 +224,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -241,7 +241,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -258,7 +258,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -275,7 +275,7 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-black.png`,
+    image: `${imgSrc}vinyl-red.png`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",

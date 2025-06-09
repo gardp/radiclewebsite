@@ -1,21 +1,23 @@
 .music-container {
     /* Using the original scale transformation but ensuring children inherit dimensions */
-    aspect-ratio: 16/8;
-    width: 100%;
-    max-width: 1600px; /* Maximum width to maintain quality */
-    margin: 0 auto; /* Center container */
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid rgba(196, 18, 48, 0.15);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 0;
-    background-color: transparent;
     position: relative;
-    z-index: 1;
+    width: 100%;
+    max-width: 1400px; /* Max width of the container */
+    margin: 2rem auto; /* Centered with some margin */
+    aspect-ratio: 16 / 7; /* Aspect ratio for the container */
+    background-color: var(--haiti-dark); /* Dark background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3), /* Main shadow */
+      inset 0 0 0 2px rgba(230, 181, 76, 0.1); /* Subtle gold inner border */
+    overflow: visible; /* Ensure content stays within rounded corners */
+    padding: 1rem; /* Padding inside the container */
     box-sizing: border-box;
-    overflow: hidden;
+
+    /* Added for scaling */
+    --music-container-scale: 1; /* Default scale */
+    transform-origin: center center;
+    transition: transform 0.25s ease-out; /* Smooths the step changes */
   }
   
 /* Using Bootstrap Row instead of player-wrapper */
@@ -34,6 +36,48 @@
      border: 1px solid RGBA(230, 230, 230, 0.05); /* Very light border */
   }
   /* gemini */
+
+/* Applying the scale transform for desktop views */
+@media (min-width: 768px) {
+  .music-container {
+    transform: scale(var(--music-container-scale));
+  }
+}
+
+/* Default scale for largest screens */
+@media (min-width: 1200px) {
+  .music-container {
+    --music-container-scale: 1;
+  }
+}
+
+/* Step 1: Scale down from 1200px */
+@media (max-width: 1199.98px) and (min-width: 1088px) {
+  .music-container {
+    --music-container-scale: 0.875;
+  }
+}
+
+/* Step 2 */
+@media (max-width: 1087.98px) and (min-width: 976px) {
+  .music-container {
+    --music-container-scale: 0.75;
+  }
+}
+
+/* Step 3 */
+@media (max-width: 975.98px) and (min-width: 864px) {
+  .music-container {
+    --music-container-scale: 0.625;
+  }
+}
+
+/* Step 4: Final scale at 768px */
+@media (max-width: 863.98px) and (min-width: 768px) {
+  .music-container {
+    --music-container-scale: 0.5;
+  }
+}
  
 .g-0 {
     display: flex;
@@ -44,10 +88,10 @@
     max-width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) { /* Adjusted max-width */
     .music-container {
         padding: 0;
         margin: 0 auto;
@@ -55,6 +99,7 @@
         aspect-ratio: auto; /* Remove fixed aspect ratio on mobile */
         height: auto;
         overflow: visible;
+        transform: none; /* Ensure no scaling on mobile */
     }
     
     .g-0 {

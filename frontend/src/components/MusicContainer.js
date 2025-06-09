@@ -16,9 +16,11 @@ const MusicContainer = ({ tracks, playerTitle, scale = 1 }) => {
   // Validate scale is within allowed range (0.5 to 1)
   const validScale = Math.min(Math.max(scale, 0.5), 1);
   
+  // Inline transform scaling removed to allow CSS media queries to control scaling.
+  // transformOrigin is already set in MusicContainer.css
   const containerStyle = {
-    transform: `scale(${validScale})`,
-    transformOrigin: 'center center',
+    // transform: `scale(${validScale})`, // Removed
+    // transformOrigin: 'center center', // Removed
   };
 
   return (

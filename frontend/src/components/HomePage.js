@@ -27,7 +27,7 @@ const HomePage = () => {
           <MusicContainer 
             tracks={tracksData} 
             playerTitle="New Features" 
-            scale={1} /* Scale from 0.5 to 1, where 1 is 100% (default) */
+            scale={0.5} /* Scale from 0.5 to 1, where 1 is 100% (default) */
           />
         </div>
         <div className="content-section">
