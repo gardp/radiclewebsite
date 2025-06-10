@@ -7,6 +7,7 @@ import Media from './Media';
 import NewsletterSub from './NewsletterSub';
 import PricingTable from './PricingTable';
 import CustomNavbar from './CustomNavbar';
+import Section from './Section';
 
 const HomePage = () => {
   return (
@@ -23,16 +24,16 @@ const HomePage = () => {
         {/* <div className="content-section">
           <PricingTable/>
         </div> */}
-        <div className="content-section">
+        <Section title="Latest Music Releases">
           <MusicContainer 
             tracks={tracksData} 
             playerTitle="New Features" 
             scale={0.5} /* Scale from 0.5 to 1, where 1 is 100% (default) */
           />
-        </div>
-        <div className="content-section">
+        </Section>
+        <Section title="More Media">
           <Media/>
-        </div>
+        </Section>
         <div className="content-section">
           <NewsletterSub/>
         </div>

@@ -119,7 +119,7 @@ body {
     max-width: 1440px;
     padding-left: 2rem;
     padding-right: 2rem;
-    margin: 0 1rem !important;
+
     width: 100%;
 }
 
@@ -200,4 +200,33 @@ a:hover {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
     }
+}
+
+/* Content Section Title Styling */
+.content-section-title-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem auto 0; /* Space below the title frame */
+  padding: 0; /* Padding above and below the title text within the frame */ /* Subtle bottom border using accent color */
+  width: 100%; /* Frame takes full width of content-section */
+}
+
+.content-section-title {
+  font-family: 'Montserrat', 'Roboto', sans-serif; /* Consistent with body font */
+  font-size: 2em; /* Larger for emphasis, adjust as needed */
+  font-weight: 600; /* Semi-bold for standout */
+  color: var(--primary-heading-color); /* Use primary heading color from your theme */
+  text-align: center;
+  text-transform: capitalize; /* For Title Case, use 'uppercase' for UPPERCASE if preferred */
+  letter-spacing: 0.05em; /* Slightly increased letter spacing for elegance */
+  margin: 0; /* Remove default h2 margins */
+  padding: auto; /* Padding on the sides of the title text */
+}
+
+.content-section-body {
+  margin: 0 /* Space above the body text */
+  /* Add any specific styling for the body of the content section if needed */
+  /* For example, if you want to ensure it doesn't have extra top margin: */
+  /* margin-top: 0; */
 }
