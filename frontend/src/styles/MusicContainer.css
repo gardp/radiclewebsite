@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     max-width: 1400px; /* Max width of the container */
-    margin: 2rem auto; /* Centered with some margin */
+    margin: 3rem auto; /* Centered with some margin */
     aspect-ratio: 16 / 7; /* Aspect ratio for the container */
     background-color: var(--haiti-dark); /* Dark background */
     border-radius: 15px; /* Rounded corners */

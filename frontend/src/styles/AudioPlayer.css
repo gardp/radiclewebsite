@@ -63,7 +63,7 @@ button {
   box-sizing: border-box;
   overflow: visible; /* justink*/
   /* Match parent container dimensions */
-  aspect-ratio: inherit;
+  /* aspect-ratio: inherit; */
 }
 
 /* Player title styling - modeled after InfoSlider's title styling */

@@ -31,30 +31,10 @@
   transition: transform 0.3s ease;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .controls-container {
-    padding: 0.5rem; /* Fix: was 'auto' */
-    margin: 0 auto;
-    overflow: visible;
-  }
-}
-
-/* Desktop adjustments */
-@media (min-width: 768px) {
-  .controls-container {
-    height: 100%;
-    padding: 0; /* Fix: was 'auto' */
-    margin: 0 auto; /* Fix: was 'auto' */
-    overflow: visible;
-  }
-}
-
 /* Now Playing frame - transparent by default for desktop */
 .now-playing-container {
   position: relative;
-  padding: 0;
-  width: 100%;
+  padding: 1.5rem;
   margin: 0 auto;
   margin-top: auto;
   overflow: visible;
@@ -62,13 +42,13 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  
   /* Transparent by default for desktop */
   background: transparent;
   border: none;
   box-shadow: none;
   backdrop-filter: none;
   border-radius: 0;
+  width: 85%;
 }
 
 /* Now playing title */
@@ -123,16 +103,6 @@
    3. VINYL ARTWORK STYLING
    ==================== */
 
-/* Vinyl artwork container styling */
-.vinyl-artwork-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.8rem;
-  width: 100%;
-  max-height: 70%;
-  position: relative;
-}
-
 /* Gold glow on controls frame */
 .controls-frame::before {
   content: '';
@@ -148,15 +118,6 @@
   z-index: -1;
 }
 
-.now-playing-container {
-  background: rgba(26, 26, 26, 0.7); /* Slightly more opaque for better contrast with large vinyl */
-  border: 1px solid rgba(230, 181, 76, 0.2); /* Gold border from Haitian theme */
-  backdrop-filter: blur(12px);
-  padding: 2rem;
-  padding-bottom: 0rem;
-  overflow: visible;
-}
-
 /* ====================
    3. VINYL ARTWORK
    ==================== */
@@ -167,8 +128,15 @@
   justify-content: center;
   margin-bottom: 0.8rem;
   width: 100%;
-  max-height: 70%;
   position: relative;
+  top: -50%;
+  height: 180%;
+  width: 180%;  /* Double the container height to allow for overflow */
+  align-items: center;
+  overflow: hidden;
+  max-height: none;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .artwork {
@@ -185,11 +153,6 @@
   /* Skeuomorphic styling now handled by classes */
 }
 
-.now-playing-container {
-  transform: scale(0.85);
-  transform-origin: center top;
-  margin-bottom: 0.5rem;
-}
 
 .audio-controls {
   display: flex;
@@ -226,21 +189,6 @@
 }
 
 /* Note: Commented out the center hole styling but keeping for reference */
-/* 
-.vinyl-artwork-container::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  background: rgba(26, 26, 26, 0.8);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(230, 181, 76, 0.5);
-  pointer-events: none;
-  z-index: 1;
-} */
 
 /* ====================
    4. TRACK INFO STYLES
@@ -366,8 +314,8 @@
     width: 100%;
     max-width: 320px;
     padding: 0.5rem;
-    margin: 0 auto;
     overflow: visible;
+    margin: 0 auto;
   }
 
   .vinyl-artwork-container {
@@ -439,21 +387,7 @@
 }
 
 /* Desktop styles (min-width: 768px) */
-@media (min-width: 768px) {
-  /* Main container adjustments */
-  .controls-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;  /* Allow natural height based on content */
-    padding: 0;
-    margin: auto;
-    align-items: center;
-  }
-
-  
-  
+@media (min-width: 768px) {  
   /* Audio controls adjustments */
   .audio-controls {
     margin-bottom: 0;
@@ -481,7 +415,7 @@
     border-radius: 0;
     box-shadow: none;
     backdrop-filter: none;
-    margin-bottom: 2.5%;
+    margin-bottom: 0;
     
   }
 
@@ -505,27 +439,6 @@
   .now-playing-container {
     /* Positioning */
     z-index: 10;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 85%;
-    
-    /* Remove all visual styling */
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    
-    /* Layout */
-    padding: 1.5rem;
-    padding-top: 5rem;
-    margin: 0;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
   
   /* Now playing title adjustments */
@@ -562,18 +475,8 @@
   }
   
   /* Vinyl artwork container positioning - dependent on controls container */
-  .controls-container > .vinyl-artwork-container {
+  .vinyl-artwork-container {
     position: absolute;
-    top: -50%;
-    height: 180%;
-    width: 180%;  /* Double the container height to allow for overflow */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    max-height: none;
-    z-index: 1;
-    pointer-events: none;
   }
   
   /* Vinyl artwork styling for desktop */
