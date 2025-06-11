@@ -120,11 +120,11 @@ button {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  transform-origin: left top;
+  /* transform-origin: left top; */
   box-sizing: border-box;
-  transform: scale(var(--track-base-size));
+  /* transform: scale(var(--track-base-size)); */
   margin: auto;
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
   height: 100%;
   /* padding-right: 16px;*/
 } 

@@ -172,8 +172,8 @@
   border: 2px solid rgba(230, 181, 76, 0.3); /* Gold border matching Haitian art theme */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), 0 0 0 5px rgba(26, 26, 26, 0.3); /* Dual shadow for depth */
   transition: all 0.3s ease;
-  will-change: transform;
-  transform-origin: center;
+  /* will-change: transform;
+  transform-origin: center; */
 }
 
 /* Vinyl rotation animation */

@@ -65,8 +65,8 @@ const Track = ({ track, isActive, onClick }) => {
               <a href="#" onClick={(e) => { e.stopPropagation(); handleCartClick(e); }}>
                 <img
                   // className="track-icon buy-icon skeuomorphic-btn primary with-glare" justink
-                  className="track-icon buy-icon primary with-glare"
-                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-beige.png`}
+                  className="track-icon buy-icon skeuomorphic-btn primary with-glare"
+                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-crimson-red.png`}
                   alt="Buy"
                 />
                 <span className="tooltip">Buy</span>
@@ -89,7 +89,7 @@ const Track = ({ track, isActive, onClick }) => {
               <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                 <img
                   className="track-icon stream-icon skeuomorphic-btn light with-glare"
-                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-youtube-music-50.png`}
+                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-stream-red.png`}
                   alt="Stream"
                 />
                 <span className="tooltip">Stream</span>

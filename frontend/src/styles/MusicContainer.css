@@ -5,7 +5,7 @@
     max-width: 1400px; /* Max width of the container */
     margin: 0 auto 3rem; /* Centered with some margin */
     aspect-ratio: 16 / 7; /* Aspect ratio for the container */
-    background-color: var(--haiti-dark); /* Dark background */
+    background-color: rgba(26, 26, 26, 0.8);; /* Dark background */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 
       0 10px 30px rgba(0, 0, 0, 0.3), /* Main shadow */
@@ -22,19 +22,46 @@
   
 /* Using Bootstrap Row instead of player-wrapper */
   
-  .music-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* **Adjusted:** Use a darker, slightly more opaque overlay */
-    background-color: RGBA(0, 0, 0, 0.5); /* Example: 50% black overlay */
-    z-index: -1; /* Below the content */
-    /* Optional: Add a subtle border to the overlay for definition */
-     border: 1px solid RGBA(230, 230, 230, 0.05); /* Very light border */
-  }
+.music-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* **Adjusted:** Use a darker, slightly more opaque overlay */
+  background-color: RGBA(0, 0, 0, 0.5); /* Example: 50% black overlay */
+  z-index: -1; /* Below the content */
+  /* Optional: Add a subtle border to the overlay for definition */
+  border: 1px solid RGBA(230, 230, 230, 0.05); /* Very light border */
+
+  /* Added for top-left frame accent */
+  width: 20px; /* Adjusted size */
+  height: 20px; /* Adjusted size */
+  border-top: 2px solid rgba(196, 18, 48, 0.8); /* Crimson */
+  border-left: 2px solid rgba(196, 18, 48, 0.8);
+  border-top-left-radius: 8px;
+  /* Ensure only top-left corner has these border properties */
+  border-right: none;
+  border-bottom: none;
+  right: auto; /* Override full width/height for accent */
+  bottom: auto; /* Override full width/height for accent */
+}
+
+/* Added for bottom-right frame accent */
+.music-container::after {
+  content: '';
+  position: absolute;
+  width: 20px; /* Adjusted size */
+  height: 20px; /* Adjusted size */
+  pointer-events: none;
+  z-index: 1; /* Ensure it's above the background but potentially below other content if needed */
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid rgba(15, 60, 120, 0.8); /* Blue */
+  border-right: 2px solid rgba(15, 60, 120, 0.8);
+  border-bottom-right-radius: 8px;
+}
   /* gemini */
 
 /* Applying the scale transform for desktop views */

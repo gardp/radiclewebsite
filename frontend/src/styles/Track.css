@@ -231,8 +231,8 @@ a:has(.stream-icon) .tooltip {
 
 a:has(.buy-icon) .tooltip {
   left: 50%;
-  bottom: calc(-25px * var(--track-base-size));
-  transform: translateX(-50%);
+  /* bottom: calc(-25px * var(--track-base-size));
+  transform: translateX(-50%); */
 }
 
 a:has(.download-icon) .tooltip {
@@ -279,7 +279,7 @@ a:has(.download-icon) .tooltip::after {
   backdrop-filter: blur(8px); /* From track-item */
   border: 1px solid rgba(230, 181, 76, 0.1); /* From track-item - Subtle gold border */
   box-shadow: 0 3px 16px rgba(0, 0, 0, 0.18); /* From track-item */
-  transform-origin: center;
+  /* transform-origin: center; */
   margin-right: 10px; /* Add spacing for visual separation */
 }
 
