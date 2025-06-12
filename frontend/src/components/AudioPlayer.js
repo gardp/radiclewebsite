@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "./AudioControl";
 import TrackFrame from "./TrackFrame";
+import SearchBar from "./SearchBar"; // Import the SearchBar component
 import "../styles/AudioPlayer.css";
 
 
@@ -11,10 +12,22 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   // console.log("Initial render - isPlaying:", isPlaying, "isActive:", isActive);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
 
-  const currentTrack = tracks[currentTrackIndex];
+  // Filter tracks based on search term
+  const filteredTracks = tracks.filter(track => 
+    track.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    track.artist.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Use filteredTracks for display, but manage currentTrackIndex based on the original tracks array
+  // This assumes currentTrackIndex refers to the index in the *original* `tracks` prop.
+  // If a track is filtered out, the player might behave unexpectedly if it was the current track.
+  // A more robust solution would involve updating currentTrackIndex when tracks are filtered,
+  // or ensuring the currently playing track is always part of filteredTracks.
+  const currentTrack = tracks[currentTrackIndex]; 
   // console.log("The current track is:", tracks);
-  const { title, artist, audioSrc, image, color } = currentTrack;
+  const { title, artist, audioSrc, image, color } = currentTrack || {}; // Add guard for undefined currentTrack
 
 
   // Refs
@@ -140,27 +153,34 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
     };
   }, []);
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    // Potentially reset currentTrackIndex or adjust playback if the current track is filtered out
+    // For now, we'll just filter the list displayed in TrackFrame
+  };
+
   return (
     <div className="audio-player">
       {/* {playerTitle && <h2 className="player-title">{playerTitle}</h2>} */}
       <div className="player-grid">
         <div className="track-frame-container">
+          <SearchBar onSearch={handleSearch} /> {/* Add SearchBar here */}
           <TrackFrame 
             tabs={
               [
                 {
                   label: "Tab 1",
-                  content: tracks,
+                  content: filteredTracks, // Use filteredTracks for the content
                 },
                 {
                   label: "Tab 2",
-                  content: tracks,
+                  content: filteredTracks, // Use filteredTracks for the content
                 },
               ]
     }
           //put isActive here instead of the MusicContainer
           //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
-            currentTrackIndex={currentTrackIndex}
+            currentTrackIndex={currentTrackIndex} // This index still refers to the original `tracks` array
             onTrackSelect={setCurrentTrackIndex}
           />
         </div>

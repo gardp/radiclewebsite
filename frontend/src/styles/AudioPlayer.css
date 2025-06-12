@@ -118,7 +118,8 @@ button {
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column; /* Change to column to stack search bar and track frame */
+  align-items: center; /* Center search bar */
   justify-content: flex-start;
   /* transform-origin: left top; */
   box-sizing: border-box;
@@ -149,6 +150,12 @@ button {
     width: 100%;
     padding: 8px;
     overflow: visible;
+  }
+
+  .track-frame-container { /* Add this for small screens as well */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .player-grid {

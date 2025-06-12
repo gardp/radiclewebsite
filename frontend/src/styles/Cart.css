@@ -23,7 +23,7 @@ button.cart-button.primary.size-lg {
   right: 0;
   height: 40%;
   background: linear-gradient(to bottom, 
-    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(255, 255, 255, 0.9) 0%, 
     rgba(255, 255, 255, 0) 100%);
   border-radius: 50% 50% 100% 100% / 50% 50% 35% 35%;
 }

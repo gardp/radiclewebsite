@@ -62,7 +62,7 @@ const CartPreview = ({ isOpen, onClose, position }) => {
     <div className={`cart-preview-backdrop ${isOpen ? 'open' : ''}`}>
       <div 
         ref={cartRef}
-        className={`cart-preview glass-morphism ${positionClass} ${isOpen ? 'open' : ''}`}
+        className={`cart-preview ${positionClass} ${isOpen ? 'open' : ''}`}
         aria-modal="true"
         role="dialog"
       >
