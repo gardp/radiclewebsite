@@ -71,7 +71,8 @@ const tracksData = [
     title: "Big",
     artist: "Gunna",
     audioSrc: Big,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[0],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -88,7 +89,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -105,7 +107,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -122,7 +125,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -139,7 +143,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -156,7 +161,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -173,7 +179,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -190,7 +197,8 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -207,7 +215,9 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -224,7 +234,9 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -241,7 +253,9 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -258,7 +272,9 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -275,7 +291,9 @@ const tracksData = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}vinyl-red.png`,
+    vinylImage: `${imgSrc}vinyl-red.png`,
+    thumbImage: `${imgSrc}radicleavatar.jpg`,
+    image: `${imgSrc}radicleavatar.jpg`,
     licenseOption: licenseOptions[1],
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -297,7 +315,7 @@ const tracksData2 = [
     title: "Big",
     artist: "Gunna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -313,7 +331,7 @@ const tracksData2 = [
     title: "Bad Dreams",
     artist: "GardlyRadicle",
     audioSrc: Dreams,
-    image: `${imgSrc}radicleavatar.jpg`,  
+    vinylImage: `${imgSrc}radicleavatar.jpg`,  
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -329,7 +347,7 @@ const tracksData2 = [
     title: "Bidffgg",   
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -345,7 +363,7 @@ const tracksData2 = [
     title: "Bidffgg",
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -361,7 +379,7 @@ const tracksData2 = [
     title: "Bidffgg",
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -378,7 +396,7 @@ const tracksData2 = [
     title: "Bidffgg",     
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -394,7 +412,7 @@ const tracksData2 = [
     title: "Bidffgg",
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
@@ -410,7 +428,7 @@ const tracksData2 = [
     title: "Bidffgg",
     artist: "Gudfgfdgnna",
     audioSrc: Big,
-    image: `${imgSrc}radicleavatar.jpg`,
+    vinylImage: `${imgSrc}radicleavatar.jpg`,
     links:{
       streamLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",
       buyLink: "https://www.youtube.com/watch?v=ZBTb_xJBh5c",

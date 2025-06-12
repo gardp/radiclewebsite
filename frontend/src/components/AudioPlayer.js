@@ -27,7 +27,7 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   // or ensuring the currently playing track is always part of filteredTracks.
   const currentTrack = tracks[currentTrackIndex]; 
   // console.log("The current track is:", tracks);
-  const { title, artist, audioSrc, image, color } = currentTrack || {}; // Add guard for undefined currentTrack
+  const { title, artist, audioSrc, vinylImage, color } = currentTrack || {}; // Add guard for undefined currentTrack
 
 
   // Refs
@@ -194,7 +194,7 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
           onScrubEnd={onScrubEnd}
           trackStyling={trackStyling}
           audioRef={audioRef}
-          image={image}
+          image={vinylImage}
           title={title}
           artist={artist}
           audioSrc={audioSrc}

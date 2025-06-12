@@ -43,7 +43,7 @@ const Track = ({ track, isActive, onClick }) => {
         <div className="track-thumb-container">
           <img
             className="track-thumb"
-            src={track.image}
+            src={track.vinylImage}
             alt={`track artwork for ${track.title}`}
           />
         </div>
