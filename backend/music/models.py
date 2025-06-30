@@ -74,6 +74,12 @@ class Song(models.Model):
     # Core Identification & Metadata
     song_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,
                                help_text="Unique identifier for the song.")
+    audio_file = models.FileField(upload_to='songs/', blank=True, null=True,
+                                  help_text="The audio file of the song.")
+    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True,
+                                  help_text="The thumbnail image of the song.")
+    vinyl_thumbnail = models.ImageField(upload_to='vinyl_thumbnails/', blank=True, null=True,
+                                        help_text="The vinyl thumbnail image of the song.") 
     title = models.CharField(max_length=255, null=False,
                              help_text="The primary title of the song.")
     alternate_titles = models.JSONField(default=list, blank=True, null=True,

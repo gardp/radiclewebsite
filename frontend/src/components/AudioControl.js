@@ -11,12 +11,14 @@ const nextIcon = process.env.PUBLIC_URL + '/assets/images/icons8-next.png';
 const prevIcon = process.env.PUBLIC_URL + '/assets/images/icons8-prev.png';
 const playIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-play-black.png';
 const pauseIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-pause-button-black.png';
-const nextIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-next-black.png';
-const prevIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-prev-black.png';
 const nextIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-next-yellow.png';
 const playIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-play-yellow.png';
 const pauseIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-pause-yellow.png';
 const prevIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-prev-yellow.png';
+
+// New icons for streaming and buying
+const streamIcon = process.env.PUBLIC_URL + '/assets/images/icons8-music-stream-black.png';
+const buyIcon = process.env.PUBLIC_URL + '/assets/images/icons8-cart-black.png';
 
 const AudioControls = ({
   isPlaying,
@@ -66,6 +68,15 @@ const AudioControls = ({
         </div>
       )}
       <h1 className="now-playing-title">Now Playing</h1>
+      {/* New div for stream and buy icons */}
+      <div className="audio-actions-bar">
+        <div className="stream-icon-container">
+          <img src={streamIcon} alt="Stream Track" className="action-icon" />
+        </div>
+        <div className="buy-icon-container">
+          <img src={buyIcon} alt="Buy Track" className="action-icon" />
+        </div>
+      </div>
       <div className="now-playing-container">
         {/* Vinyl artwork for mobile - inside now-playing-container */}
         {!isDesktop && (

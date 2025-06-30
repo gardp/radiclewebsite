@@ -54,7 +54,13 @@ const Track = ({ track, isActive, onClick }) => {
             <span className="track-title">{track.title}</span>
             <span className="track-separator"> - </span>
             <span className="track-artist">{track.artist}</span>
+            <span className="track-bpm">{track.bpm}bpm</span>
           </div>  
+          <img
+            className="track-label-thumbnail"
+            src={`${process.env.PUBLIC_URL}/assets/images/radicleavatar.jpg`}
+            alt="Decorative thumbnail"
+          />
         </div>
         
         {/* Icons container - stacked vertically */}
@@ -65,7 +71,7 @@ const Track = ({ track, isActive, onClick }) => {
               <a href="#" onClick={(e) => { e.stopPropagation(); handleCartClick(e); }}>
                 <img
                   // className="track-icon buy-icon skeuomorphic-btn primary with-glare" justink
-                  className="track-icon buy-icon skeuomorphic-btn primary with-glare"
+                  className="track-icon buy-icon primary with-glare"
                   src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-crimson-red.png`}
                   alt="Buy"
                 />
@@ -88,7 +94,7 @@ const Track = ({ track, isActive, onClick }) => {
             {track.links?.streamLink && (
               <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                 <img
-                  className="track-icon stream-icon skeuomorphic-btn light with-glare"
+                  className="track-icon stream-icon skeuomorphic-btn"
                   src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-stream-red.png`}
                   alt="Stream"
                 />

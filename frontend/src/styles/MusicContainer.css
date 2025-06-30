@@ -5,7 +5,7 @@
     max-width: 1400px; /* Max width of the container */
     margin: 0 auto 3rem; /* Centered with some margin */
     aspect-ratio: 16 / 7; /* Aspect ratio for the container */
-    background-color: rgba(26, 26, 26, 0.8);; /* Dark background */
+    background-color: rgba(26, 26, 26, 0.4);; /* Dark background */
     border-radius: 15px; /* Rounded corners */
     box-shadow: 
       0 10px 30px rgba(0, 0, 0, 0.3), /* Main shadow */
