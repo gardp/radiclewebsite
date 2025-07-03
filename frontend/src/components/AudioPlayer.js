@@ -8,6 +8,7 @@ import "../styles/AudioPlayer.css";
 const AudioPlayer = ({ tracks, playerTitle}) => {
   console.log("AudioPlayer received tracks:", tracks); // Debug log
   // State
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   // console.log("Initial render - isPlaying:", isPlaying, "isActive:", isActive);
@@ -72,8 +73,10 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   };
 
   const handlePlay = () => {
-    setIsPlaying(true); //triggers side effect in AudioPlayer and affect AudioControls responsibly
-    // onPlay(); //sets activePlayer to true in MusicContainer because of HandlePlay in MusicContainer
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+    }
+    setIsPlaying(true);
   };
 
   const handlePause = () => {
@@ -82,6 +85,9 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   };
 
   const toPrevTrack = () => {
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+    }
     if (currentTrackIndex - 1 < 0) {
       setCurrentTrackIndex(tracks.length - 1);
     } else {
@@ -90,6 +96,9 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   };
 
   const toNextTrack = () => {
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+    }
     if (currentTrackIndex < tracks.length - 1) {
       setCurrentTrackIndex(currentTrackIndex + 1);
     } else {
@@ -99,7 +108,7 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
 
   // Effect for handling play/pause
   useEffect(() => {
-    // Ensure player is paused when not active
+    // Ensure player is paused when not active or when the track changes
     //add to the trackframe parameters and check here isActive = {CurrentTrackIndex === index}
     //OR map through tracks and check if index === currentTrackIndex. And instead of isActive, use currentTrackIndex in the dependency array
     // tracks.map((track, index) => 
@@ -115,31 +124,20 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   // to true. And that same isPlaying that was set to true trigger the following
   // side effect that plays the audio.
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying && hasUserInteracted) {
       audioRef.current.play();
       startTimer();
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, hasUserInteracted]);
 
   // Handles cleanup and setup when changing tracks
-  // Audio change
+  // This hook now ONLY loads the new audio source. It does not play it.
   useEffect(() => {
     audioRef.current.pause();
     audioRef.current = new Audio(audioSrc);
     setTrackProgress(audioRef.current.currentTime);
-
-    if (isReady.current) {
-      console.log("2-isReady.current", isReady.current);
-      audioRef.current.play();
-      handlePlay();
-      startTimer();
-      // if it's already the current track being reloaded, then play it again. Otherwise, set it to true to play it
-    } else {
-      // Set the isReady ref as true for the next pass
-      isReady.current = true;
-    } 
   }, [audioSrc]);
 
   // player change

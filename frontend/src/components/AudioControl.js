@@ -4,21 +4,20 @@ import '../styles/SkeuomorphicButtons.css';
 import '../styles/AudioControlButtons.css';
 import '../styles/AudioControls.css';
 
-// Import images from public folder
-const playIcon = process.env.PUBLIC_URL + '/assets/images/icons8-play-button.png';
-const pauseIcon = process.env.PUBLIC_URL + '/assets/images/icons8-pause-button.png';
-const nextIcon = process.env.PUBLIC_URL + '/assets/images/icons8-next.png';
-const prevIcon = process.env.PUBLIC_URL + '/assets/images/icons8-prev.png';
-const playIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-play-black.png';
-const pauseIconBlack = process.env.PUBLIC_URL + '/assets/images/icons8-pause-button-black.png';
-const nextIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-next-yellow.png';
-const playIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-play-yellow.png';
-const pauseIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-pause-yellow.png';
-const prevIconYellow = process.env.PUBLIC_URL + '/assets/images/icons8-prev-yellow.png';
+import playIcon from '../assets/images/icons8-play-button-red.png';
+import pauseIcon from '../assets/images/icons8-pause-button-red.png';
+import nextIcon from '../assets/images/icons8-next.png';
+import prevIcon from '../assets/images/icons8-prev.png';
+import playIconBlack from '../assets/images/icons8-play-black.png';
+import pauseIconBlack from '../assets/images/icons8-pause-button-black.png';
+import nextIconYellow from '../assets/images/icons8-next-yellow.png';
+import playIconYellow from '../assets/images/icons8-play-yellow.png';
+import pauseIconYellow from '../assets/images/icons8-pause-yellow.png';
+import prevIconYellow from '../assets/images/icons8-prev-yellow.png';
 
 // New icons for streaming and buying
-const streamIcon = process.env.PUBLIC_URL + '/assets/images/icons8-music-stream-black.png';
-const buyIcon = process.env.PUBLIC_URL + '/assets/images/icons8-cart-black.png';
+import streamIcon from '../assets/images/icons8-music-stream-black.png';
+import buyIcon from '../assets/images/icons8-cart-black.png';
 
 const AudioControls = ({
   isPlaying,
@@ -27,7 +26,7 @@ const AudioControls = ({
   onNextClick,
   // Track info props
   image,
-  title,
+  title,  
   artist,
   audioSrc,
   color,

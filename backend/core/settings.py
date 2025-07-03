@@ -2,43 +2,20 @@ from pathlib import Path
 from decouple import config
 from datetime import timedelta
 import os
-from pathlib import Path
-from dotenv import load_dotenv
-
-# load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load environment variables from .env file
-load_dotenv(os.path.join(BASE_DIR.parent, '.env')) # Assumes .env is in backend's parent dir
-# Or if .env is directly in backend dir: load_dotenv(os.path.join(BASE_DIR, '.env'))
-
-
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default-insecure-key-for-dev')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True' # Convert string "True" to boolean True
-
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
-
-# Example database configuration using env variable
-import dj_database_url # pip install dj-database-url
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
-}
-
-
-
+# Decouple will automatically find and load the .env file.
 SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-DEBUG = config('DEBUG', default=True, cast=bool)
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='127.0.0.1').split(',')
 
 # Media files (user-uploaded files)
 MEDIA_URL = '/media/'
 # This is the absolute path to the directory where uploaded files will be stored.
 # Create a 'media' folder in your project root or an app's root.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 INSTALLED_APPS = [
     # Third party apps
@@ -64,7 +41,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # Add this after SessionMiddleware, before CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -99,7 +75,7 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'PORT': config('DB_PORT', cast=int),
     }
 }
 
@@ -210,4 +186,3 @@ SIMPLE_JWT = {
     "TOKEN_SLIDING_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "TOKEN_SLIDING_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
-    

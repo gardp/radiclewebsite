@@ -80,15 +80,15 @@ api.interceptors.request.use(
   export const musicApi = {
     getSongs: (params = {}) => api.get('/music/songs/', { params }), // params for search, pagination etc.
     getSongDetail: (id) => api.get(`/music/songs/${id}/`),
-    createSong: (songData) => api.post('/music/songs/', songData),
+    // createSong: (songData) => api.post('/music/songs/', songData),
     // ... more music related calls
   };
   
-  // Licensing API
-  export const licenseApi = {
-    getLicenseTypes: () => api.get('/licenses/types/'),
-    purchaseLicense: (purchaseData) => api.post('/licenses/purchase/', purchaseData),
-  };
+  // // Licensing API
+  // export const licenseApi = {
+  //   getLicenseTypes: () => api.get('/licenses/types/'),
+  //   purchaseLicense: (purchaseData) => api.post('/licenses/purchase/', purchaseData),
+  // };
   
   // You can add more API groups as needed (e.g., cartApi, orderApi)
 

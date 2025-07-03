@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/AboutUs.css';
 import { FaMusic, FaMicrophone, FaCompactDisc, FaGuitar } from 'react-icons/fa';
 
+
 const AboutUs = () => {
     return (
         <div className="page-wrapper">
@@ -11,8 +12,8 @@ const AboutUs = () => {
                     <div className="about-content"> 
                         <div className="about-image">
                             <img 
-                                src={process.env.PUBLIC_URL + '/assets/images/studio.jpg'} 
-                                alt="Radicle Studio"
+                                src={process.env.PUBLIC_URL + '/favicon.ico'} 
+                                alt="Radicle Favicon"
                             />
                         </div>
                         <div className="about-text">

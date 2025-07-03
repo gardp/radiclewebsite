@@ -3,12 +3,9 @@ import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import '../styles/Carousel.css';
-
 import InfoSlider from './InfoSlider';
-
-// Import SVGs as URLs from public folder
-const carouselImage1 = process.env.PUBLIC_URL + '/assets/images/Carousel-Image.png';
-const carouselImage2 = process.env.PUBLIC_URL + '/assets/images/Carousel-image-option.png';
+import carouselImage1 from '../assets/images/Carousel-Image.png';
+import carouselImage2 from '../assets/images/Carousel-image-option.png';
 
 
 

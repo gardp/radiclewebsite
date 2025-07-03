@@ -2,14 +2,16 @@ import React from 'react';
 import CustomCarousel from './Carousel';
 import FeaturedHighlight from './FeaturedHighlight';
 import MusicContainer from './MusicContainer';
-import { tracksData } from './Tracks';
 import Media from './Media';
 import NewsletterSub from './NewsletterSub';
 import PricingTable from './PricingTable';
 import CustomNavbar from './CustomNavbar';
 import Section from './Section';
+import { useSongs } from '../hooks/useSongs';
 
 const HomePage = () => {
+  const { data: songs, isLoading, isError } = useSongs();
+
   return (
     <div className="page-wrapper">
       {/* Hero Section - Full Viewport Height Carousel */}
@@ -25,11 +27,15 @@ const HomePage = () => {
           <PricingTable/>
         </div> */}
         <Section title="Latest Music Releases">
-          <MusicContainer 
-            tracks={tracksData} 
-            playerTitle="New Features" 
-            scale={0.5} /* Scale from 0.5 to 1, where 1 is 100% (default) */
-          />
+          {isLoading && <p>Loading music...</p>}
+          {isError && <p>Error fetching music. Please try again later.</p>}
+          {songs && (
+            <MusicContainer 
+              tracks={songs} 
+              playerTitle="New Features" 
+              scale={0.5} /* Scale from 0.5 to 1, where 1 is 100% (default) */
+            />
+          )}
         </Section>
         <Section title="More Media">
           <Media/>

@@ -19,7 +19,7 @@ export const initialCartState = {
 export const CartContext = createContext({
   ...initialCartState, // Destructure the initial state
   // Function placeholders that will be implemented in the provider
-  addToCart: () => {}, //passed to useCart
+  addToCart: () => {}, //passed to useCart and placeholder for the cartTypes
   removeFromCart: () => {},
   updateQuantity: () => {},
   clearCart: () => {},

@@ -58,9 +58,9 @@ button.cart-button.primary.size-lg:active {
 }
 
 .cart-icon {
-  width: 30px;
-  height: 30px;
-  background-image: url('/assets/images/icons8-cart-beige.png');
+  width: 24px;
+  height: 24px;
+  background-image: url('../assets/images/icons8-cart-black.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

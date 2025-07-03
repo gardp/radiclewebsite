@@ -5,7 +5,11 @@ import '../styles/SkeuomorphicButtons.css';
 import PricingTable from './PricingTable';
 import { useSelector, useDispatch } from 'react-redux';
 import { openPricingModal, closePricingModal } from '../features/priceLicensing/priceLicensing.js';
-
+import cartIconRed from '../assets/images/icons8-cart-crimson-red.png';
+import downloadIcon from '../assets/images/icons8-listening-to-music-on-headphones-100.png';
+import streamIcon from '../assets/images/icons8-music-stream-red.png';
+import babyRadicle from '../assets/images/baby-radicle.png';
+import avatar from '../assets/images/radicleavatar.jpg';
 const Track = ({ track, isActive, onClick }) => {
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -58,7 +62,7 @@ const Track = ({ track, isActive, onClick }) => {
           </div>  
           <img
             className="track-label-thumbnail"
-            src={`${process.env.PUBLIC_URL}/assets/images/radicleavatar.jpg`}
+            src={babyRadicle}
             alt="Decorative thumbnail"
           />
         </div>
@@ -72,7 +76,7 @@ const Track = ({ track, isActive, onClick }) => {
                 <img
                   // className="track-icon buy-icon skeuomorphic-btn primary with-glare" justink
                   className="track-icon buy-icon primary with-glare"
-                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-cart-crimson-red.png`}
+                  src={cartIconRed}
                   alt="Buy"
                 />
                 <span className="tooltip">Buy</span>
@@ -82,7 +86,7 @@ const Track = ({ track, isActive, onClick }) => {
               <a href={track.links.downloadLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                 <img
                   className="track-icon download-icon skeuomorphic-btn accent with-glare"
-                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-listening-to-music-on-headphones-100.png`}
+                  src={downloadIcon}
                   alt="Download"
                 />
                 <span className="tooltip">Download</span>
@@ -95,7 +99,7 @@ const Track = ({ track, isActive, onClick }) => {
               <a href={track.links.streamLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                 <img
                   className="track-icon stream-icon skeuomorphic-btn"
-                  src={`${process.env.PUBLIC_URL}/assets/images/icons8-music-stream-red.png`}
+                  src={streamIcon}
                   alt="Stream"
                 />
                 <span className="tooltip">Stream</span>

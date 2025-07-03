@@ -5,6 +5,8 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.6.1",
+    "@tanstack/react-query": "^5.81.5",
+    "@tanstack/react-query-devtools": "^5.81.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,16 +19,15 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-player": "^2.16.0",
-    "react-query": "^3.39.3",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.30.1",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "wavesurfer.js": "^7.8.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
