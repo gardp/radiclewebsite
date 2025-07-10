@@ -1,5 +1,19 @@
 import axios from 'axios';
 
+// const apiClient = axios.create({
+//   baseURL: '/api/v1',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
+
+// export const fetchTracks = async () => {
+//   // The query function in React Query is passed an object with queryKey, etc.
+//   // We don't need it for this request, so we ignore it.
+//   const { data } = await apiClient.get('/music/tracks/');
+//   return data;
+// };
+
 // Get base URL from environment variables
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -78,9 +92,9 @@ api.interceptors.request.use(
   
   // Music API
   export const musicApi = {
-    getSongs: (params = {}) => api.get('/music/songs/', { params }), // params for search, pagination etc.
-    getSongDetail: (id) => api.get(`/music/songs/${id}/`),
-    // createSong: (songData) => api.post('/music/songs/', songData),
+    getTracks: (params = {}) => api.get('/tracks/', { params }), // params for search, pagination etc.
+    getTrackDetail: (id) => api.get(`/tracks/${id}/`),
+    // createTrack: (trackData) => api.post('/tracks/', trackData),
     // ... more music related calls
   };
   

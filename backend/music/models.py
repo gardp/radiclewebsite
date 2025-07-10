@@ -65,17 +65,19 @@ from django.contrib.postgres.fields import JSONField
 
 # # --- Main Song Model ---
 
-class Song(models.Model):
+class Track(models.Model):
     """
     Model representing a musical composition and its master recording.
     Contains all necessary metadata for internal management, digital distribution,
     and linking to legal contracts.
     """
     # Core Identification & Metadata
-    song_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,
+    track_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,
                                help_text="Unique identifier for the song.")
-    audio_file = models.FileField(upload_to='songs/', blank=True, null=True,
+    audio_file = models.FileField(upload_to='tracks/', blank=True, null=True, max_length=255,
                                   help_text="The audio file of the song.")
+    artist = models.CharField(max_length=255, null=False,
+                                help_text="The artist of the song.")                              
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True,
                                   help_text="The thumbnail image of the song.")
     vinyl_thumbnail = models.ImageField(upload_to='vinyl_thumbnails/', blank=True, null=True,
@@ -103,9 +105,9 @@ class Song(models.Model):
                            help_text="Musical key of the song (e.g., 'C Major', 'A Minor', 'F#m').")
     time_signature = models.CharField(max_length=10, blank=True, null=True,
                                       help_text="Time signature of the song (e.g., '4/4', '3/4').")
-    duration_seconds = models.IntegerField(null=False,
+    duration_seconds = models.IntegerField(null=True,
                                            help_text="Total duration of the song in seconds.")
-    genres = models.JSONField(default=list, null=False,
+    genres = models.JSONField(default=list, null=True,
                               help_text="Array of primary and secondary genres (e.g., ['Hip-Hop', 'Trap']).")
     moods = models.JSONField(default=list, blank=True, null=True,
                              help_text="Array of moods or emotions evoked (e.g., ['Uplifting', 'Melancholy']).")

@@ -37,7 +37,7 @@ const TrackFrame = ({ tabs = [], currentTrackIndex, onTrackSelect }) => (
                   {/* Map through tracks in the current tab */}
                   {tab.content.map((track, trackIndex) => (
                     <Track
-                      key={track.id}
+                      key={track.track_id}
                       track={track}
                       isActive={trackIndex === currentTrackIndex}
                       onClick={() => onTrackSelect(trackIndex)}

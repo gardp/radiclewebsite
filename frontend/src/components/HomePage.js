@@ -7,10 +7,10 @@ import NewsletterSub from './NewsletterSub';
 import PricingTable from './PricingTable';
 import CustomNavbar from './CustomNavbar';
 import Section from './Section';
-import { useSongs } from '../hooks/useSongs';
+import { useTracks } from '../hooks/useTracks';
 
 const HomePage = () => {
-  const { data: songs, isLoading, isError } = useSongs();
+  const { data: tracks, isLoading, isError } = useTracks();
 
   return (
     <div className="page-wrapper">
@@ -29,9 +29,9 @@ const HomePage = () => {
         <Section title="Latest Music Releases">
           {isLoading && <p>Loading music...</p>}
           {isError && <p>Error fetching music. Please try again later.</p>}
-          {songs && (
+          {tracks && (
             <MusicContainer 
-              tracks={songs} 
+              tracks={tracks} 
               playerTitle="New Features" 
               scale={0.5} /* Scale from 0.5 to 1, where 1 is 100% (default) */
             />

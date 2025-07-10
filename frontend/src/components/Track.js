@@ -47,7 +47,7 @@ const Track = ({ track, isActive, onClick }) => {
         <div className="track-thumb-container">
           <img
             className="track-thumb"
-            src={track.vinylImage}
+            src={track.vinylThumbnail}
             alt={`track artwork for ${track.title}`}
           />
         </div>
@@ -58,7 +58,7 @@ const Track = ({ track, isActive, onClick }) => {
             <span className="track-title">{track.title}</span>
             <span className="track-separator"> - </span>
             <span className="track-artist">{track.artist}</span>
-            <span className="track-bpm">{track.bpm}bpm</span>
+            <span className="track-bpm">{track.tempo_bpm}bpm</span>
           </div>  
           <img
             className="track-label-thumbnail"

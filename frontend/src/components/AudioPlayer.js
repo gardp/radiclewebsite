@@ -28,11 +28,11 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   // or ensuring the currently playing track is always part of filteredTracks.
   const currentTrack = tracks[currentTrackIndex]; 
   // console.log("The current track is:", tracks);
-  const { title, artist, audioSrc, vinylImage, color } = currentTrack || {}; // Add guard for undefined currentTrack
+  const { title, artist, audio_file, vinylThumbnail} = currentTrack || {}; // Add guard for undefined currentTrack
 
 
   // Refs
-  const audioRef = useRef(new Audio(audioSrc));
+  const audioRef = useRef(new Audio(audio_file));
   const intervalRef = useRef();
   const isReady = useRef(false);
 
@@ -136,9 +136,9 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   // This hook now ONLY loads the new audio source. It does not play it.
   useEffect(() => {
     audioRef.current.pause();
-    audioRef.current = new Audio(audioSrc);
+    audioRef.current = new Audio(audio_file);
     setTrackProgress(audioRef.current.currentTime);
-  }, [audioSrc]);
+  }, [audio_file]);
 
   // player change
   useEffect(() => {
@@ -192,11 +192,10 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
           onScrubEnd={onScrubEnd}
           trackStyling={trackStyling}
           audioRef={audioRef}
-          image={vinylImage}
+          vinylThumbnail={vinylThumbnail}
           title={title}
           artist={artist}
-          audioSrc={audioSrc}
-          color={color}
+          audio_file={audio_file}
           // controlsSize prop removed
         />
       </div>

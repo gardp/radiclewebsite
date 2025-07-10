@@ -1,8 +1,6 @@
 // import React from 'react';
 import '../styles/Tracks.css';
 import redVinyl from '../assets/images/vinyl-red.png';
-import yellowVinyl from '../assets/images/vinyl-yellow.png';
-import blackVinyl from '../assets/images/vinyl-black.png';  
 import avatar from '../assets/images/radicleavatar.jpg';
 import babyRadicle from '../assets/images/baby-radicle.png';
 // For files in the public folder, we use process.env.PUBLIC_URL
