@@ -3,6 +3,7 @@ import AudioControls from "./AudioControl";
 import TrackFrame from "./TrackFrame";
 import SearchBar from "./SearchBar"; // Import the SearchBar component
 import "../styles/AudioPlayer.css";
+import { API_BASE_URL } from "../api";
 
 
 const AudioPlayer = ({ tracks, playerTitle}) => {
@@ -19,6 +20,8 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   const filteredTracks = tracks.filter(track => 
     track.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
     track.artist.toLowerCase().includes(searchTerm.toLowerCase())
+    || track.tempo_bpm.toLowerCase().includes(searchTerm.toLowerCase())
+    || track.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Use filteredTracks for display, but manage currentTrackIndex based on the original tracks array
@@ -28,11 +31,12 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
   // or ensuring the currently playing track is always part of filteredTracks.
   const currentTrack = tracks[currentTrackIndex]; 
   // console.log("The current track is:", tracks);
-  const { title, artist, audio_file, vinylThumbnail} = currentTrack || {}; // Add guard for undefined currentTrack
-
+  const { title, artist, audio_file, vinyl_thumbnail} = currentTrack || {}; // Add guard for undefined currentTrack
+  // Construct the full, playable URL
+  const fullAudioUrl = audio_file ? `${API_BASE_URL}${audio_file}` : '';
 
   // Refs
-  const audioRef = useRef(new Audio(audio_file));
+  const audioRef = useRef(new Audio(fullAudioUrl));
   const intervalRef = useRef();
   const isReady = useRef(false);
 
@@ -192,7 +196,7 @@ const AudioPlayer = ({ tracks, playerTitle}) => {
           onScrubEnd={onScrubEnd}
           trackStyling={trackStyling}
           audioRef={audioRef}
-          vinylThumbnail={vinylThumbnail}
+          vinylThumbnail={vinyl_thumbnail}
           title={title}
           artist={artist}
           audio_file={audio_file}

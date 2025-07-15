@@ -4,8 +4,11 @@ import { musicApi } from '../api';
 
 export const useTracks = () => {
   return useQuery({
-    queryKey: ['tracks'], // I need the song identified by this key and also cached if needed
-    queryFn: () => musicApi.getTracks(),   // The function that fetches the data// src/hooks/useSongs.js
+    queryKey: ['tracks'], // I need the tracks identified by this key and also cached if needed
+    queryFn: async () => {
+      const response = await musicApi.getTracks();
+      return response.data; // Extract the data from the axios response
+    },
     // Assuming your api.js exports musicApi
   });
 };
